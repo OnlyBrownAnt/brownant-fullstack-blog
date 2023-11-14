@@ -25,8 +25,8 @@ const config: Config = {
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'zh',
-    locales: ['zh'],
+    defaultLocale: 'zh-CN',
+    locales: ['zh-CN'],
   },
 
   presets: [
@@ -53,7 +53,7 @@ const config: Config = {
       } satisfies Preset.Options,
     ],
   ],
-
+  themes: ['@docusaurus/theme-live-codeblock'],
   themeConfig: {
     // Replace with your project's social card
     // image: 'img/docusaurus-social-card.jpg',
@@ -66,6 +66,42 @@ const config: Config = {
       title: 'Home',
       hideOnScroll: false,
       items: [
+        {
+          type: 'docSidebar',
+          sidebarId: 'JavaScriptSidebar',
+          position: 'left',
+          label: 'JavaScript',
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'HTMLSidebar',
+          position: 'left',
+          label: 'HTML',
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'CSSSidebar',
+          position: 'left',
+          label: 'CSS',
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'VueSidebar',
+          position: 'left',
+          label: 'Vue',
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'ReactSidebar',
+          position: 'left',
+          label: 'React',
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'ExtensionSidebar',
+          position: 'right',
+          label: 'Extension',
+        },
         {
           type: 'search',
           position: 'right',
@@ -108,7 +144,7 @@ const config: Config = {
     },
     tableOfContents: {
       minHeadingLevel: 2,
-      maxHeadingLevel: 5,
+      maxHeadingLevel: 4,
     },
     footer: {
       style: 'dark',
@@ -118,7 +154,8 @@ const config: Config = {
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
-    },
+      additionalLanguages: ['bash', 'java'],
+    }, 
   } satisfies Preset.ThemeConfig,
 };
 
