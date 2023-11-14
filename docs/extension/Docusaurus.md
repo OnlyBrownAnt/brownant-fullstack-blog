@@ -65,9 +65,25 @@ relative to the content root (`/static/`)
 - [file path to another document](@site/docs/installation.mdx)
 ```
 #### Code Blocks
-由Prism React Renderer提供支持。
+由Prism React Renderer(prism-react-renderer node package)提供代码高亮支持。
+
 ##### Docs
 - [code-blocks](https://docusaurus.io/docs/markdown-features/code-blocks)
 - [supported-languages](https://prismjs.com/#supported-languages)
-##### 增加额外语言
+- [interactive-code-editor](https://docusaurus.io/docs/markdown-features/code-blocks#interactive-code-editor)
+
+##### 增加语言支持
 prism.additionalLanguages 列表增加prism支持语言配置。
+
+##### 交互式代码
+使用到了@docusaurus/theme-live-codeblock插件，目前只支持jsx。
+
+```jsx live
+function MyPlayground(props) {
+  return (
+    <div>
+      <button onClick={() => alert('hey!')}>Click me</button>
+    </div>
+  );
+}
+```

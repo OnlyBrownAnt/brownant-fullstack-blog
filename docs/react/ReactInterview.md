@@ -1001,14 +1001,3 @@ closure(); // 输出: "Hello"
 ### JavaScript基础
 
 ### React基础
-
-
-```jsx live
-function MyPlayground(props) {
-  return (
-    <div>
-      <button onClick={() => alert('hey!')}>Click me</button>
-    </div>
-  );
-}
-```
