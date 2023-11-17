@@ -87,3 +87,26 @@ function MyPlayground(props) {
   );
 }
 ```
+
+### 国际化
+- [i18n-tutorial](https://docusaurus.io/docs/i18n/tutorial)
+
+#### 基础配置
+```javascript
+// docusaurus.config.js
+export default {
+  i18n: {
+    defaultLocale: 'en', // 配置默认多语言
+    locales: ['en', 'fr', 'fa'],
+    localeConfigs: { // 配置html标签的lang属性
+      en: {
+        htmlLang: 'en-GB', 
+      },
+      // You can omit a locale (e.g. fr) if you don't need to override the defaults
+      fa: {
+        direction: 'rtl',
+      },
+    },
+  },
+};
+```
