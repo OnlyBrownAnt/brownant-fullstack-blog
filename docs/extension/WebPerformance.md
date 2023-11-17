@@ -204,22 +204,6 @@ TODO
     - DCL
     - L
 
-#### 基础HTML模版
-```html
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
-  </head>
-  <body>
-    <div>Vite Demo Now</div> 
-  </body>
-</html>
-```
-
 #### 对比测试
 ##### 默认配置
 ###### 代码
@@ -293,7 +277,6 @@ TODO
 - DCL指DomContentLoaded事件，表示DOM文档完成解析完成，而且延迟的脚本任务也全部加载执行完成。只是不会包括图片等资源加载完成。
 - L指load事件，表示DOM文档解析完成，图片等资源也全部加载完成。
 - JS脚本下载部分由预加载扫描器处理，但是加载执行部分在默认和defer情况下还是严格按照DOM解析流程的设置进行，如果是async情况下，会同时进行。
-
 - 默认情况下，DOM文档解析过程，JS脚本下载加载执行之后，后续才解析到DOM节点部分，才能显示页面。所以白屏时间较长。
 - defer情况下，JS脚本加载执行部分不影响DOM节点部分。不过最后在JS脚本加载执行完成后，才算DOM解析完成。触发DCL。
 - async情况下，未等到JS脚本执行，当DOM解析完成后就直接触发了DCL。说明两部分是同时进行的。
