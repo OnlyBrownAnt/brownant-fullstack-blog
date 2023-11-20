@@ -39,6 +39,8 @@
 - [2023年最全前端面试（20w字）HTML5+CSS3+JS+TS4+Vue3+React18+八股文+手写+项目+笔试_前端面试题2023八股文-CSDN博客](https://blog.csdn.net/qq_28838891/article/details/124638456?csdn_share_tail=%7B%22type%22%3A%22blog%22%2C%22rType%22%3A%22article%22%2C%22rId%22%3A%22124638456%22%2C%22source%22%3A%22qq_28838891%22%7D)
 - [topic-list](https://fe.ecool.fun/topic-list)
 - [2022年前端Vue常见面试题大全（三万长文）持续更新...](https://blog.csdn.net/weixin_53150999/article/details/122516253)
+- [艾编程](https://www.arryblog.com/)
+  > 整理了大量的高质量前端面试题，很精致，尝试看看。
 
 ### 人事
 - [面试应答有哪些话术和技巧](https://fe.ecool.fun/article-detail/I429Z8)
@@ -97,6 +99,8 @@
   - [美团前端笔试一面二面23年总结](https://www.nowcoder.com/discuss/473531500084854784)
 - 杭州笛佛(前端)
   - [2021前端面试题及答案（2021年3月25日）_笛佛 笔试-CSDN博客](https://blog.csdn.net/laosixnotwo/article/details/115220416)
+- 待分类
+  - [秋招面经](https://www.nowcoder.com/discuss/353158594822610944?sourceSSR=search)
 
 ## 如何了解公司
 更好的了解一个公司，才能确定是否要为之进行有效的奋斗。
@@ -113,3 +117,11 @@
 - [前程无忧](https://www.51job.com/)
   
   更偏向于地区性的本地企业。
+
+## 面试准备工作
+### 准备技巧
+1. 确定技能范围 
+3. 基础
+3. 高频题
+  > 根据高频题，去总结基础。
+4. 实战Demo
