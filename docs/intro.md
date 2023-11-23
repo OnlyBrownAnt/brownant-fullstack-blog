@@ -7,6 +7,5 @@ sidebar_position: 1
 但唯独不是他人知识文章上的照本宣科。
 
 # TODO
-- [HTML](html/HTML)
-- [HTMLPractices](html/HTMLPractices)
-- [VueInterview](vue/VueInterview)
+- [ReactInterview](react/ReactInterview)
+- [InterviewReviews](extension/InterviewReviews)
