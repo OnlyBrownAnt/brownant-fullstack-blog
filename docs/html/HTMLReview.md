@@ -298,9 +298,11 @@ meta是元数据元素，用于描述文档内容，不会呈现在页面上。�
 - description 页面内容的简短而准确的摘要。
 - generator 生成页面的软件的标识符。
 - keywords 与页面内容相关的单词，以逗号分隔。
-- viewport 给出网页视口初始大小的规则。
-   - initial-scale 定义设备宽度（device-width纵向模式或device-height横向模式）与视口大小之间的比率。常用参数1.0。
+- viewport 给出网页视口初始大小的规则。实现移动端浏览器的响应式布局。
+   - width 让浏览器假定视口宽度，设备宽度参数有`device-width`纵向模式表示设备视口宽或`device-height`横向模式表示采用设备视口高度。
+   - initial-scale 定义设备宽度（device-width纵向模式或device-height横向模式）与视口大小之间的比率。常用参数1.0。原则上当width=device-width时，设备宽度是网页的实际宽度，视口是实际看到的宽度。而实际设备宽度是不变的，所以如果设置initial-scale=2.0表示设备宽度比视口放大两倍，也就是视口缩小两倍，则内容会被放大2倍。
    - user-scalable 如果设置为no，用户将无法放大网页。默认为yes。浏览器设置可以忽略此规则，iOS10+默认忽略它。
+   - viewport-fit 设置为cover值可以解决刘海屏的留白问题
 - robots 声明爬虫或“机器人”应在页面上使用的行为。它的值采用逗号分隔列表。
 
 ### Link
