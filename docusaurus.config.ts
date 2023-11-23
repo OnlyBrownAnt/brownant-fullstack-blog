@@ -91,12 +91,6 @@ const config: Config = {
         },
         {
           type: 'docSidebar',
-          sidebarId: 'VueSidebar',
-          position: 'left',
-          label: 'Vue',
-        },
-        {
-          type: 'docSidebar',
           sidebarId: 'ReactSidebar',
           position: 'left',
           label: 'React',
