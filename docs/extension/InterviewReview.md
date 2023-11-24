@@ -107,8 +107,8 @@
 ## 项目分析
 大部分情况下，主管级别面试官对项目经验要求较高。所以如何分析自己做过的项目，以及提炼闪光点是最为重要的。
 
-分析方式采用STAR原则
-STAR法则是情境(Situation)、任务(Task)、行动(Action)、结果(Result)四项的缩写。
+分析方式采用STAR法则
+- STAR法则是情境(Situation)、任务(Task)、行动(Action)、结果(Result)四项的缩写。
 
 ### Docs
 - [拿不到大厂offer ？简历你就写错了！(阿里云)](https://developer.aliyun.com/article/759897)
