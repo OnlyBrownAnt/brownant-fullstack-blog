@@ -1282,3 +1282,36 @@ TODO
     }
 }
 ```
+
+### CSS画三角形
+一般常用两种方式。
+
+1. border
+思路
+- 当一个盒子没有宽高，但是边框增大时，会产生由中心往外产生区域的效果。所以将一边border设置为某个颜色，增大固定大小。但是只有一边是有颜色的，剩下三边颜色为透明就可以产生三角形。
+
+代码
+```css
+.box {
+    width: 0;
+    height: 0;
+    
+    border-top: 100px solid red;
+    border-bottom: 100px solid transparent;
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+}
+```
+
+2. linear-gradient
+思路
+linear-gradient用于设置背景渐变效果，但是可以设置角度和多个颜色节点。给盒子设置固定宽高，超出部分也不会显示，设置45deg的角度，设置一个颜色节点长度50%，刚好到边角线。设置第二个颜色节点为透明0。这样只有前50%产生颜色，就可以生成三角型了。
+
+代码
+```css
+.box {
+    width: 100px;
+    height: 100px;
+    background-image: linear-gradient(45deg, red 50%, transparent 0);
+}
+```
