@@ -22,7 +22,7 @@
     > 
     > 使用硬件（例如，路由器、交换机、接入点和电缆）和软件（例如，操作系统或业务应用程序）构建计算机网络。
 - 计算机网络类型
-    > 主要是根据网络覆盖区域的范围进行分类。常见有八种，具体参考[计算机网络类型](./ComputerNetworkReview#计算机网络类型)。
+    > 主要是根据网络覆盖区域的范围进行分类。常见有八种，具体参考[计算机网络类型](./ComputerNetwork#计算机网络类型)。
 - IP地址
     > IP地址是给计算机网络中的每个设备的分配唯一编号。
     > 
@@ -51,7 +51,7 @@
     > 交换机和路由器区别 
     > - 路由器在网络之间发送信息，而交换机在单个网络中的节点之间发送信息。
 - 交换方式
-    > "switching"交换是指数据如何在网络中的设备之间传输。有三种方式，详情可查看[交换方式](./ComputerNetworkReview#交换方式)。
+    > "switching"交换是指数据如何在网络中的设备之间传输。有三种方式，详情可查看[交换方式](./ComputerNetwork#交换方式)。
 - 端口
     > 端口标识网络设备之间的特定连接。每个端口都由一个数字标识。
     >
@@ -66,12 +66,12 @@
     > 互联网服务提供商(ISP)是提供允许通过互联网传输数据包或信息的基础设施。它是协议和基础设施的结合，可以准确地告诉信息的去向。
 - 网络服务提供商(NSP)
     > 网络服务提供商(NSP)是提供允许通过互联网传输数据包或信息的基础设施。它是协议和基础设施的结合，可以准确地告诉信息的去向。
-- [计算机网络如何工作](./ComputerNetworkReview#计算机网络如何工作)
-- [计算机网络架构](./ComputerNetworkReview#计算机网络架构)
-- [网络拓扑](./ComputerNetworkReview#网络拓扑)
+- [计算机网络如何工作](./ComputerNetwork#计算机网络如何工作)
+- [计算机网络架构](./ComputerNetwork#计算机网络架构)
+- [网络拓扑](./ComputerNetwork#网络拓扑)
 - 网络安全策略
     > 网络安全策略的目的是为了平衡了向用户提供服务的需求和控制信息访问的需求。
-- [网状网络类型](./ComputerNetworkReview#网络拓扑)
+- [网状网络类型](./ComputerNetwork#网络拓扑)
 - 负载均衡器
     > 负载均衡器可在可用服务器之间有效分配任务、工作负载和网络流量。
     > 
@@ -256,7 +256,7 @@ TCP/IP四层模型是事实上的国际标准。只有四层，一般在学习�
 ### TCP报文段的首部
 > 首部的作用在交换方式中提到，是在报文转发过程中用于作为控制信息的。
 
-!["tcp-1"](/img/docs/networkreview/tcp-1.png "tcp-1")
+!["tcp-1"](/img/docs/computernetwork/tcp-1.png "tcp-1")
 
 
 ### 首部固定部分各字段的意义(高频)
@@ -292,7 +292,7 @@ TCP/IP四层模型是事实上的国际标准。只有四层，一般在学习�
 ### TCP三次握手
 TCP三次握手指的是三次报文交换，完成TCP连接建立过程。
 
-!["tcp-2"](/img/docs/networkreview/tcp-2.png "tcp-2")
+!["tcp-2"](/img/docs/computernetwork/tcp-2.png "tcp-2")
 
 #### 小结
 TCP三次握手，就是客户端和服务端，两端通过三次报文完成连接建立的过程。
@@ -315,7 +315,7 @@ TCP三次握手，就是客户端和服务端，两端通过三次报文完成�
 ### TCP四次挥手
 TCP四次挥手指的是四次报文交换，完成TCP连接释放过程。数据传输结束后，通信的双方都可释放连接。
 
-!["tcp-3"](/img/docs/networkreview/tcp-3.png "tcp-3")
+!["tcp-3"](/img/docs/computernetwork/tcp-3.png "tcp-3")
 
 #### 小结
 TCP四次握手，就是客户端和服务端，两端通过四次报文完成连接断开的过程。而数据传输结束后，通信的双方都可释放连接。
@@ -373,13 +373,13 @@ TCP四次握手，就是客户端和服务端，两端通过四次报文完成�
 
 ### WWW的问题和解决办法
 WWW的作用是主机间能够在万维网信息库中，主动地按需获取丰富的信息。需要解决一如下系列问题。
-- 怎样标志分布在整个互联网上的万维网文档? -> [统一资源定位符URL(UniformResourceLocator)](./ComputerNetworkReview#url)
-- 用什么样的协议来实现万维网上的各种链接? -> [超文本传送协议HTTP(HyperText Transfer Protocol)](./ComputerNetworkReview#http)
+- 怎样标志分布在整个互联网上的万维网文档? -> [统一资源定位符URL(UniformResourceLocator)](./ComputerNetwork#url)
+- 用什么样的协议来实现万维网上的各种链接? -> [超文本传送协议HTTP(HyperText Transfer Protocol)](./ComputerNetwork#http)
 - 怎样使不同作者创作的不同风格的万维网文档，都能在互联网上的各种主机上显示出来，同时使用户清楚地知道在什么地方存在着链接? -> 超文本标记语言HTML(HyperText Markup Language)
 - 怎样使用户能够很方便地找到所需的信息? -> 搜索引擎(爬虫、SEO)
 
 ### WWW工作过程
-!["www-1"](/img/docs/networkreview/www-1.png "www-1")
+!["www-1"](/img/docs/computernetwork/www-1.png "www-1")
 
 ## URL
 > - "HTTP权威指南" P26
@@ -398,7 +398,7 @@ URL的完成通用语法有九种部分组成
 ```
 <scheme>://<user>:<password>@<host›:<port>/<path»;<params>?<guery›#<frag>
 ```
-!["url-1"](/img/docs/networkreview/url-1.png "url-1")
+!["url-1"](/img/docs/computernetwork/url-1.png "url-1")
 
 ### URL、URI、URN的区别
 - URI是一类更通用的资源标识符，URL实际上是它的一个子集。URI是一个通用的概念，由两个主要的子集URL和URN构成。
@@ -437,7 +437,7 @@ HTTPS 经由 HTTP 进行通信，但利用SSL/TLS来加密数据包。HTTPS 开�
 ### HTTP通讯过程
 HTTP通信过程其实可以理解就是[浏览器工作原理的流程部分](./WebPerformance#浏览器的工作原理)。
 
-不过需要注意的是，导航部分本质上就是HTTP请求发起的部分，不过是先建立TCP连接和TLS通道之后才发送请求内容的包。更详细流程可以查看[WWW工作过程](./ComputerNetworkReview#WWW工作过程)。
+不过需要注意的是，导航部分本质上就是HTTP请求发起的部分，不过是先建立TCP连接和TLS通道之后才发送请求内容的包。更详细流程可以查看[WWW工作过程](./ComputerNetwork#WWW工作过程)。
 
 这里的TLS通道建立是在HTTPS写一下才需要处理的，如果是HTTP协议则不需要。
 
@@ -508,7 +508,7 @@ web缓存是可以自动保存常见文档副本的HTTP设备。当web请求抵�
     - 对象被删除
         > 如果服务器对象已经被删除了，服务器就回送一个404 Not Found响应，缓存也会将其副本删除。
 
-!["http-1"](/img/docs/networkreview/http-1.png "http-1")
+!["http-1"](/img/docs/computernetwork/http-1.png "http-1")
 
 缓存控制Header
 > 由服务器添加缓存控制Header。
@@ -535,7 +535,7 @@ Expires: Fri, 05 Jul 2002, 05:00:00 GMT
 
 
 缓存的处理步骤
-!["http-2"](/img/docs/networkreview/http-2.png "http-2")
+!["http-2"](/img/docs/computernetwork/http-2.png "http-2")
 
 缓存的处理步骤解析
 其实就是先进行一次本地缓存是否过期的对比，然后去服务端进行服务缓存是否过期的对比。最后决定是使用就缓存还是服务器下发新缓存。
@@ -633,7 +633,7 @@ http2.0
     >
     > 每一个互联网服务提供者ISP，或一个大学，甚至一个大学里的系，都可以拥有一个本地域名服务器，这种域名服务器有时也称为默认域名服务器。
 
-!["dns-1"](/img/docs/networkreview/dns-1.png "dns-1")
+!["dns-1"](/img/docs/computernetwork/dns-1.png "dns-1")
 
 ### DNS查询方式
 #### 递归查询(recursive query)
