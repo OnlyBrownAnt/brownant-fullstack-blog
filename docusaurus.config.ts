@@ -4,11 +4,11 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'BrownAnt Full-Stack Blog',
-  tagline: '>_< 人生不熄，Coding不止',
+  tagline: '故不积跬步，无以至千里；不积小流，无以成江海。', // 《劝学》战国·荀子
   // favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'http://brownant.top',
+  url: 'https://brownant.top',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -72,42 +72,35 @@ const config: Config = {
       hideOnScroll: false,
       items: [
         {
-          type: 'docSidebar',
-          sidebarId: 'JavaScriptSidebar',
-          position: 'left',
-          label: 'JavaScript',
+            type: 'docSidebar',
+            sidebarId: 'FullStackSidebar',
+            position: 'left',
+            label: 'Full-Stack',
         },
         {
-          type: 'docSidebar',
-          sidebarId: 'HTMLSidebar',
-          position: 'left',
-          label: 'HTML',
-        },
-        {
-          type: 'docSidebar',
-          sidebarId: 'CSSSidebar',
-          position: 'left',
-          label: 'CSS',
-        },
-        {
-          type: 'docSidebar',
-          sidebarId: 'ReactSidebar',
-          position: 'left',
-          label: 'React',
-        },
+            type: 'docSidebar',
+            sidebarId: 'ReviewSidebar',
+            position: 'left',
+            label: 'Review',
+        }, 
         {
           type: 'docSidebar',
           sidebarId: 'ExtensionSidebar',
-          position: 'right',
+          position: 'left',
           label: 'Extension',
-        },
-        {
-          type: 'search',
-          position: 'right',
-        },
+        }, 
         {
           href: 'https://github.com/OnlyBrownAnt',
           label: 'GitHub',
+          position: 'right',
+        },
+        {
+          href: 'https://leetcode.cn/u/brown-ant/',
+          label: 'LeetCode',
+          position: 'right',
+        },
+        {
+          type: 'search',
           position: 'right',
         },
       ],

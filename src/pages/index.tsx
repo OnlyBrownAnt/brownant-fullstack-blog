@@ -14,13 +14,13 @@ export default function Home(): JSX.Element {
       description="Description will go into a meta tag in <head />">
       <main className={clsx('dark', styles.darkMain)}>
         <div className="container">
-          <h1 className="dark__title">{siteConfig.title}</h1>
-          <p className="dark__subtitle">{siteConfig.tagline}</p>
+          <h1 className="dark__title">{siteConfig.tagline}</h1>
+          <p className="dark__subtitle">{siteConfig.title}</p>
           <div className={styles.buttons}>
             <Link
               className="button button--secondary button--lg"
               to="/docs/intro">
-                start intro ⏱️
+                start ⏱️
             </Link>
           </div>
         </div> 
