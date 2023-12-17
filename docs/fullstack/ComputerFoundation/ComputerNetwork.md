@@ -435,21 +435,21 @@ HTTPS 经由 HTTP 进行通信，但利用SSL/TLS来加密数据包。HTTPS 开�
 - SSL/TLS是一套加密传输的协议。
 
 ### HTTP通讯过程
-HTTP通信过程其实可以理解就是[浏览器工作原理的流程部分](./WebPerformance#浏览器的工作原理)。
+HTTP通信过程其实可以理解就是[浏览器工作原理的流程部分](./../../review/WebPerformance#浏览器的工作原理)。
 
 不过需要注意的是，导航部分本质上就是HTTP请求发起的部分，不过是先建立TCP连接和TLS通道之后才发送请求内容的包。更详细流程可以查看[WWW工作过程](./ComputerNetwork#WWW工作过程)。
 
 这里的TLS通道建立是在HTTPS写一下才需要处理的，如果是HTTP协议则不需要。
 
-[浏览器工作原理](./WebPerformance#浏览器的工作原理)
-1. [导航](./WebPerformance#导航)
-2. [DNS查询](./WebPerformance#dns查询)
-3. [TCP握手](./WebPerformance#tcp握手)
-4. [TLS协商](./WebPerformance#tls协商)
-5. [响应](./WebPerformance#响应)
-6. [解析(Parsing)](./WebPerformance#解析)
-7. [渲染(Render)](./WebPerformance#渲染)
-8. [交互](./WebPerformance#交互)
+[浏览器工作原理](./../../review/WebPerformance#浏览器的工作原理)
+1. [导航](./../../review/WebPerformance#导航)
+2. [DNS查询](./../../review/WebPerformance#dns查询)
+3. [TCP握手](./../../review/WebPerformance#tcp握手)
+4. [TLS协商](./../../review/WebPerformance#tls协商)
+5. [响应](./../../review/WebPerformance#响应)
+6. [解析(Parsing)](./../../review/WebPerformance#解析)
+7. [渲染(Render)](./../../review/WebPerformance#渲染)
+8. [交互](./../../review/WebPerformance#交互)
 
 ### HTTP常用状态码
 

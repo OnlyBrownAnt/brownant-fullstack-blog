@@ -748,7 +748,7 @@ position属性进行设置定位效果，通常搭配top、right、bottom、left
 - 网络更慢
 - 特有的移动端设备交互
     > 用户跟网页交互的方式不一样。比如触摸、输入打字
-- 使用元数据元素meta的name值[viewport](/docs/html/HTMLReview#常用name值)
+- 使用元数据元素meta的name值[viewport](/docs/fullstack/HTML/HTMLReview#常用name值)
     > 声明表示网页适配了小屏设备。让移动浏览器会识别网页是响应式的并进行处理。
     >
     > viewport声明移动端浏览器处理的常见三个内容，视口宽度width=device-width、设备宽度与视口比例iinitial-scale=1.0、是否允许缩放user-scalable=no
