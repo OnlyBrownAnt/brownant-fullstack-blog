@@ -2,10 +2,12 @@
 sidebar_position: 1
 ---
 
-博客对我而言，是知识的精炼大纲、是细节的实践和总结。
+## 目录说明
+- Full-Stack
+    > 软件开发方面的知识积累小册以及笔记。
+- Review
+    > 归纳性知识的总结，以及一些个人感悟笔记。
+- Extension
+    > 扩展一些有趣新事物的体验，并记录总结。
 
-但唯独不是他人知识文章上的照本宣科。
-
-# TODO
-- [ReactInterview](react/ReactInterview)
-- [InterviewReviews](extension/InterviewReviews)
+## 正在进行中
