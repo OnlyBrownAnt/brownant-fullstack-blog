@@ -110,9 +110,9 @@ const config: Config = {
       appId: '113ROSTJD8',
 
       // Public API key: it is safe to commit it
-      apiKey: '3681a52a632bb331ff4ce8c886209d70',
+      apiKey: 'ae9e143369f02b030091c10fb36522fc',
 
-      indexName: 'brownant',
+      indexName: 'brownant_prod',
 
       // Optional: see doc section below
       contextualSearch: true,
