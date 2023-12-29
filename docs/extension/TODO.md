@@ -134,3 +134,7 @@ MINIO_ROOT_USER=admin MINIO_ROOT_PASSWORD=password nohup ./minio server /mnt/dat
 ### 计算机基础
 #### Docks
 - [TCP/IP 网络编程从零开始-BiliBili](https://www.bilibili.com/video/BV1pu411G7P6/?vd_source=df7c2cd1afdc7ae35be0af6c0c76be67)
+
+
+### 从对话了解相关几款工具未来的发展趋势，作为自己对技术栈的选择参考
+- [问了尤雨溪25个问题后，我的很多想法开始变了(微信公众号)](https://mp.weixin.qq.com/s?__biz=MjM5MDE0Mjc4MA%3D%3D&chksm=bdb9c6568ace4f403184611fb71884ccebee4f03246d4d0cc6fe8d8721d4359dda6bb0032375&idx=1&mid=2651078149&scene=27&sn=ca4c765bdf96b81825a45d990af294ea&utm_campaign=geek_search&utm_content=geek_search&utm_medium=geek_search&utm_source=geek_search&utm_term=geek_search#wechat_redirect)

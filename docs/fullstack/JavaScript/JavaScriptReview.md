@@ -2704,5 +2704,4 @@ console.log(o.getInfosMore())
 ```
 
 ## 第 10 章 - 函数
-
-[2023年最全前端面试（20w字）HTML5+CSS3+JS+TS4+Vue3+React18+八股文+手写+项目+笔试_前端面试题2023八股文-CSDN博客](https://blog.csdn.net/qq_28838891/article/details/124638456?csdn_share_tail=%7B%22type%22%3A%22blog%22%2C%22rType%22%3A%22article%22%2C%22rId%22%3A%22124638456%22%2C%22source%22%3A%22qq_28838891%22%7D)
+TODO
