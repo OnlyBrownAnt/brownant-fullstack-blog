@@ -2705,3 +2705,8 @@ console.log(o.getInfosMore())
 
 ## 第 10 章 - 函数
 TODO
+
+### IIFE
+- [理解JavaScript的立即调用函数表达式(IIFE)](https://nullcc.github.io/2017/05/08/%E7%90%86%E8%A7%A3JavaScript%E7%9A%84%E7%AB%8B%E5%8D%B3%E8%B0%83%E7%94%A8%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F(IIFE)/)
+
+IIFE 本质上是使用了闭包的机制，可以创建具有私有变量和函数的模块化代码结构。
