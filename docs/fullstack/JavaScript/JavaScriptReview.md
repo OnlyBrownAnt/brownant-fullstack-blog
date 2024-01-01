@@ -828,13 +828,20 @@ let num6 = parseFloat("3.125e7"); // 3.1270000
 
 ##### 判空综合案例
 ```javascript
-function isEmpty(value){
-    if (value === "") return true; //检验 空字符串
+function isEmpty(value) {
+    // 判断 空字符串
+    if (value === "") return true;
+
+    // 判断 undefined 和 null   
     // 通过 !value 快捷判断 undefined 和 null，然后同时增加其他非空情况(0、"")的排除，因为 !0、!"" 也为true。
-    if (!value && value !== 0 && value !== "") return true; //检验 undefined 和 null           
-    if (Array.prototype.isPrototypeOf(value) && value.length === 0 ) return true; //检验 空数组
+    if (!value && value !== 0 && value !== "") return true;
+
+    // 判断 空数组
     // 空数组要先于空对象校验，因为Object也是基于Array原型链上，也会进入类型判断通过进行校验。
-    if (Object.prototype.isPrototypeOf(value) && Object.keys(value).length === 0 ) return true;  //检验 空对象
+    if (Array.prototype.isPrototypeOf(value) && value.length === 0 ) return true;
+    
+    // 判断空对象
+    if (Object.prototype.isPrototypeOf(value) && Object.keys(value).length === 0 ) return true;
     return false;
 }
 ```
