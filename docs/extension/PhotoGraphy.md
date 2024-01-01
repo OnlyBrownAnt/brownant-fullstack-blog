@@ -6,6 +6,7 @@
 - [摄影基础知识总结，新手入门保姆级教程，7步让你学会摄影(今日头条)](https://www.toutiao.com/article/6846735038583669255/?wid=1696004326412)
 - [摄影基础-人像拍摄入门(sonystyle)](https://www.sonystyle.com.cn/smallapp/acafe/lecture/lecture13.htm)
 - [Sony α (Alpha) 相机入门知识(sonystyle)](https://www.sony.com/zh-cn/electronics/support/articles/00157815)
+- [Sony Alpha α1 手册](https://www.alipan.com/s/g7RihtHUmhV)
 - [酷摄网](https://www.sheyingrumen.cn/)
 - [摄影新手最想知道的10件事(酷摄网)](https://www.sheyingrumen.cn/danfanrumen/52409)
 - [闲聊摄影透视：一个容易被误解的话题(知乎)](https://zhuanlan.zhihu.com/p/38801122)
@@ -232,7 +233,7 @@ f/1、f/1.4、f/2、f/2.8、f/4、f/4/8、f/5.6、f/8、f/11、f/16、f/22、f/3
 #### 档位说明
 - P档（Programmed Auto）
 
-    程序自动模式，用户不需要控制光圈快门，系统会自动计算。
+    程序自动模式，相机自动设定曝光(快门速度和光圈)。
 - A档（Aperture-priority Mode）
 
     光圈优先模式，部分相机称为Av档，用户可以控制光圈值，系统会自动计算出合适的快门速度，可以用来调整景深，是非常常用的模式。
