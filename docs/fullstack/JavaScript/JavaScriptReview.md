@@ -1,5 +1,8 @@
 # JavaScript总结
 
+## Docs
+- [JavaScript 手册(MDN)](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript)
+
 ## Introduction
 
 基于 "JavaScript高级程序设计-第四版" 的JS学习笔记，基本都是总结类的笔记，作为一份纲要帮助快速复习。不会对细节和实现进行过多的介绍，因为书籍 "JavaScript高级程序设计-第四版" 已经介绍的很详细了。所有案例都基于ECMAScript 6版本。
@@ -764,6 +767,123 @@ let num6 = parseFloat("3.125e7"); // 3.1270000
   console.log(Object.prototype.toString.call(person)) // [object Object]
   console.log(Object.prototype.toString.call(Person)) // [object Function]
   ```
+#### 数据判空的技巧
+- [JavaScript 判断空对象、空数组的方法](https://cloud.tencent.com/developer/article/1743491)
+
+##### 步骤总结
+1. 首先是需要进行类型的判断
+    - 因为不同类型使用相同判空方式可能会因为属性不存在出现异常
+    - 常见判空中需要处理的类型(类型判断)
+        > 通常可以使用 `typeof`、`instanceof`、`Object.prototype.toString.call()`、 `isPrototypeOf`这四种方式进行原始类型、引用类型的类型判断。不过原始类型的类型判断可以进行简化，在判空处理中一起处理掉。看第2步骤中的类型判空部分即可。
+        - 字符串
+        - undefined、null
+        - 数组
+        - 对象
+
+2. 其次是在不同类型判断下进行针对性的判空
+    - 常见判空中需要处理的类型(类型判空)
+        - 字符串
+            ```javascript
+            function isString(value) {
+                // 1. 判断是否是空字符串
+                if (value === "") return true;
+                return false;
+            }
+            ```
+        - undefined、null
+            ```javascript
+            function isUndefinedOrNull(value) {
+                // 1. 判断是否是 undefined 和 null
+                // 通过 !value 快捷判断 undefined 和 null，然后同时增加其他非空情况(0、"")的排除，因为 !0、!"" 也为true。
+                if (!value && value !== 0 && value !== "") return true; 
+                return false;
+            }
+            ```
+        - 数组
+            ```javascript
+            function isEmptyArray(value) {
+                // 1. 判断是否是 空数组 (isPrototypeOf()方式) 
+                // 判断是否是数组 Array.prototype.isPrototypeOf(value)  
+                // 判断是否是空数组 查看数组长度 value.length === 0 
+                if (Array.prototype.isPrototypeOf(value) && value.length === 0 ) return true;
+
+                // 2. 判断是否是 空数组(JSON.stringify()方式)
+                // if (JSON.stringify(item) === '[]') return true;
+                return false;
+            }
+            ```
+        - 对象
+        ```javascript
+        function isEmptyObject(value) {
+            // 1. 判断是否是 空对象 (isPrototypeOf()方式) 
+            // 判断是否是对象 Object.prototype.isPrototypeOf(value)  
+            // 判断是否是空对象 遍历属性数量 Object.keys(value).length === 0
+            if (Object.prototype.isPrototypeOf(value) && Object.keys(value).length === 0 ) return true;
+
+            // 2. 判断是否是 空数组(JSON.stringify()方式)
+            // if (JSON.stringify(item) === '{}') return true;
+            return false;
+        }
+        ```
+
+##### 判空综合案例
+```javascript
+function isEmpty(value){
+    if (value === "") return true; //检验 空字符串
+    // 通过 !value 快捷判断 undefined 和 null，然后同时增加其他非空情况(0、"")的排除，因为 !0、!"" 也为true。
+    if (!value && value !== 0 && value !== "") return true; //检验 undefined 和 null           
+    if (Array.prototype.isPrototypeOf(value) && value.length === 0 ) return true; //检验 空数组
+    // 空数组要先于空对象校验，因为Object也是基于Array原型链上，也会进入类型判断通过进行校验。
+    if (Object.prototype.isPrototypeOf(value) && Object.keys(value).length === 0 ) return true;  //检验 空对象
+    return false;
+}
+```
+
+#### instanceof 和 Object.prototype.isPrototypeOf() 区别(处理继承效果的判断)
+- [instanceof](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/instanceof)
+- [Object.prototype.isPrototypeOf()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/isPrototypeOf)
+- [Object.create()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/create)
+- [JavaScript isPrototypeOf vs instanceof usage](https://stackoverflow.com/questions/18343545/javascript-isprototypeof-vs-instanceof-usage)
+
+##### 分析定义
+- `instanceof` 运算符用于检测`构造函数`的 `prototype` 属性是否出现在某个实例对象的原型链上
+    > 强调的是检查`构造函数`的`prototype`。
+    > 
+    > 在函数原型基础上有这样一个引用关系，`构造函数.prototype` -> `原型对象`。所以其实可以理解是在原型链基础上进行查找和比对目标类型是否存在。但是前提是通过`构造函数`去查找`原型对象`。
+    >
+    > 但是JS在实际实现继承效果上存在历史问题，有多种实现方式，虽然基本都是基于原型链来实现的。但是存在基于对象的原型实现继承效果，而对象就不存在`构造函数`，比如`Object.create()`实现的继承效果。
+    >
+    > 在这种情况下instanceof是无法作为判断根据的，甚至会报错。
+- `isPrototypeOf()` 方法用于检查一个对象是否存在于另一个对象的原型链中。
+    > 强调的是直接基于`原型链`去进行检查。
+    >
+    > 相对于`instanceof` 在JS中更加通用。可以判断处理`Object.create()`实现的对象继承效果。
+
+##### 总结区别
+- 首先是确认`instanceof`和`isPrototypeOf()`的作用目的。两者的目的都是为了判断某个实例是否有资格使用其父辈层次的对象、函数、类型的一些属性和函数。
+- 其次由于JS实现继承效果的方式多样，可以使用对象、函数、类(Class)，而最终都是基于原型链实现一个继承效果。在实际判断的时候要选择通用的方式，所以推荐使用`isPrototypeOf()`
+- 补充一下，这里指的继承效果只是指父类层次属性和方法可以通过一些方式让子类实例进行使用，并不是严谨的继承实现(比如Java Class)。在JS中通过`class`实现的继承效果相对是最严谨的。
+
+##### 对象实现继承效果实例
+```javascript
+const superProto = {
+    // some super properties
+    isHuman: false,
+    printIntroduction: function () {
+      console.log(`My name is ${this.name}. Am I human? ${this.isHuman}`);
+    },
+}
+
+var subProto = Object.create(superProto);
+subProto.someProp = 5;
+
+var sub = Object.create(subProto);
+
+console.log(superProto.isPrototypeOf(sub));  // true
+console.log(sub instanceof superProto);      // throw Error
+```
+
+
 
 ### 执行上下文和作用域
 
@@ -2197,8 +2317,9 @@ console.log(Object.entries(person.__proto__)); // [ [ 'infos', [ 1 ] ], [ 'toStr
 基于原型链的原理实现继承。
 一个原型继承于另一个原型时，会通过另一个原型的实例对象作为媒介。
 
-子类原型 = new 父类原型
-子类构造函数.prototype = new 父类原型
+- 子类原型 = new 父类原型
+- 子类构造函数.prototype = new 父类原型
+
 目的是为了继承父类的属性和方法，还可以重写方法。注意要在指向父类原型实例完成后才能进行重写。
 
 而父类实例通过[[portotype]]继续链接到它的父类原型。(之前有讲过实例和其原型有直接联系，[[prototype]]特性有指向关系，浏览器暴露了__proto__属性指向[[prototype]]特性)
@@ -2706,7 +2827,7 @@ console.log(o.getInfosMore())
 ## 第 10 章 - 函数
 TODO
 
-### IIFE
+### IIFE(Immediately Invoked Function Expression)
 - [理解JavaScript的立即调用函数表达式(IIFE)](https://nullcc.github.io/2017/05/08/%E7%90%86%E8%A7%A3JavaScript%E7%9A%84%E7%AB%8B%E5%8D%B3%E8%B0%83%E7%94%A8%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F(IIFE)/)
 
 IIFE 本质上是使用了闭包的机制，可以创建具有私有变量和函数的模块化代码结构。
