@@ -689,3 +689,124 @@ webpack 的配置文件是 JavaScript 文件，文件内导出了一个 webpack 
 
 ## Create-React-App 和 Webpack的区别
 Create-React-App 通过 react-script 库对 Webpack 的配置进行了集成处理，react-dev-util 库还提供了针对 React 工程的一些优化插件。
+
+
+## Webpack5 配置 CSS 模块化
+- [webpack-contrib/css-loader/modules](https://github.com/webpack-contrib/css-loader?tab=readme-ov-file#modules)
+    > 关于 css-loader 的配置项介绍。这里索引了css-loader的模块化配置介绍。
+- [webpack-contrib/css-loader/modules/localidentname](https://github.com/webpack-contrib/css-loader?tab=readme-ov-file#localidentname)
+    > css-loader 模块化配置参数localidentname介绍。 
+
+### 配置思路
+- 主要是设置css-loader的模块化配置。开发和生产模式配置不同。
+- 同时需要设置对应的TS声明文件，通过TS检查。
+
+### 配置分析
+- TS声明文件
+```typescript
+// cssModule.d.ts
+
+// 支持 less、sass 时需要增加对应的声明配置
+declare module "*.module.less";
+declare module "*.module.css";
+```
+- css-loader 配置
+    > 主要配置 modules 参数，简单点的情况设置auto、localIdentName参数即可。
+```javascript
+{
+    loader: "css-loader",
+    options: {
+        // modules 模块化配置 
+        modules: {
+            // auto 允许根据文件名自动启用 CSS 模块/ICSS modules
+            auto: true,
+            // localIdentName 允许配置生成的本地身份名称
+            // 模版字符串说明
+                // [name]资源的基本名称
+                // [local]- 原始类
+                // [hash]- 字符串的哈希值
+                // [path]compiler.context资源相对于选项或选项的路径
+            // 开发模式官方推荐    
+            localIdentName: "[path][name]__[local]",
+            // 生产模式官方推荐
+            // localIdentName: "[hash:base64]"
+        }
+    }
+},
+```
+
+### 配置实例
+```javascript
+// webpack.dev.js 开发
+module.exports = {
+    module: {
+        rules: [
+            {
+                test: /\.(css|less)$/,
+                use: [
+                    "style-loader", // 生产模式使用 MiniCssExtractPlugin.loader 代替 style-loader
+                    {
+                        loader: "css-loader",
+                        options: {
+                            modules: {
+                                auto: true,
+                                localIdentName: "[path][name]__[local]"
+                            }
+                        }
+                    },
+                    {
+                        loader: "postcss-loader",
+                        options: {
+                            // 它可以帮助我们将一些现代的 CSS 特性，转成大多数浏览器认识的 CSS，并且会根据目标浏览器或运行时环境添加所需的 polyfill；
+                            // 也包括会自动帮助我们添加 autoprefixer
+                            postcssOptions: {
+                                plugins: [["postcss-preset-env", {}]],
+                            },
+                        },
+                    },
+                    "less-loader",
+                ],
+                // 排除 node_modules 目录
+                exclude: /node_modules/,
+            },
+        ],
+    }
+ };
+```
+```javascript
+// webpack.prod.js 生产
+module.exports = {
+    module: {
+        rules: [
+            {
+                test: /\.(css|less)$/,
+                use: [
+                    MiniCssExtractPlugin.loader, // 生产模式使用 MiniCssExtractPlugin.loader 代替 style-loader
+                    {
+                        loader: "css-loader",
+                        options: {
+                            modules: {
+                                auto: true,
+                                localIdentName: "[hash:base64]"
+                            }
+                        }
+                    },
+                    {
+                        loader: "postcss-loader",
+                        options: {
+                            // 它可以帮助我们将一些现代的 CSS 特性，转成大多数浏览器认识的 CSS，并且会根据目标浏览器或运行时环境添加所需的 polyfill；
+                            // 也包括会自动帮助我们添加 autoprefixer
+                            postcssOptions: {
+                                plugins: [["postcss-preset-env", {}]],
+                            },
+                        },
+                    },
+                    "less-loader",
+                ],
+                // 排除 node_modules 目录
+                exclude: /node_modules/,
+            },
+        ],
+    }
+ };
+```
