@@ -115,6 +115,42 @@ import { myValue } from './my-module.js';
 console.log(myValue); // 42
 ```
 
+### module.exports、exports 和 export 区别 
+module.exports、exports 和 export 是在不同的 JavaScript 环境中用于导出模块的方式
+
+- module.exports
+    > CommonJS 规范中，module.exports 是 Node.js 默认使用的导出方式。通过将需要导出的值赋给 module.exports，可以将该值作为模块的公共接口暴露给其他模块使用。
+    ```javascript
+    // 导出一个对象
+    module.exports = { key: value };
+
+    // 导出一个函数
+    module.exports = function() { ... };
+    ```
+- exports
+    > 在 CommonJS 中，exports 是 module.exports 的一个引用，它的初始值是一个空对象。你可以直接添加属性或方法到 exports 对象上来导出模块。
+    >
+    > 如果将 exports 赋值为其他对象，那么它将不再指向 module.exports。
+    ```javascript
+    // 导出一个属性
+    exports.key = value;
+
+    // 导出一个方法
+    exports.myFunction = function() { ... };
+    ```
+- export 和 import
+    > 在 ES6（ECMAScript 2015）的模块系统中，使用 export 关键字将模块中的值导出，然后使用 import 关键字在另一个模块中引入这些导出的值。这是现代 JavaScript 中推荐的模块导入和导出语法。
+    ```javascript
+    // 导出一个变量
+    export const myVariable = 42;
+
+    // 导出一个函数
+    export function myFunction() { ... }
+
+    // 默认导出
+    export default obj = {}; // import 时可以随意命名。 import o from 'packageName';
+    ```
+
 ### 特性上的区别
 
 TODO
