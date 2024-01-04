@@ -1,0 +1,25 @@
+# React 技术栈
+
+- 前端应用基础功能
+    - 前端框架或库: React
+    - 前端状态管理: Redux
+    - 前端路由: React-Router
+    - UI库: Material UI、Ant Design
+    - 网络请求: Axios
+    - CSS预处理器: Less、Sass
+    - 样式组件库: styled-components
+    - PDF:
+        - PDF 创建和渲染: react-pdf/renderer
+        - PDF 查看: react-pdf
+    - 图表:
+        - echarts
+    - 拖动调整元素宽高:
+        - react-resizable
+- 开发质量管理
+    - 单元测试: Jest
+    - 静态类型检查工具: TypeScript
+- 开发规范
+    - 编码风格配置: EditorConfig
+    - 代码格式检查: ESlint
+    - 代码格式化: Prettier
+    - Git规范: Husky、lint-staged

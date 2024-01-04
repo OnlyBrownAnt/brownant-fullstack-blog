@@ -85,7 +85,7 @@ Webpack处理资源的目的，是为了将这些资源作为依赖项进行一�
 - 字体(Font)
     - 常见字体类型 `woff` `woff2` `eot` `ttf` `otf`
 - 其他数据(Data)
-    - 常见其他数据类型 `csv` `xml` `json` `txt`
+    - 常见其他数据类型 `csv` `xml` `json` `txt` `pdf`
 
 ### 常见资源管理模版
 ```js
@@ -223,9 +223,40 @@ module.exports = {
                     parse: json5.parse,
                 },
             },
+            {
+                test: /\.pdf$/i,
+                type: "asset/resource",
+                // pdf文件不需要转换
+                // parser: {
+                //   dataUrlCondition: {
+                //     maxSize: 25 * 1024, // 25kb
+                //   },
+                // },
+                generator: {
+                    // 输出文件规则视具体要求而定
+                    filename: "static/pdf/[name][ext]",
+                },
+            },
         ],
     },
 };
+```
+### 常见问题
+#### 如果工程中使用 node_modules 中某个库的静态资源，那么出现报错通常是什么原因
+
+通常是因为 exclude 参数，限制了引入资源路径。可以采用 include 参数设置需要引入的资源路径数组，然后屏蔽 exclude 参数。
+
+参考案例
+```javascript
+// exclude 排除 node_modules 目录
+// exclude: /node_modules/,
+// include 引入符合以下任何条件的模块
+include: [
+    path.join(__dirname, '../src'), 
+    path.join(__dirname, '../public'),
+    // react-pdf 需要引入的css资源的路径
+    path.join(__dirname, '../node_modules/react-pdf')
+],
 ```
 
 ## 管理输出(Output Management)
@@ -376,6 +407,7 @@ webpack 提供了一种称为 可替换模板字符串（substitution） 的方�
 ## Bebal 总结
 [Babel 是一个帮助您使用最新版本的 JavaScript 编写代码的工具。当您支持的环境本身不支持某些功能时，Babel 将帮助您将这些功能编译为支持的版本。](https://github.com/babel/babel)
 - [Babel](https://babeljs.io/)
+- [babel-preset-env/usebuiltins](https://babeljs.io/docs/babel-preset-env#usebuiltins)
 
 ### Bebal 作用
 1. 转换语法: 转换 ES6+ 语法为低版本 ES 语法。
@@ -404,6 +436,46 @@ webpack 提供了一种称为 可替换模板字符串（substitution） 的方�
 |@babel/preset-env|使用最新的 JavaScript，支持目标环境所需的语法转换。|
 |@babel/preset-react|提供 React 的语法转换支持 |
 |@babel/preset-typescript|提供 TypeScript 的语法转换支持|
+|core-js@3|core-js v3 版本|
+
+### React 业务开发工程常用依赖和配置案例
+> 使用 core-js v3 版本
+#### 依赖包
+```shell
+npm install --save-dev babel-loader @babel/core @babel/preset-env @babel/preset-typescript
+# 官方推荐
+npm install --save core-js@3 
+``` 
+#### 配置案例
+```javascript
+{
+    rules: [
+    {
+        test: /.(js|mjs|jsx|ts|tsx)$/,
+        exclude: /node_modules/,
+        use: {
+            loader: "babel-loader",
+            options: {
+                presets: [
+                    [
+                        "@babel/preset-env",
+                        {
+                            targets:
+                            "iOS 9, Android 4.4, last 2 versions, > 0.2%, not dead", // 根据项目去配置
+                            // 如果我们将参数项改成false，那么就不会对ES6模块化进行更改，还是使用import引入模块。使用ES6模块化语法有什么好处呢。在使用Webpack一类的打包工具，可以进行静态分析，从而可以做tree shaking 等优化措施。
+                            modules: false,
+                            useBuiltIns: "usage", // 该选项配置如何@babel/preset-env处理polyfills
+                            corejs: 3, // 使用 core-js@3 版本
+                        },
+                    ],
+                    ["@babel/preset-typescript"], // typescript 环境
+                    ["@babel/preset-react"], // react 环境
+                ],
+            },
+        },
+    }
+]}
+```
 
 ## 自动生成HTML模版功能
 1. copy-webpack-plugin 移动预先的静态资源到打包文件夹
