@@ -2850,7 +2850,7 @@ IIFE 本质上是使用了闭包的机制，可以创建具有私有变量和函
 #### 参数解析
 - 第三个参数
     - 通常是 options 或者 useCapture 都用于表示事件侦听器的特征。
-    - 默认值 options: {capture: false}，useCapture: false。
+    - 默认值 options: `{capture: false}`，useCapture: false。
     - false = 冒泡阶段、true = 捕获阶段，默认 false
 
 ### 事件委托
