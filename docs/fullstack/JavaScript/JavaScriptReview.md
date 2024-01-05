@@ -2,6 +2,7 @@
 
 ## Docs
 - [JavaScript 手册(MDN)](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript)
+- [MDN/Web/API/Window](https://developer.mozilla.org/en-US/docs/Web/API/Window)
 
 ## Introduction
 
@@ -2834,7 +2835,54 @@ console.log(o.getInfosMore())
 ## 第 10 章 - 函数
 TODO
 
+## 高频知识点
 ### IIFE(Immediately Invoked Function Expression)
 - [理解JavaScript的立即调用函数表达式(IIFE)](https://nullcc.github.io/2017/05/08/%E7%90%86%E8%A7%A3JavaScript%E7%9A%84%E7%AB%8B%E5%8D%B3%E8%B0%83%E7%94%A8%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F(IIFE)/)
 
 IIFE 本质上是使用了闭包的机制，可以创建具有私有变量和函数的模块化代码结构。
+
+### addEventListener、removeEventListener 参数解析
+- [removeEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener)
+- [addEventListener第三个参数作用](https://zhuanlan.zhihu.com/p/86337563)
+
+该接口 removeEventListener() 的方法从目标 EventTarget 中删除先前注册的事件侦听器。
+
+#### 参数解析
+- 第三个参数
+    - 通常是 options 或者 useCapture 都用于表示事件侦听器的特征。
+    - 默认值 options: {capture: false}，useCapture: false。
+    - false = 冒泡阶段、true = 捕获阶段，默认 false
+
+### 事件委托
+- [事件委托](https://tsejx.github.io/javascript-guidebook/document-object-model/events/event-delegation)
+- [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)
+- [removeEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener)
+
+- 事件流分为捕获阶段和冒泡阶段。
+- 事件委托就是在捕获阶段处理当前结点以下层级的事件。
+```html
+<body>
+  <ul class="list">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <!-- 还有很多 -->
+  </ul>
+  <script type="text/javascript">
+    const list = document.querySelector('.list');
+
+    list.addEventListener(
+      'click',
+      function(e) {
+        let e = e || window.event;
+        let target = e.target || e.srcElement;
+        // 关键判断条件
+        const index = [].indexOf.call(target.parentElement.children, target);
+
+        console.log(index);
+      },
+      false
+    );
+  </script>
+</body>
+```

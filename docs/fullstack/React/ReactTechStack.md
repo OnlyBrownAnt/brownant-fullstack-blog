@@ -15,6 +15,8 @@
         - echarts
     - 拖动调整元素宽高:
         - react-resizable
+    - 错误边界处理
+        - react-error-boundary
 - 开发质量管理
     - 单元测试: Jest
     - 静态类型检查工具: TypeScript

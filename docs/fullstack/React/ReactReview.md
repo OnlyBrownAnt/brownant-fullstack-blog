@@ -4,7 +4,7 @@
 React的知识点总结，以及实践技巧总结。
 
 ## Docs
-
+- [react(zh)](https://zh-hans.react.dev/)
 
 ## Hooks 组件和 Class 组件的区别
 - [hooks-intro](https://legacy.reactjs.org/docs/hooks-intro.html)
@@ -38,3 +38,54 @@ React的知识点总结，以及实践技巧总结。
 - 无法直接使用 this，但是通过 useRef 变相实现 this 的一个效果。
 - 性能上的问题
     - 由于 Hooks 组件渲染的逻辑就是每次 React 渲染就执行。相当于每次执行一批函数，所以如何让一些不需要执行的函数不去执行。React 提供了 useMemo、useCallBack 这类缓存Hooks，减少不必要的代码执行和计算。
+
+
+## 常见问题和解决方案
+### React 异常捕获和处理方案
+- [MDN/Window: unhandledrejection event](https://developer.mozilla.org/en-US/docs/Web/API/Window/unhandledrejection_event)
+- [MDN/Window: error event](https://developer.mozilla.org/en-US/docs/Web/API/Window/error_event)
+- [react-error-boundary](https://github.com/bvaughn/react-error-boundary)
+- [react/error-boundaries](https://legacy.reactjs.org/docs/error-boundaries.html)
+- [全网最详细的React异常捕获及处理机制](https://github.com/lizuncong/mini-react/issues/19)
+- [JS异常捕获基础](https://github.com/lizuncong/mini-react/blob/master/docs/%E5%BC%82%E5%B8%B8/JS%E5%BC%82%E5%B8%B8%E6%8D%95%E8%8E%B7%E5%9F%BA%E7%A1%80.md)
+- [面试官：说说你在React项目是如何捕获错误的？](https://vue3js.cn/interview/React/capture%20error.html#%E9%9D%A2%E8%AF%95%E5%AE%98-%E8%AF%B4%E8%AF%B4%E4%BD%A0%E5%9C%A8react%E9%A1%B9%E7%9B%AE%E6%98%AF%E5%A6%82%E4%BD%95%E6%8D%95%E8%8E%B7%E9%94%99%E8%AF%AF%E7%9A%84)
+
+#### 错误边界(error-boundaries)不会捕获以下错误
+- 事件处理程序
+- 异步代码（例如setTimeout回调requestAnimationFrame）
+- 服务端渲染
+- 错误边界本身（而不是其子级）抛出的错误
+
+#### 具体异常处理方式
+- try catch
+    - 局部区域代码的异常
+    - 同步代码、异步代码都支持。
+- error-boundaries(错误边界)
+    - React 官方支持的一种 React 组件错误捕获方式。
+    - 但是只支持捕获 React 组件。
+    - 包裹 App 根结点组件时就支持全局 React 组件异常的捕获。
+- error event
+    - 全局异常捕获
+    - 主要捕获同步错误，无法捕获异步错误(例如 Promise、setTimeout、事件处理程序等)
+- unhandledrejection event 
+    - 全局异常捕获
+    - 是对 error event 的功能补充。
+    - 支持捕获异步错误(例如 Promise、setTimeout、事件处理程序等)
+
+#### 异常处理实例
+- [webpack-react-cli](https://github.com/OnlyBrownAnt/webpack-react-cli)
+
+### useEffect 内异步代码写法推荐(官方)
+- [react/useEffect](https://react.dev/reference/react/useEffect)
+```javascript
+useEffect(() => {
+  async function startFetching() {
+    const json = await fetchTodos();
+  }
+
+  startFetching();
+}, []);
+```
+
+### import React from 'react' 和 import * as React from 'react' 区别
+- [ts下 import React from ‘react’ 和import * as React from 'react'的区别](https://juejin.cn/post/7000930676488798216)
