@@ -5,6 +5,8 @@
 ## 前端网络请求的业务状态处理方案
 ### 抛出异常 Error + 多层次拦截(局部 + 全局)
 - [使用 promise 进行错误处理](https://zh.javascript.info/promise-error-handling)
+- [axios](https://www.axios-http.cn/)
+
 之前写 Java 封装拦截器时发现通常对于公共性的异常处理方式是直接抛出异常，然后在多层拦截器中做针对性的处理和返回。
 
 所以参考这个思路，对于前端网络请求的业务状态也采用这种方式进行处理。
@@ -168,6 +170,11 @@ Token 类型
 
 基础方案问题
 - 假如有多个请求，那么如何更新请求头加入新的 access token，以及进行按发起顺序做重发处理。 
+
+封装实例
+- [webpack-react-cli/request.ts](https://github.com/OnlyBrownAnt/webpack-react-cli/blob/main/src/utils/request.ts)
+- [webpack-react-cli/cacheRequestTest.ts](https://github.com/OnlyBrownAnt/webpack-react-cli/blob/main/src/utils/cacheRequestTest.ts)
+    > 刷新 token + 重试请求队列的模拟 Demo
 
 #### 总结
 - 网页端 H5 不建议双 Token 方案，单 Token 机制就够用，只是部分用户体验稍差。因为网页端保存 refresh token 数据到本地 Storage 有一定安全风险。
