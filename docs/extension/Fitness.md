@@ -7,6 +7,7 @@
     > 一周计划，器械实练。学习锻炼流程和动作细节。
 - [男女适用的零基础减脂塑形](https://www.aliyundrive.com/drive/file/backup/6400bcd05f33637f16d442ed9734bd12fe235ce3)
     > 私人网盘。器械锻炼，较多体系化基础，比如拉伸和放松。
+- [简单易懂！最全哑铃动作动图，用哑铃锻炼全身肌肉](https://zhuanlan.zhihu.com/p/62936616?utm_id=0)
 
 ## 健身基础技巧
 - 呼吸
