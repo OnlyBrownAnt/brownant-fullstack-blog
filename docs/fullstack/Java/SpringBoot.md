@@ -29,8 +29,8 @@
     > - spring.config.name -> `application`
     > - spring.profiles.active 处理 `profile` 
     > - 处理顺序从上往下(越是最后处理优先级越高)
-- application 
-- application-{profile}
+- `application`
+- `application-{profile}`
 
 3. 支持后缀
     > 处理顺序从上往下(越是最后处理优先级越高)
