@@ -1,6 +1,7 @@
 # 前端解决方案积累
 
 ## Docs
+- [剑指前端 Offer](https://febook.hzfe.org/awesome-interview/)
 
 ## 前端网络请求的业务状态处理方案
 ### 抛出异常 Error + 多层次拦截(局部 + 全局)

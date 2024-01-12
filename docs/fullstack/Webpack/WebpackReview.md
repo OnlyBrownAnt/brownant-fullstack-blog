@@ -401,8 +401,12 @@ webpack 提供了一种称为 可替换模板字符串（substitution） 的方�
 
 ## 移动端CSS px 自动转换 rem
 解决媒体查询处理移动端适配的多套代码配置问题
-- px2rem 库
-- flexiable 自动计算获取 font-size
+- postcss-plugin-px2rem 库
+    > 插件 打包时将 px 转换为 rem
+- flexiable 
+    > JavaScript库，它可以根据设备的屏幕尺寸动态调整页面的根元素字体大小，从而实现页面的自适应布局。
+    > 
+    > 自动计算获取 font-size
 
 ## Bebal 总结
 [Babel 是一个帮助您使用最新版本的 JavaScript 编写代码的工具。当您支持的环境本身不支持某些功能时，Babel 将帮助您将这些功能编译为支持的版本。](https://github.com/babel/babel)
