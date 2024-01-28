@@ -1,11 +1,19 @@
-# Linux技巧
+# Linux 技巧
 
 ## 文档
 [linux学习路线-公众号](https://mp.weixin.qq.com/s/VNUdFFs-wCnZO7EwYNV0EQ)
 
 [linux常用命令大全](https://man.niaoge.com/)
 
-## 常用命令
+## 开发运维常用命令
+- 查询目前端口占用情况(端口、进程 PID) `netstat -tunlp`
+- 查询指定端口占用情况 `netstat -tunlp | grep <port>`
+- 查看目前进程情况 `ps -ef`
+- 查看指定名称/ PID 的进程情况 `ps -ef | grep <programName/PID>`
+- 查找进程 PID 对应的文件路径 `ls -l /proc/PID/exe`
+- 文件查找 `find <path> -name "<fileName>"`
+
+## 常用命令解析
 ### grep
 ```shell
 // 查找所有文件中包含choregraphe字符串文本的文件
