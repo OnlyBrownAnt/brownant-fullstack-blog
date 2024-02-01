@@ -100,6 +100,10 @@ indent_size = 2
 [*.md]
 indent_style = space
 indent_size = 2
+
+[*.json]
+indent_style = space
+indent_size = 2
 ```
 
 ## Prettier

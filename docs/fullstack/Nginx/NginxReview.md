@@ -7,6 +7,7 @@
 - [优质教程-微信公众号](https://mp.weixin.qq.com/s/OAIbQTQGLEQoEM8ZYgPkRA)
 - [Nginx面试题（史上最全 + 持续更新）](https://zhuanlan.zhihu.com/p/607997892)
 - [NG配置讲解-优质博客](https://www.cnblogs.com/54chensongxia/p/12938929.html)
+- [Nginx知识点汇总](https://www.cnblogs.com/songgj/p/10946825.html)
 
 ## 常用命令
 - 查询nginx进程: ps -ef | grep nginx
@@ -120,6 +121,7 @@ https://blog.csdn.net/m0_52440465/article/details/130713591?spm=1001.2101.3001.6
 - [签发ssl证书](https://blog.csdn.net/qq_36860967/article/details/130739221
 https://blog.neroxps.cn/2017/10/18/certbot-nginx-renew/
 https://certbot.eff.org/instructions?ws=nginx&os=centosrhel8)
+- https://www.cnblogs.com/saneri/p/5391821.html
 - DNS需要有一条www的A记录
 
 ### 本地搭建Nginx SSL证书配置测试
