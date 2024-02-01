@@ -14,11 +14,10 @@
 
 > 优秀的甘特图工具有很多，最方便的就是可以直接使用excel制作甘特图。为了入门方便，比较推荐使用一些在线甘特图工具网站或者APP，个人使用的是TeamGantt在线甘特图网站。
 
-
 - TeamGantt
 
 > \<https://www.teamgantt.com/\>
-> 
+>
 > TeamGantt 是免费的在线软件，使用户可以轻松管理项目。 它具有内置的资源管理工具，可以查看每个人在特定一天的工作情况。 该工具显示实时工作进度。
 
 - GanttPro
@@ -30,7 +29,7 @@
 - OpenProject
 
 > \<https://www.openproject.org/collaboration-software-features/timeline-project-management/\>
-> 
+>
 > OpenProject 是 Gantt 图表软件，使您无需费力即可管理项目。 该工具使您能够以协作方式创建和可视化项目计划。
 
 ## 甘特图教程
@@ -43,8 +42,10 @@
 - [TeamGantt教程优质博客](https://www.ifanr.com/app/1211509)
 
 ## monday
+
 https://www.monday.com
 推荐 模版 Action Plan
+
 > 体验两周后发现需要收费，果然很多好东西都是需要收费的。
 
 Monday.com是一款基于云端的项目管理和团队协作工具，旨在提高团队的协作效率和生产力。以下是Monday.com的一些特点：

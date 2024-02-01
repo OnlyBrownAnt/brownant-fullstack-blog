@@ -5,6 +5,7 @@
 练习锁和条件变量的用法
 
 ## 代码
+
 ### Task.java
 
 ```java
@@ -72,7 +73,7 @@ public class Task {
 
 ### BankService.java
 
-``` java
+```java
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 

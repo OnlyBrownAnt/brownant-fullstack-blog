@@ -1,12 +1,15 @@
 # IOS开发资料
 
 ## 文档
+
 [apple account center](https://developer.apple.com/account)
 [xcode-document](https://developer.apple.com/documentation/xcode)
 [AppleStore-上架审核指南](https://developer.apple.com/cn/app-store/review/guidelines/#introduction)
 
 ## 总结
+
 ### Mac开发环境配置
+
 mac自带了默认的ruby版本(ruby2.7)，但是不一定适合开发。
 存在依赖拉取失败问题。
 
@@ -19,7 +22,6 @@ brew install ruby@3.0
 rm -rf /usr/local/bin/pod
 sudo gem uninstall cocoapods
 sudo gem install -n /usr/local/bin cocoapods
-
 
 pod deintegrate
 pod cache clean --all

@@ -1,14 +1,18 @@
 # HammerSpoon
+
 > MAC的利器，有很多内置API可以帮助在MAC上高效，脚本使用的Lua语言。
 
 ## DOCS
+
 - [Hammerspoon](Hammerspoon)
 - [Lua](https://www.lua.org/start.html)
 
 ## Review
 
 ### 快捷键启动APP
+
 > 在日常使用总是希望快速启动某个app进行工作，或者查找文件。但是MAC内置的脚本自定义服务（打开APP）有时候无法正常启动，比如在浏览器界面，启动服务无效。所以通过这个HammerSpoon设置配置的方式可以更方便的使用快捷键启动软件，结合系统本身自带的关闭隐藏程序的快捷键。使用非常舒服。
+
 ```lua
 -- 配置重载
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "R", function()

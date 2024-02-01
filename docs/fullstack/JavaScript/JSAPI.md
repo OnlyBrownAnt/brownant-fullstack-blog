@@ -1,10 +1,13 @@
 # 常用功能总结
 
 ### 剪切板功能
+
 #### 推荐库
+
 clipboard
 
 #### 原生JS
+
 ```javascript
 copyToClipboard(text) {
   // TODO 测试情况下部分浏览器会禁用非安全域的navigator.clipboard对象导致clipboard API不可用
@@ -28,4 +31,5 @@ copyToClipboard(text) {
 ```
 
 ### 访问本地文件
+
 File API 与 Blob API

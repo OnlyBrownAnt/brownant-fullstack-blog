@@ -1,6 +1,7 @@
 # SwiftUI
 
 ## 文档
+
 [官方快速教程](https://developer.apple.com/tutorials/swiftui#swiftui-essentials)
 
 [官方快速教程首页](https://developer.apple.com/tutorials/swiftui)
@@ -26,24 +27,33 @@
 [优质教程-animations](https://twitter.com/gordonphayes/status/1617535312313610247)
 
 ## 总结
+
 ### 常见关键词
+
 H horizontal 横向
 V vertical 垂直
 Z z-axis z轴
+
 ### swiftUI实践经验
+
 [博客-info](https://www.infoq.cn/article/c5NSWBA003UHfvBpYu4Y)
 这位开发人介绍了使用swiftUI完成项目的经历，以及比较特别的开发遇到的问题。
 
 ### SwiftUI动画教程
+
 #### 文档
+
 [优质动画教程平台](https://designcode.io/)
 [推荐教程-designcode](https://designcode.io/swiftui-rive-animated-app)
 
 ### some Scene {}
+
 #### 文档
+
 https://swiftgg.gitbook.io/swift/yu-yan-can-kao/03_types?q=some+a
 
 #### 总结
+
 some的作用
 文档引用: [1]
 some定义不透明类型
@@ -53,6 +63,7 @@ some定义不透明类型
 some Scene定义了Scene协议，其后的{}中表示Scene实例，实例中是符合Scene协议的场景。
 
 ### color
+
 文档
 [官方color文档](https://developer.apple.com/documentation/swiftui/color)
 
@@ -62,8 +73,9 @@ some Scene定义了Scene协议，其后的{}中表示Scene实例，实例中是�
 文档引用: [1]
 
 #### 现象
-Color(".yellow")  "NamedColor(name: ".yellow", bundle: nil)\n" 在backgroud中不生效
-Color(.yellow)  "UIExtendedSRGBColorSpace 1 1 0 1\n" 在backgroud中生效
+
+Color(".yellow") "NamedColor(name: ".yellow", bundle: nil)\n" 在backgroud中不生效
+Color(.yellow) "UIExtendedSRGBColorSpace 1 1 0 1\n" 在backgroud中生效
 
 Color(".yellow")表示搜索颜色资源的捆绑包。如果您不指定捆绑包，则初始化程序默认会在您的应用程序的主捆绑包中查找。
 而Color(.yellow)则是直接使用了颜色资源.yellow，所以是可以的。
@@ -73,9 +85,11 @@ Color(".yellow")表示搜索颜色资源的捆绑包。如果您不指定捆绑�
 #### 动画
 
 ##### 可以使用riv图片实现更多局部的动态效果
+
 减少程序上的设计花销
 
 #### 卡片动画
-##### 文档
-https://www.hackingwithswift.com/books/ios-swiftui/moving-views-with-draggesture-and-offset
 
+##### 文档
+
+https://www.hackingwithswift.com/books/ios-swiftui/moving-views-with-draggesture-and-offset

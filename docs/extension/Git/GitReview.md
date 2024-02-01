@@ -1,6 +1,7 @@
 # Git基础
 
 ## 文档
+
 - [git doc(官方)](https://git-scm.com/doc)
 - [git config doc](https://git-scm.com/docs/git-config)
 - [git doc(官方、相关命令)](https://git-scm.com/docs)
@@ -8,6 +9,7 @@
 - [git doc(廖雪峰的官方网站)](https://www.liaoxuefeng.com/wiki/896043488029600)
 
 ## Git提交规范
+
 ```
 feat：新功能（feature）
 fix：修复 Bug，fix: [Bug编号]
@@ -17,117 +19,142 @@ refactor：重构代码，既不是新增功能也不是修改 Bug 的代码变�
 test：添加或修改测试代码
 chore：构建过程或辅助工具的变动
 ```
+
 ### 附录
+
 - [知乎-博客](https://zhuanlan.zhihu.com/p/67804026)
 
 ## 基本配置
+
 1. 官网下载、安装Git
 2. 配置账号和邮箱
+
 ```shell
 git config --global user.name "John Doe"
 git config --global user.email johndoe@example.com
 ```
+
 3. 查看配置
-> git的设置可能在不同文件有定义，可以使用git config --list --show-origin查询设置以及其来源。一般使用git config --list即可。
+   > git的设置可能在不同文件有定义，可以使用git config --list --show-origin查询设置以及其来源。一般使用git config --list即可。
+
 ```shell
 git config --list
 ```
+
 4. 创建密钥
-> 连接远程仓库的方法有两种，一种是https，拉取的时候需要账号密码。另外一种就是ssh，在服务端配置客户端的公钥后就能在客户端直接拉取资源。
+   > 连接远程仓库的方法有两种，一种是https，拉取的时候需要账号密码。另外一种就是ssh，在服务端配置客户端的公钥后就能在客户端直接拉取资源。
+
 ```shell
 ssh-keygen -o
 ```
+
 > 该命令生成私钥。进入～/.ssh目录查看id_dsa、id_dsa.pub，前者存储私钥后者存储公钥。
 
 ## 配置文件目录
+
 > git分多级配置文件，从上往下自动覆盖。
-- .git/config 
-> 工程目录配置文件
-- ~/.gitconfig 
-> 用户配置文件，若使用 git config 时用 --global 选项，读写的就是这个文件。
-- /etc/.gitconfig 
-> 全局配置文件，git config 时用 --system 选项，读写的就是这个文件。
+
+- .git/config
+  > 工程目录配置文件
+- ~/.gitconfig
+  > 用户配置文件，若使用 git config 时用 --global 选项，读写的就是这个文件。
+- /etc/.gitconfig
+  > 全局配置文件，git config 时用 --system 选项，读写的就是这个文件。
 
 ## 常用Git命令
+
 ### 常用命令
-| 命令 | 说明 |
-| ----------------------- | ------------------------------------------------------------ |
-| git config —list                |  查看当前git配置                       |
-| git init                | 在当前文件夹下，将该文件夹初始化成仓库                       |
-| git clone [url]               | 克隆仓库                       |
-| git add [file]         | 将文件file添加到暂存区(在linux下 “git add .”是默认添加当前文件夹下所有文件到暂存区 ) |
-| git commit -m ""       | 将当前暂存区的文件提交到本地仓库（-m后的双引号里添加说明，如果-a就不需要说明直接提交，推荐-m） |
-| git status             | 查看当前文件夹下的git的相关状态，比如暂存区状态，文件的修改状态，当前文件所位于仓库的哪个分支状态 |
-| git log                 | 查看提交到仓库的版本历史记录，便于回滚                       |
-| git reset --hard       | 在git log后得到对应版本的码后，将仓库（撤销操作）回滚到对应的版本。（head区的文件替换暂存区文件）（--head参数标识本地和远程全部回滚统一）。|
-| git reset HEAD [file]  | 删除该文件在暂存区的修改（对已经add到暂存区的文件但是和未commit到仓库之前的 工作区的修改操作），将HEAD指向分支的整个目录树覆盖暂存区的目录树(就是可以理解为暂存区清空即是取消工作区的add提交，但是并不能取消工作区的改动，在推送前可使用。) |
-| git reset commitID     | 重置某个提交节点id，一般在push远程仓库前重置当前节点(一般是需要强制推送的)，可以将仓库文件改动恢复到工作区。|
-| git checkout --hard    | 在git log后得到对应版本的码后，将仓库（替换操作）回滚到对应的版本。（head区的文件替换工作区文件和暂存区文件）（少用） |
-| git checkout [file] | 删除该文件在工作区的修改（就是对 未add到暂存区的修改进行操作） |
-| git clean -f -d | 删除所有未被跟踪依赖的工作区文件 |
+
+| 命令                  | 说明                                                                                                                                                                                                                                        |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| git config —list      | 查看当前git配置                                                                                                                                                                                                                             |
+| git init              | 在当前文件夹下，将该文件夹初始化成仓库                                                                                                                                                                                                      |
+| git clone [url]       | 克隆仓库                                                                                                                                                                                                                                    |
+| git add [file]        | 将文件file添加到暂存区(在linux下 “git add .”是默认添加当前文件夹下所有文件到暂存区 )                                                                                                                                                        |
+| git commit -m ""      | 将当前暂存区的文件提交到本地仓库（-m后的双引号里添加说明，如果-a就不需要说明直接提交，推荐-m）                                                                                                                                              |
+| git status            | 查看当前文件夹下的git的相关状态，比如暂存区状态，文件的修改状态，当前文件所位于仓库的哪个分支状态                                                                                                                                           |
+| git log               | 查看提交到仓库的版本历史记录，便于回滚                                                                                                                                                                                                      |
+| git reset --hard      | 在git log后得到对应版本的码后，将仓库（撤销操作）回滚到对应的版本。（head区的文件替换暂存区文件）（--head参数标识本地和远程全部回滚统一）。                                                                                                 |
+| git reset HEAD [file] | 删除该文件在暂存区的修改（对已经add到暂存区的文件但是和未commit到仓库之前的 工作区的修改操作），将HEAD指向分支的整个目录树覆盖暂存区的目录树(就是可以理解为暂存区清空即是取消工作区的add提交，但是并不能取消工作区的改动，在推送前可使用。) |
+| git reset commitID    | 重置某个提交节点id，一般在push远程仓库前重置当前节点(一般是需要强制推送的)，可以将仓库文件改动恢复到工作区。                                                                                                                                |
+| git checkout --hard   | 在git log后得到对应版本的码后，将仓库（替换操作）回滚到对应的版本。（head区的文件替换工作区文件和暂存区文件）（少用）                                                                                                                       |
+| git checkout [file]   | 删除该文件在工作区的修改（就是对 未add到暂存区的修改进行操作）                                                                                                                                                                              |
+| git clean -f -d       | 删除所有未被跟踪依赖的工作区文件                                                                                                                                                                                                            |
 
 ### 标签管理
+
 > 使用标签进行对版本的管理
+
 - git tag 查看所有标签
-- git tag -a [tagname] -m  快速指定标签信息
+- git tag -a [tagname] -m 快速指定标签信息
 - git tag -a [tagname] 指定标签信息，会自动打开文件填写信息。
 - git tag -a [tagname] [commit id] 将标签与某个已经完成的提交进行关联。不加id的话默认给最新的提交打上标签。
 - git push origin --tags 推送所有标签到对应远程库
 
 ### 分支管理
+
 > 一个项目有多个人员或者团队工作，可以创建多个分支进行独立工作管理。开发更加安全和简便和独立。
 
-| 命令 | 说明 |
-| ------------------- | ------------------------------------------------------------ |
-| git branch         | 查看分支信息（星号前缀表示当前所在分支）                     |
-| git branch [name]    | 创建分支                                                     |
-| git chechout [name]  | 切换到名为name的分支                                         |
-| git merge [name]      | 将name分支合并到当前所在分支上（比如移动到master分支上后再合并其他分支） |
-| git branch -d [name] | 删除name分支                                                 |
-| git push origin --delete [name]      | 删除远程分支，后面跟上分支名称表示删除分支。 |
-| git branch --set-upstream-to=origin/[branch] [localbranch] | 将本地分支与已有远程分支绑定(该命令Git已经不适用)                        |
-| git push --set-upstream [originbranch] [localbranch] | 将本地分支与已有远程分支绑定，如果绑定不上提示不允许。可以加上--force强制绑定                       |
+| 命令                                                       | 说明                                                                          |
+| ---------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| git branch                                                 | 查看分支信息（星号前缀表示当前所在分支）                                      |
+| git branch [name]                                          | 创建分支                                                                      |
+| git chechout [name]                                        | 切换到名为name的分支                                                          |
+| git merge [name]                                           | 将name分支合并到当前所在分支上（比如移动到master分支上后再合并其他分支）      |
+| git branch -d [name]                                       | 删除name分支                                                                  |
+| git push origin --delete [name]                            | 删除远程分支，后面跟上分支名称表示删除分支。                                  |
+| git branch --set-upstream-to=origin/[branch] [localbranch] | 将本地分支与已有远程分支绑定(该命令Git已经不适用)                             |
+| git push --set-upstream [originbranch] [localbranch]       | 将本地分支与已有远程分支绑定，如果绑定不上提示不允许。可以加上--force强制绑定 |
+
 ### 变动管理
-| 命令 | 说明 |
-| -------------------------------- | ------------------------------------------------------------ |
-| git diff | 查看未缓存的改动(工作区未add到暂存区的改动)|
-| git diff —cached   | 查看已缓存的改动(工作区已add到暂存区的改动) |
-| git diff HEAD      |查看未缓存的和已经缓存的改动                                    |
-| git diff —stat      | 显示摘要而非具体改动 |
+
+| 命令             | 说明                                        |
+| ---------------- | ------------------------------------------- |
+| git diff         | 查看未缓存的改动(工作区未add到暂存区的改动) |
+| git diff —cached | 查看已缓存的改动(工作区已add到暂存区的改动) |
+| git diff HEAD    | 查看未缓存的和已经缓存的改动                |
+| git diff —stat   | 显示摘要而非具体改动                        |
 
 ### 贮藏管理
+
 - git stash 贮藏功能(临时存储，一般在切换分支前使用保存未推送的工作)，缓存当前工作区改动保存到别处，等于变相清空工作区的改动。而且可以通过贮藏功能把缓存的改动恢复到工作区。但是注意工作区要求和该贮藏前一样，否则会产生冲突，恢复失败。
 - git stash list 查看已经存在的贮藏
-- git stash apply 恢复贮藏到当前分支，例如git stash apply  stash@\{0\}
-- git stash drop 删除贮藏，例如git stash drop  stash@\{0\}
+- git stash apply 恢复贮藏到当前分支，例如git stash apply stash@\{0\}
+- git stash drop 删除贮藏，例如git stash drop stash@\{0\}
 
 ### 远程仓库管理
-| 命令 | 说明 |
-| -------------------------------- | ------------------------------------------------------------ |
-| git remote add origin \<仓库地址\> | 比如：git remote  add origin git@github.com:Brown-Ant/PatTopics.git，绑定远程仓库(一个本地仓库只需要做一次) |
-| git push -u origin master      | 将本地master分支推送到远程仓库origin分支（常用）（一般就直接git push -u的话就是默认本地master到远程仓库origin分支） |
-| git clone \<仓库地址\>             | 拉取仓库                                                     |
+
+| 命令                               | 说明                                                                                                                |
+| ---------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| git remote add origin \<仓库地址\> | 比如：git remote add origin git@github.com:Brown-Ant/PatTopics.git，绑定远程仓库(一个本地仓库只需要做一次)          |
+| git push -u origin master          | 将本地master分支推送到远程仓库origin分支（常用）（一般就直接git push -u的话就是默认本地master到远程仓库origin分支） |
+| git clone \<仓库地址\>             | 拉取仓库                                                                                                            |
 
 - git remote -v 查看当前分支的远程库信息(可以查看绑定的远程仓库本地名称和远程地址)
 - git remote rm branchName 删除绑定的远程仓库
 - git remote add origin git@\<你的用户名\>/\<仓库名\>.git 绑定远程仓库(有了本地仓库，绑定远程仓库。)
 - git pull 拉取，从对应远程库进行拉取最新改动
 - git push --set-upstream origin branch-name 创建与当前分支关联的远程库分支。（有了本地分支，创建远程库分支）
-- git push origin branch-name  推送，将名称为branch-name的分支推送到对应的远程库
-- git push origin --delete  [branchname]  删除远程分支，不写默认删除当前分支的远程分支
+- git push origin branch-name 推送，将名称为branch-name的分支推送到对应的远程库
+- git push origin --delete [branchname] 删除远程分支，不写默认删除当前分支的远程分支
 
 ## 总结
+
 ### 理解git工作区和暂存区和版本库的关系
+
 ![git-flow](/img/docs/git/git-1.png "git flow")
 这三者组合就是一个完整的工作流。
+
 1. 首先在工作区修改或者增删文件。
 2. 然后提交到暂存区作为缓存。暂存区并不是一个仓库的概念，而是一个索引的概念(不是索引的概念，而是保留了文件的索引即目录树的一块区域)。保存的是文件索引即目录树，而具体的文件作为对象被保存在对象库中。
 3. 之后将暂存区文件提交到本地仓库。这时的变化其实就是版本库中的HEAD指针指向的该分支的目录树被修改，该目录树即文件的索引指向的文件依旧在对象库中。对象库被暂存区和被HEAD指向的分支所共享。
 
 所以在关系图中暂存区和HEAD指针和对象库都在版本库中
 
-####  附加说明
+#### 附加说明
+
 对于几个关键词的理解，有助于理解整个工作流。
+
 - 工作区：
 - 暂存区：也被称为索引(index)，保存并更新工作区提交文件之后的目录树。即.git/index
 - 版本库：保存暂存区和HEAD指针以及对象库的仓库。即.git文件夹
@@ -135,8 +162,8 @@ ssh-keygen -o
 - 目录树：可以理解为一组文件的索引
 - 对象库：工作区修改（或新增）的文件内容被写入到对象库中的一个新的对象中，而该对象的ID被记录在暂存区的文件索引中。即.git/objects
 
-
 ### 如何fork别人的库并贡献自己的代码
+
 1. fork别人的项目到自己的仓库里
 2. git clone自己fork的仓库到本地
 3. 对该本地仓库进行代码添加修改
@@ -145,11 +172,12 @@ ssh-keygen -o
 6. 提交合并申请
 
 ### 重置和回滚操作总结
+
 > 这里比较麻烦的是和本地库和远程库进行协作的操作。毕竟无论是重置和回滚都是意味着远程库和本地库的同步也是个问题
-重置：
-重置到某个节点，这个节点之后节点记录会丢失且那些节点文件被删除。(重置命令会丢弃历史)(不推荐)
-git reset commitID 表示重置到指定的commit节点，该节点之后的节点记录和文件全部被删除。默认提交commit到本地仓库，然后需要同步远端的话需要使用git push origin --force强制推送(不是很安全)。
-(reset的作用主要是用于重置改动。也可以进行变相的回滚，但是并不推荐使用这个进行回滚的操作。因为会丢失记录)
+> 重置：
+> 重置到某个节点，这个节点之后节点记录会丢失且那些节点文件被删除。(重置命令会丢弃历史)(不推荐)
+> git reset commitID 表示重置到指定的commit节点，该节点之后的节点记录和文件全部被删除。默认提交commit到本地仓库，然后需要同步远端的话需要使用git push origin --force强制推送(不是很安全)。
+> (reset的作用主要是用于重置改动。也可以进行变相的回滚，但是并不推荐使用这个进行回滚的操作。因为会丢失记录)
 
 回滚(反向)：
 回滚到某个节点(和重置有区别，不是回滚到某个节点，而是回滚某个节点的改动)，每次节点也视为一次提交，回滚的节点之后的节点提交记录不会丢失。
@@ -164,9 +192,11 @@ git revert commitID 表示回滚的指定的commit节点的改动，该节点之
 (还有使用图形化工具和命令后进行重置和回滚也具有一些差异，推荐使用图形化工具)
 
 ### .gitignore文件
+
 .gitignore设置将本地仓库推送到远程仓库时需要忽略的文件或文件夹
 
 ### 分支管理技巧
+
 分支管理是git中比较复杂繁琐的知识点。
 
 不推荐直接在主分支上进行修改。一般是创建新子分支来对父级分支进行改动，修改完成后合并到父级分支，然后删除子分支。
@@ -177,48 +207,62 @@ git revert commitID 表示回滚的指定的commit节点的改动，该节点之
 很多操作不能直接对当前分支操作，必须切换到其他分支。才能对别的分支进行操作，比如删除某个分支。
 
 ### 建立分支需不需要建立远程分支
+
 在github中不需要，因为最后推送的master分支，有请求权限。但是在公司开发的时候，需要建立远程分支，让管理员可以进行合并，实习生可能是没有推送master的权限的。（具体权限查看仓库的参与人员和权限类型）
 
 ### 每次结束后都必须要删除自己的分支吗
+
 一般来说新建的分支是为了修改某个功能，临时使用的。如果这个分支需要经常修改并提交的话，就没有必要删除。可以在master更新后，直接拉取master的更新到自己本地分支上，然后推送到对应的远程分支(所以建议在拉取未跟踪的分支时不要勾选”立即提交合并改动”)。这样就能实现分支不用频繁删除，但是又能及时更新和提交代码。(不过这样也容易出现冲突，因为本地分支可能刚好和更新的主分支有代码冲突，推荐还是改一次，删一次。需要的时候再创建分支。)
 
 ### 如何查看某个文件的git提交记录和改动
+
 快捷点的可以通过vscode工具的插件快速查看当前文件的提交记录。(其实这是最舒服的方式)，然后也可以通过命令行的方式指定查看某个文件的修改记录。
 
 ### git clone拉取仓库时拉取不下来
+
 有2种情况
+
 - 远程端没有绑定ssh公钥。
 
-	将本地的公钥配置到git仓库上去的ssh配置里。
+  将本地的公钥配置到git仓库上去的ssh配置里。
+
 - 本地账号和仓库设置的权限的账号不符合，导致拉取不了
-	通常使用http或者https方式进行拉取的时候出现的，可以通过指定具有拉取权限的账号的方式进行拉取。
+  通常使用http或者https方式进行拉取的时候出现的，可以通过指定具有拉取权限的账号的方式进行拉取。
 
-	git clone http://账号@仓库地址.git
+  git clone http://账号@仓库地址.git
 
-	比如：git clone http://jiangdelong@e-git.yfb.sunline.cn/hzcl/uiux/affin.git
+  比如：git clone http://jiangdelong@e-git.yfb.sunline.cn/hzcl/uiux/affin.git
 
 ### 在项目中增加.gitignore文件排除需要上传到文件
+
 问题：如果该文件包含的需要的排出的文件已经在被排出之前上传过，现在处于跟踪状态。那么排除无效，必须移除该文件，使其处于未跟踪状态才行。
 
 ### git拉取与本地冲突
+
 先将本地贮藏，然后拉取后再恢复贮藏，然后进行解决冲突。
 
 ### fatal: refusing to merge unrelated histories
+
 合并的时候提示错误，原因是两个分支没有关联。所以需要在执行命令上加上—allow-unrelated-histories参数取消警告。
 
 ### git文件从暂存区回退到工作区
+
 1、git reset HEAD^ ：回退版本，一个^表示一个版本，可以多个^，上上个版本就是git reset HEAD^^
 2、git reset HEAD~100 回退当然往上100个版本
 3、git reset HEAD filename ：回退文件，将文件从暂存区回退到工作区 　也可以git reset filename
 
 ### 代码大量变动如何处理
+
 备份修改后的代码，删掉之前的所有代码，进行推送。接着再重新复制之前备份的代码。这样可以避免因为文件夹名称大小写问题导致的git匹配新旧文件失败问题。
 
 ### 多次commit如何合并成一个commit
-git rebase -i commitId 
+
+git rebase -i commitId
 (这个commitid之后的提交会被合并，不包括这个commitid的内容)
 
 撤销当前的合并改动
 git merga —abort
+
 #### 附录
+
 - https://blog.csdn.net/u012308586/article/details/104923400/

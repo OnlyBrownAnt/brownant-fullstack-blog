@@ -1,5 +1,7 @@
 # React 问题集
+
 ## Hooks 组件和 Class 组件的区别
+
 - [hooks-intro](https://legacy.reactjs.org/docs/hooks-intro.html)
 - [当谈论 React hook，我们究竟说的是什么？](https://www.upyun.com/tech/article/742/%E5%BD%93%E8%B0%88%E8%AE%BA%20React%20hook%EF%BC%8C%E6%88%91%E4%BB%AC%E7%A9%B6%E7%AB%9F%E8%AF%B4%E7%9A%84%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F.html)
 - [React 函数式组件 vs 类组件](https://juejin.cn/post/7080888443865137188)
@@ -8,60 +10,71 @@
 - [React Hooks 性能优化](https://juejin.cn/post/7076123870063198216)
 
 ### 区别总结
+
 - Hooks 是一种用于替换 Class 组件的一种新的组件构建方式，目的是为了解决 Class 组件常见的复杂点，以及优化复杂组件开发方式。
 - Class 采用 javascript class 以及 this 进行组件开发。只会实例化一次，之后组件状态就挂载在 this 上。每次使用状态时，如果是去 this 上取状态，那么得到的是最新的渲染结果，当然也可以采用闭包的方式。而且 React 提供一套生命周期钩子，用于在 React 进行渲染时触发对应生命周期钩子，让 class 实例进行相关操作。
 - Hooks 是一种函数式的开发方式。每次 React 渲染都会执行 Hooks 函数，所以换句话而言 Hooks 都能获得 React 的每次的渲染结果"快照"。Hooks 可以从"快照"中获取状态，不需要像 Class 组件从 this 上获取状态，相对于 Class 组件而言，Hooks 就是一个闭包，一个函数里可以有多个 Hooks，这个函数被称为 Hooks 组件，每个 Hooks 闭包从渲染结果"快照"中使用当前"快照"的状态。
 
 ### Class 组件的问题
+
 - 组件之间很难重用有状态逻辑
-    - class 组件只会实例一次。如果有重用有状态逻辑的需求，需要 render props 和 higher-order components 来解决问题，提高了封装的复杂度。
+  - class 组件只会实例一次。如果有重用有状态逻辑的需求，需要 render props 和 higher-order components 来解决问题，提高了封装的复杂度。
 - 复杂的组件变得难以理解
-    - 复杂的 class 组件都需要设置生命周期钩子
-    - 一些功能(设置订阅、获取数据等)的不同阶段，需要拆分到不同阶段的生命周期钩子进行处理。多个功能被迫实现了代码上的交叉分布。
-- javascript class 和 this 的工作原理让人困惑 
+  - 复杂的 class 组件都需要设置生命周期钩子
+  - 一些功能(设置订阅、获取数据等)的不同阶段，需要拆分到不同阶段的生命周期钩子进行处理。多个功能被迫实现了代码上的交叉分布。
+- javascript class 和 this 的工作原理让人困惑
 
 ### Hooks 组件的优缺点
+
 #### 优点
+
 - 解决和避免 Class 组件的复杂点(问题)
-    - 重用有状态逻辑
-    - 每个功能通过一个 Hooks 来实现，更利于维护。比如使用 useEffect()
-    - 避免使用 class、this。通过闭包每次直接从"快照"获取状态。
+  - 重用有状态逻辑
+  - 每个功能通过一个 Hooks 来实现，更利于维护。比如使用 useEffect()
+  - 避免使用 class、this。通过闭包每次直接从"快照"获取状态。
+
 #### 缺点
+
 - 无法直接使用生命周期钩子，但是通过 useEffect() 变相实现生命周期钩子的效果。
 - 无法直接使用 this，但是通过 useRef 变相实现 this 的一个效果。
 - 性能上的问题
-    - 由于 Hooks 组件渲染的逻辑就是每次 React 渲染就执行。相当于每次执行一批函数，所以如何让一些不需要执行的函数不去执行。React 提供了 useMemo、useCallBack 这类缓存Hooks，减少不必要的代码执行和计算。
+  - 由于 Hooks 组件渲染的逻辑就是每次 React 渲染就执行。相当于每次执行一批函数，所以如何让一些不需要执行的函数不去执行。React 提供了 useMemo、useCallBack 这类缓存Hooks，减少不必要的代码执行和计算。
 
-## import React from 'react' 和 import * as React from 'react' 区别
-- [ts下 import React from ‘react’ 和import * as React from 'react'的区别](https://juejin.cn/post/7000930676488798216)
+## import React from 'react' 和 import \* as React from 'react' 区别
+
+- [ts下 import React from ‘react’ 和import \* as React from 'react'的区别](https://juejin.cn/post/7000930676488798216)
 
 ## JSX 和 React 关联
+
 [JSX 和 React 是两个不同的东西。它们经常一起使用，但您可以 单独使用它们。JSX 是一个语法扩展，而 React 是一个 JavaScript 库。](https://react.dev/learn/writing-markup-with-jsx)
+
 - JavaScript XML(JavaScript语言扩展) 类XML语法的语法糖
 - 构建虚拟DOM树时语义化能力更好
 
 ## React 生命周期
+
 - [react-lifecycle](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
 - [简述下 React 的生命周期？每个生命周期都做了什么？](https://fe.ecool.fun/topic-answer/f59d29a2-7ff8-41ca-8176-a24f1ca6d0f5?orderBy=updateTime&order=asc&tagId=13)
 
 ![react lifecycle](/img/docs/react/react-lifecycle.png)
+
 - React生命周期
-  
+
   - Mounting
   - Updating
   - Unmounting
 
 - 关键函数
-  
+
   - constructor()
-    
+
     > React组件的构造函数
-    > 
+    >
     > 1. 通过将对象分配，来初始化本地状态this.state。
     > 2. 将事件处理程序方法绑定到实例。
     > 3. 可以不实现该方法。如果不初始化状态并且不绑定方法，则无需为 React 组件实现构造函数。
     > 4. 在constructor()中修改状态时只能用this 而不是setState()。因为构造函数阶段，组件还没有完全初始化，也没有挂载到DOM中。使用this改变值不会出发render即不会影响到DOM的diffing和渲染。
-    
+
     ```javascript
     constructor(props) {
       super(props);
@@ -70,69 +83,76 @@
       this.handleClick = this.handleClick.bind(this);
     }
     ```
-  
+
   - static getDerivedStateFromProps()
-    
+
     > 是React组件生命周期中的一个静态方法（static method），它用于根据传入的属性（props）来更新组件的状态（state），如果返回null就不更新。在方法里自定义处理逻辑，应该谨慎使用。在Mounting、Updating阶段可以被调用。
-  
+
   - static getDerivedStateFromError()
-    
+
     > 是React组件生命周期中的一个静态方法（static method），用于处理组件在渲染过程中发生的错误。当组件树中的任何子组件抛出异常时，React会调用父组件中的 getDerivedStateFromError() 方法。这个方法允许你捕获错误并返回一个新的状态对象，以更新组件的状态。比如触发展示一个备用的UI或错误提示。
-  
+
   - shouldComponentUpdate()
-    
-    > React 组件生命周期中的一个方法，用于判断组件是否需要进行更新。增加对组件的状态和属性的判断，实现更加颗粒度的控制组件是否更新。 
-  
+
+    > React 组件生命周期中的一个方法，用于判断组件是否需要进行更新。增加对组件的状态和属性的判断，实现更加颗粒度的控制组件是否更新。
+
   - render()
-    
+
     > render()方法是类组件中唯一必需的方法。调用时，它应该检查this.props并this.state返回多种类型(React Element等)的数据。注意是纯函数，只返回数据不处理DOM渲染。
-  
+
   - getSnapshotBeforeUpdate()
-    
+
     > 在最近渲染的输出被提交到例如DOM之前调用。它使您的组件能够在DOM发生更改之前捕获一些信息（例如滚动位置）。此生命周期方法返回的任何值都将作为参数传递给componentDidUpdate()。
-  
+
   - componentDidMount()
-    
+
     > componentDidMount()在安装组件（插入树中）后立即调用。需要DOM节点的初始化应该放在此处。
-  
+
   - componentDidUpdate()
-    
+
     > componentDidUpdate()更新发生后立即调用。初始渲染不会调用此方法。
-  
+
   - componentWillUnmount()
-    
+
     > componentWillUnmount()在组件被卸载和销毁之前立即调用。在此方法中执行任何必要的清理，例如使计时器无效、取消网络请求或清理在componentDidMount()。
-  
+
   - componentDidCatch()
-    
+
     > 在后代组件抛出错误后调用此生命周期。它应该用于记录错误之类的事情。
 
 ## 什么是高阶组件？
+
 - 高阶函数(HOC)
 - HOC函数 higherOrderComponent()
 - 作用
+
   > 复用组件，可以作为通用组件，实现动态的切换组件。
-  
+
   ```javascript
   const EnhancedComponent = higherOrderComponent(WrappedComponent);
   ```
 
 ## constructor 中 super 与 props 参数一起使用的目的是什么?
+
 - JavaScript的集成机制
 - super调用父类构造函数之后子类实例this才能继承父类的属性和方法
 
 ## 什么是受控组件？
+
 - 受控组件和非受控组件的区别就是组件状态是否受到React控制。
 - 比如没有进行状态赋值控制的原生HTML标签，就是非受控组件。
 
 ## React.PureComponent 和 React.Component 有什么区别？
-- React.PureComponent  
+
+- React.PureComponent
+
   > 自身实现了shouldComponentUpdate，但是只进行了浅层的对比。所以不适用于层级比较复杂的组件，只适合比较简单的组件，比如纯粹用于UI显示的组件。
 
 - React.Component
 - shouldComponentUpdate
+
   > React 组件生命周期中的一个方法，用于判断组件是否需要进行更新。增加对组件的状态和属性的判断，实现更加颗粒度的控制组件是否更新。
-  
+
   ```javascript
   // nextProps = 待更新组件的Props
   // nextState = 待更新组件的状态State
@@ -158,7 +178,7 @@
 - 库和框架的区别是框架有更多功能性的配套设置。库只是实现某个核心的功能。
 
 - Vue和React都提供了响应式的机制，但它们的实现方式略有不同。
-  
+
   > 总结: Vue利用浏览器的特性来实现响应式，而React是一个独立的库，在不依赖具体浏览器特性的情况下实现了自己的响应式机制。
 
 在Vue中，其响应式是基于ES5的Object.defineProperty或ES6的Proxy进行实现的。Vue通过追踪数据的依赖关系来自动更新相关的组件。当数据发生变化时，Vue能够检测到并触发相应的更新操作，从而保证界面和数据的同步。Vue的响应式机制是基于浏览器提供的底层特性实现的。
@@ -168,28 +188,30 @@ React的响应式则是通过使用虚拟DOM和一种称为"reconciliation"（�
 ## 如何在React中应用样式？
 
 - 两种方式
-  
+
   - 外部样式表: className = class String
   - 内联样式表: style = JavaScript Object
 
 - className
-  
+
   > 在 JSX 中，className 是在转换为普通 JavaScript 代码时会被转换成 HTML 的 class 属性
 
 ## 为什么不能直接使用 this.state 改变数据？
+
 - React只支持setState()来修改状态并触发render以及虚拟DOM的diffing渲染。
 - setState()通过一个队列机制来实现state更新。当执行setState的时候，会将需要更新的state合并后放入状态队列，而不会立刻更新this.state。队列机制可以高效的批量更新state。
 
 ## React 中如果绑定事件使用匿名函数有什么影响？
+
 - 加载效果: 每次当成一个新的Props。
 - 缓存优化: 无法进行缓存优化，性能增加了损耗。
 
 ## React 的事件代理机制和原生事件绑定混用会有什么问题？
 
 - React事件代理机制
-  
+
   > JSX中定义的无论是原生事件还是React自定义事件，都会在合成事件层上处理，并没有绑定到原生事件层上去。而是在合成事件层处理，原生事件可能导致合成事件层处理错误。
-  > 
+  >
   > 比如e.stopPropagation()会阻止合成事件层的冒泡行为，但是却无法阻止原生DOM的冒泡行为。
 
 - 原生事件
@@ -224,6 +246,7 @@ React的响应式则是通过使用虚拟DOM和一种称为"reconciliation"（�
 ## react 的虚拟 dom 是怎么实现的？
 
 - React Virtual DOM基本实现
+
 1. React将真实DOM转换为Virtual DOM(JS对象)
 
 2. React计算更新后的Virtual DOM
@@ -231,6 +254,7 @@ React的响应式则是通过使用虚拟DOM和一种称为"reconciliation"（�
 3. React当前的Virtual DOM与上一个版本的Virtual DOM比较。确认需要更新的内容。
 
 4. 渲染到真实的DOM。
+
 - Virtual DOM优点
   - 相对于直接处理原生DOM，性能更好。
   - 更容易与其他平台集成。比如React Native与APP平台集成。
@@ -244,7 +268,7 @@ React的响应式则是通过使用虚拟DOM和一种称为"reconciliation"（�
 - 不一定
 
 - 总加载时间 = Virtual DOM计算时间 + 原生DOM渲染时间
-  
+
   > 如果页面DOM十分庞大，但是某个场景实际更新DOM很少，这个时候反而耗时更加长，因为React每次Virtual DOM计算都会对照整个原生DOM生产对应的Virtual DOM。生成VDOM和计算的耗时就可能大于时间操作对应DOM的时间了。
 
 ## React Hooks 带来了什么便利？
@@ -256,26 +280,27 @@ React的响应式则是通过使用虚拟DOM和一种称为"reconciliation"（�
 ## 列举几个常见的 Hook ?
 
 - 基础知识
-  
+
   - 副作用
-    
+
     > 在编程中，副作用（side effect）是指与纯粹的计算过程无关的操作。这些操作可以包括但不限于网络请求、访问本地存储、修改 DOM、订阅事件等。
 
 - useState
-  
+
   > 状态管理工具。useState 是一种用于函数组件的状态管理方式，具有更简洁的语法和更直接的状态更新机制。而setState 和 this.state 则是类组件中用于定义和管理状态的方式，但在更新状态时需要注意它的异步特性。
 
 - useReducer
-  
+
   > 一种用于管理状态和处理状态更新的管理工具。它接收当前状态和一个操作（action）作为输入，并返回新的状态。reducer能够根据操作的类型来决定更新状态的自定义逻辑，并返回更新后的状态。可以认为是useState的高阶工具。
 
 - useContext
-  
+
   > 获取Context的上下文内容。通常搭配createContext来使用，createContext用于创建上下文对象，并提供给组件。然后组件使用useContext来获取Contextd的上下文内容。通过ContextName.Provider的方式把Context提供给组件。
-  
+
   ```javascript
-  import { createContext, useContext } from 'react';
+  import { createContext, useContext } from "react";
   ```
+
 ```
 const ThemeContext = createContext(null);
 
@@ -318,22 +343,24 @@ function Button({ children }) {
 }
 
 ```
+
 - useEffect
-> 处理组件的副作用的工具。包括与外部系统通讯、网络请求、模拟类组件的生命周期钩子的效果等。
+  > 处理组件的副作用的工具。包括与外部系统通讯、网络请求、模拟类组件的生命周期钩子的效果等。
 - useCallback
-> 用于优化函数的性能。它的作用是在依赖项变化时，仅当需要时才返回相同的回调函数。
-> 
-> 通常情况下，每次组件重新渲染时，函数组件中的函数会被重新创建。这可能会导致传递给子组件的回调函数也会被重新创建，进而触发子组件的不必要的重新渲染。useCallback 的目的是避免这种不必要的函数重建，并确保只有在依赖项发生更改时，才会返回相同的回调函数引用。这可以减少子组件的重新渲染，提高整体性能。
+  > 用于优化函数的性能。它的作用是在依赖项变化时，仅当需要时才返回相同的回调函数。
+  >
+  > 通常情况下，每次组件重新渲染时，函数组件中的函数会被重新创建。这可能会导致传递给子组件的回调函数也会被重新创建，进而触发子组件的不必要的重新渲染。useCallback 的目的是避免这种不必要的函数重建，并确保只有在依赖项发生更改时，才会返回相同的回调函数引用。这可以减少子组件的重新渲染，提高整体性能。
+
 ```javascript
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback } from "react";
 
 function ParentComponent() {
   const [count, setCount] = useState(0);
 
   // 使用 useCallback 缓存回调函数
   const handleClick = useCallback(() => {
-    console.log('Button clicked');
-    setCount(prevCount => prevCount + 1);
+    console.log("Button clicked");
+    setCount((prevCount) => prevCount + 1);
   }, [setCount]);
 
   return (
@@ -350,27 +377,25 @@ function ChildComponent({ onClick }) {
 ```
 
 - useMemo
-  
+
   > 缓存重新渲染之间的计算结果，优化作用。useMemo在组件的顶层调用以缓存重新渲染之间的计算，只要依赖项不变，就返回之前的缓存结果。
-  
+
 ```javascript
-import { useMemo } from 'react';
+import { useMemo } from "react";
 
 function TodoList({ todos, tab }) {
-  const visibleTodos = useMemo(
-    () => filterTodos(todos, tab),
-    [todos, tab]
-  );
+  const visibleTodos = useMemo(() => filterTodos(todos, tab), [todos, tab]);
   // ...
 }
-
 ```
+
 - useRef
-> 引用不需要渲染的数据。比如创建DOM元素的真实引用、保存持久数据、在副作用的时候读取和存储值。
-> 
-> useState更强调数据响应式的渲染UI。useRef则可以避免数据与渲染的响应式关联，用于处理一下不需要数据和渲染关联的场景。
+  > 引用不需要渲染的数据。比如创建DOM元素的真实引用、保存持久数据、在副作用的时候读取和存储值。
+  >
+  > useState更强调数据响应式的渲染UI。useRef则可以避免数据与渲染的响应式关联，用于处理一下不需要数据和渲染关联的场景。
+
 ```javascript
-import { useRef } from 'react';
+import { useRef } from "react";
 
 export default function Counter() {
   let ref = useRef(0);
@@ -378,7 +403,7 @@ export default function Counter() {
 
   function handleClick() {
     ref.current = ref.current + 1;
-    alert('You clicked ' + ref.current + ' times!');
+    alert("You clicked " + ref.current + " times!");
   }
 
   return (
@@ -392,17 +417,20 @@ export default function Counter() {
 ## 使用React Hooks有什么优势？
 
 - 目标
-  
+
   > 在组件中使用React的功能。
 
 - 作用
+
 1. 复用状态逻辑
 2. 简化组件结构
 3. 避免 Class 组件的限制
-4. 改善性能优化 
+4. 改善性能优化
+
 - 作用详解
-  
+
   > form chatgpt
+
 1. 复用状态逻辑：在类组件中，复用组件之间的状态逻辑通常需要使用高阶组件 (Higher-Order Components) 或渲染属性 (Render Props) 等模式。Hooks 引入了 useState、useEffect、useContext 等钩子函数，使得在函数组件中可以更轻松地复用和共享状态逻辑。
 2. 简化组件结构：在类组件中，组件的状态和生命周期方法都分散在不同的生命周期方法或实例方法中，导致代码分散和复杂。Hooks 通过将相关的状态和副作用逻辑组合到一个函数中，使得组件的结构更加清晰、简洁，并且易于理解和维护。
 3. 避免 Class 组件的限制：使用类组件时，需要关注 this 的绑定、手动绑定回调函数、生命周期方法的正确使用等细节。Hooks 可以避免这些限制，使得函数组件的编写更加自然和简单。
@@ -436,33 +464,33 @@ export default function Counter() {
 ### React 的 Diffing 算法优化内容-启发式算法
 
 1. 对比不同类型的元素
-   
+
    - 当根节点为不同类型的元素时，React会拆卸原有的树并且建立起新的树.
-     
+
      > 当卸载一棵树时，对应的DOM节点也会被销毁。在根节点以下的组件也会被卸载，它们的状态会被销毁。
 
 2. 对比同一类型的元素
-   
+
    - 当对比两个相同类型的React元素时，React会保留DOM节点，仅比对及更新有改变的属性。
-     
+
      > 通过对比这两个元素，React知道需要修改DOM元素上的className属性还是Style属性。在处理完当前节点之后，React 继续对子节点进行递归。
 
 3. 对比同类型的组件元素
-   
+
    - 当一个组件更新时，组件实例会保持不变，因此可以在不同的渲染时保持state一致。
-     
+
      > 下一步，调用 render()方法，diff算法将在之前的结果以及新的结果中进行递归。
 
 4. 对子节点进行递归
-   
+
    - 默认情况下，当递归 DOM 节点的子元素时，React 会同时遍历两个子元素的列表；当产生差异时，生成一个 mutation。
-     
+
      > 在子元素列表末尾新增元素时，更新开销比较小。如果只是简单的将新增元素插入到表头，那么更新开销会比较大。
 
 5. Keys
-   
+
    - React引入了key属性。当子元素拥有key时，React使用key来匹配原有树上的子元素以及最新树上的子元素。
-     
+
      > 可以用来有效解决第4点的问题，减少性能消耗。这个key不需要全局唯一，但在列表中需要保持唯一，而且不是随机变化的，否则引起渲染的混乱。
 
 ### React 的性能优化建议
@@ -482,33 +510,33 @@ export default function Counter() {
 ## React Hooks 当中的 useEffect 是如何区分生命周期钩子的？
 
 - [useEffect-react](https://react.dev/reference/react/useEffect)
-  
+
   > useEffect可以根据入参来确定useEffect的内部加载效果，可以替换掉一些生命周期函数的效果。下面是具体的替换示例代码。
 
 - componentDidMount
-  
+
   ```javascript
   useEffect(() => {
     // do something
-  }, [])
+  }, []);
   ```
 
 - componentDidUpdate
-  
+
   ```javascript
   useEffect(() => {
     // do something
-  }, [stateVar])
+  }, [stateVar]);
   ```
 
 - componentDidUnmount
-  
+
   ```javascript
   useEffect(() => {
     return () => {
-       // do something 
-    }
-  }, [])
+      // do something
+    };
+  }, []);
   ```
 
 ## 为什么不能用数组下标来作为 react 组件中的 key ？
@@ -525,23 +553,23 @@ export default function Counter() {
 - 默认情况下，JS运算、页面布局和页面绘制都是运行在浏览器的主线程当中，他们之间是互斥的关系。一个任务长期占用主线程会导致其他任务等待。
 
 - React框架内部的运作层数(三层)
-  
+
   1. VirtualDOM层，描述页面长什么样。
   2. Reconciler层，负责调用组件生命周期方法，进行Diff运算等。
   3. Render层，根据不同的平台，渲染出相应的页面，比较常见的是ReactDOM和ReactNative。
 
 - React15的Reconciler(也称为Stack Reconciler)面临JS运算对主线程的长时间占用问题。出现页面渲染卡顿掉帧现象，Stack Reconciler 运作的过程是不能被打断的，必须一条道走到黑，把DOM树递归处理完成才能结束对主线程的占用。
-  
+
 ### 解决方案
-  
-  在React15基础上重构了Reconciler，增加了JS运算任务和页面绘制任务之间的主线程占用调度切换能力。
+
+在React15基础上重构了Reconciler，增加了JS运算任务和页面绘制任务之间的主线程占用调度切换能力。
 
 ### 解决方案原理
 
-- Fiber 
-  
+- Fiber
+
   > 一种数据结构。
-  
+
   ```javascript
   // JS对象表示
   const fiber = {
@@ -553,19 +581,19 @@ export default function Counter() {
   ```
 
 - Fiber 树
-  
+
   > 在VirtualDOM树的基础上增加额外的信息来生成Fiber树，本质来说是一个链表。
 
 - Fiber Reconciler
-  
+
   > 在React15基础上重构了Reconciler，所以称为Fiber Reconciler。Fiber Reconciler每执行一段时间，都会将控制权交回给浏览器，可以分段执行。而Stack Reconciler 运作的过程是不能被打断的，必须一条道走到黑。
-  
+
   1. Fiber 树在首次渲染的时候会一次过生成。在后续需要 Diff 的时候，会根据已有树和最新 Virtual DOM 的信息，生成一棵新的树。这颗新树每生成一个新的节点，都会将控制权交回给主线程，去检查有没有优先级更高的任务需要执行。如果没有，则继续构建树的过程。
   2. 如果过程中有优先级更高的任务需要进行，则 Fiber Reconciler 会丢弃正在生成的树，在空闲的时候再重新执行一遍。
   3. 在构造 Fiber 树的过程中，Fiber Reconciler 会将需要更新的节点信息保存在Effect List当中，在阶段二执行的时候，会批量更新相应的节点。
 
 - Scheduler
-  
+
   > 调度器，进行任务分配，让优先级更高的任务先执行。实现Fiber Reconciler高效的将控制权交回给浏览器，可以分段执行的效果。
 
 ## 虚拟DOM一定更快吗？
@@ -579,35 +607,39 @@ DOM操作是性能杀手，因为操作DOM会引起页面的回流或者重绘�
 [React17新特性：启发式更新算法-知乎](https://zhuanlan.zhihu.com/p/182411298)
 
 - React15
+
 1. 架构介绍
-   
+
    1. Reconciler（协调器）
-      
+
       > 分析待更新DOM。
-   
+
    2. Renderer（渲染器）
-      
+
       > 进行渲染。
+
 - React16
+
 1. 引入了Fiber架构
-   
+
    1. Scheduler（调度器）
-      
+
       > 调度协调和渲染任务
-   
+
    2. Reconciler（协调器）
-      
+
       > 分析待更新DOM，更新工作从递归变成了可以中断的循环过程。
-   
+
    3. Renderer（渲染器）
-      
+
       > 进行渲染。
 
 2. 添加了错误边界（Error Boundaries）功能
+
 - React17
 
 - 启发式更新算法。
-  
+
   > 更新区间模型更新为了lanes模型。可以选定一个更新区间，并且动态的向区间中增减优先级，可以处理更细粒度的更新。
 
 ## Fiber为什么是React性能的一个飞跃？

@@ -1,11 +1,13 @@
-
 # JS文件操作
 
 ## JS处理文件读取和保存
+
 ### 文档
+
 [《JavaScript高级程序设计(4)》'File API 与 Blob API' P622](《JavaScript高级程序设计(4)》'File API 与 Blob API' P622)
 
 ## 表单上传和JSON上传的区别和优劣
+
 表单和JSON都可以上传二进制数据，但它们的实现方式略有不同。
 
 表单通常使用multipart/form-data编码格式来上传二进制文件。在这种编码格式下，表单中的每个字段都被视为一个独立部分，并且可以包含任意类型的数据，包括二进制数据。对于每个上传的文件，浏览器会将其作为一个独立的部分发送到服务器端，并在请求头中包含Content-Type和Content-Disposition信息，以便服务器端能够正确处理这些数据。
@@ -19,5 +21,7 @@
 因此，尽管两者都可以上传二进制数据，但表单和JSON的实现方式略有不同，这也导致了它们在处理二进制数据时存在差异。
 
 ## 前端大文件断点上传
+
 ### 文档
+
 [博客](https://vue3js.cn/interview/JavaScript/continue_to_upload.html#%E4%BA%8C%E3%80%81%E5%AE%9E%E7%8E%B0%E6%80%9D%E8%B7%AF)

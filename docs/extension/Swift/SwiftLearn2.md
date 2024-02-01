@@ -1,10 +1,13 @@
 # Swift基础-操作符号和流程控制
 
 ## 目录
+
 [[toc]]
 
 ## 总结
+
 ### Swift操作符不支持自动转换
+
 ```swift
 // 情况一
 print(1 + 2.0) // 3.0
@@ -15,8 +18,11 @@ i = 2
 print(i + 2.0) // error
 
 ```
+
 ### 字符串插值
+
 > 字符串插值是一种构建新字符串的方式，可以在其中包含常量、变量、字面量和表达式。字符串字面量和多行字符串字面量都可以使用字符串插值。你插入的字符串字面量的每一项都在以反斜线为前缀的圆括号中。
+
 ```swift
 let multiplier = 3
 let message = "\(multiplier) times 2.5 is \(Double(multiplier) * 2.5)"
@@ -24,13 +30,17 @@ let message = "\(multiplier) times 2.5 is \(Double(multiplier) * 2.5)"
 ```
 
 ### Swift的do while是repect while
+
 ```swift
 repeat {
     print("repeat while");
 } while false
 ```
+
 ### Swift的switch的case不会贯穿
+
 > 在C语言中switch的case会依次匹配执行(贯穿)，switch不会。而是支持在一条case上可以进行多个匹配。
+
 ```swift
 let state = 1
 switch state {
@@ -42,8 +52,11 @@ default:
     print("no match")
 }
 ```
+
 ### Swift跳出多层循环
+
 > 通过设置标签，跳出指定的循环。
+
 ```swift
 outerLoop: for i in 1...5 {
     for j in 1...5 {
@@ -75,7 +88,9 @@ outerLoop: for j in 1...5 {
 4 1 1
 5 1 1
 ```
+
 ### 循环总结
+
 循环让我们重复代码直到条件为假。
 
 最常见的循环是for，它将循环内的每个项目分配给一个临时常量。

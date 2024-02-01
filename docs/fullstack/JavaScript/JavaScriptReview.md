@@ -1,6 +1,7 @@
 # JavaScript总结
 
 ## Docs
+
 - [JavaScript 手册(MDN)](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript)
 - [MDN/Web/API/Window](https://developer.mozilla.org/en-US/docs/Web/API/Window)
 
@@ -17,31 +18,30 @@
 - 区分大小写
 
 - 标识符规则
-  
+
   > 变量、函数、属性或函数参数的名称
-  
-  - 第一个字符必须是一个字母、下划线(_)或美元符号($)
-  
+
+  - 第一个字符必须是一个字母、下划线(\_)或美元符号($)
   - 剩下的其他字符可以是字母、下划线、美元符号或数字
 
 - 注释
 
 - 严格模式
-  
+
   > 严格模式(strick mode)是一种不同的 JavaScript 解析和执行模型。
-  > 
+  >
   > 在ES5增加改模式。
-  
+
   - 用法
-    
+
     JS脚本文件开头或者函数体开头增加"strick mode"。
-  
+
   - 作用
-    
+
     用于告诉JS引擎对于一些ES3的不规范写法在这种模式下要被处理，对于不安全的活动将抛出错误。
 
 - 语句结尾分号可不加
-  
+
   > 推荐加。部分压缩处理会处理空行，加分号也便于工具处理。
 
 ### 变量
@@ -50,41 +50,41 @@
 
 ##### 对比表
 
-| 特点\变量                                     | var | let | const |
-| ----------------------------------------- | --- | --- | ----- |
-| 1. 初始化的变量**允许**改变值、类型 ？                   | 是   | 是   | 是     |
-| 2. 操作符定义的变量会成为包含它的函数的局部变量。该变量将在函数退出时被销毁 ？ | 是   | 是   | 是     |
-| 3. 操作符定义的变量**会**在执行的时候自动提升到函数作用顶部 ？       | 是   | 否   | 否     |
-| 4. **允许**同一个块作用域中出现冗余声明 ？                 | 是   | 否   | 否     |
-| 5. **允许**不声明操作符来定义变量，会创建一个全局变量 ？          | 是   | 否   | 否     |
-| 6. 全局作用域下声明的变量**会**成为window的属性 ？          | 是   | 否   | 否     |
+| 特点\变量                                                                      | var | let | const |
+| ------------------------------------------------------------------------------ | --- | --- | ----- |
+| 1. 初始化的变量**允许**改变值、类型 ？                                         | 是  | 是  | 是    |
+| 2. 操作符定义的变量会成为包含它的函数的局部变量。该变量将在函数退出时被销毁 ？ | 是  | 是  | 是    |
+| 3. 操作符定义的变量**会**在执行的时候自动提升到函数作用顶部 ？                 | 是  | 否  | 否    |
+| 4. **允许**同一个块作用域中出现冗余声明 ？                                     | 是  | 否  | 否    |
+| 5. **允许**不声明操作符来定义变量，会创建一个全局变量 ？                       | 是  | 否  | 否    |
+| 6. 全局作用域下声明的变量**会**成为window的属性 ？                             | 是  | 否  | 否    |
 
 ##### 附加说明
 
 1. const 的行为与 let 基本相同，唯一一个重要的区别是用它声明变量时必须同时初始化变量，且尝试修改 const 声明的变量会导致运行时错误。
-   
+
    > 这里的修改指的是重新赋值新的变量，如果是引用数据类型下，只修改变量的属性不会导致运行时错误。
 
 #### 常见情况
 
 - 声明提升
-  
+
   var操作符声明的变量，由于特点3，会出现声明提升的情况。从而还导致了4的特点出现。
 
 - 暂时性死区
-  
+
   let操作符声明的变量，由于特点3，避免了声明提升的情况。在声明之前的执行瞬间就被称为“暂时性死区”。
 
 - 全局声明
-  
+
   var操作符声明的变量，由于特点6，形成了全局声明的一个效果。
 
 - 条件声明
-  
+
   var操作符声明的变量之所以会出现特点4，是因为JS进行声明合并处理。而let不会被进行合并处理，所以在声明let变量时不知道之前是否已经被声明过，可能会进行异常报错。
 
 - for 循环中的 let 声明
-  
+
   还是由于var操作符声明的变量的特点3，导致变量在循环体外部可以被访问。所以直接访问的是最后一次var变量的变化的值。而let声明的变量在这种情况下是无法被访问的。
 
 #### 附加说明
@@ -94,7 +94,7 @@
 2. 优先使用const、let
 
 3. const 的行为与 let 基本相同，唯一一个重要的区别是用它声明变量时必须同时初始化变量，且尝试修改 const 声明的变量会导致运行时错误。
-   
+
    > 这里的修改指的是重新赋值新的变量，如果是引用数据类型下，只修改变量的属性不会导致运行时错误。
 
 ### 数据类型
@@ -107,76 +107,73 @@
 
 - 引用数据类型 2 种：Object、Null
 
-| 数据类型      | 类型     | 说明                    | 字符字面量                                                                                                                    |
-| --------- | ------ | --------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| Undefined | 原始数据类型 | 已声明未定义的变量             | undefined                                                                                                                |
-| String    | 原始数据类型 | 字符串                   | \n(换行)、\t(制表)、\b(退格)、\r(回车)、\f(换页)、\\\\(换行)、\"(双引号字符串)、\'(单引号字符串)、\\`(反引号字符串)、\xnn(十六进制编码表示字符)、\unn(十六进制编码表示的Unicode 字符) |
-| Number    | 原始数据类型 | 数字(整数、浮点数) IEEE754 标准 | 10(十进制字面量)、07(八进制字面量)、0xA(十六进制字面量)、NaN(计算、转换数字失败时返回NaN)、-Infinity(负无穷小)、Infinity(正无穷小)                                   |
-| Boolean   | 原始数据类型 | 布尔类型                  | false、true                                                                                                               |
-| Symbol    | 原始数据类型 | 符号类型                  | 无字符字面量                                                                                                                   |
-| Object    | 引用数据类型 | 对象（作为派生其他对象的基类）       | {}、[]                                                                                                                    |
-| Null      | 引用数据类型 | 空对象指针（未声明的变量）         | null                                                                                                                     |
+| 数据类型  | 类型         | 说明                            | 字符字面量                                                                                                                                                                            |
+| --------- | ------------ | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Undefined | 原始数据类型 | 已声明未定义的变量              | undefined                                                                                                                                                                             |
+| String    | 原始数据类型 | 字符串                          | \n(换行)、\t(制表)、\b(退格)、\r(回车)、\f(换页)、\\\\(换行)、\"(双引号字符串)、\'(单引号字符串)、\\`(反引号字符串)、\xnn(十六进制编码表示字符)、\unn(十六进制编码表示的Unicode 字符) |
+| Number    | 原始数据类型 | 数字(整数、浮点数) IEEE754 标准 | 10(十进制字面量)、07(八进制字面量)、0xA(十六进制字面量)、NaN(计算、转换数字失败时返回NaN)、-Infinity(负无穷小)、Infinity(正无穷小)                                                    |
+| Boolean   | 原始数据类型 | 布尔类型                        | false、true                                                                                                                                                                           |
+| Symbol    | 原始数据类型 | 符号类型                        | 无字符字面量                                                                                                                                                                          |
+| Object    | 引用数据类型 | 对象（作为派生其他对象的基类）  | {}、[]                                                                                                                                                                                |
+| Null      | 引用数据类型 | 空对象指针（未声明的变量）      | null                                                                                                                                                                                  |
 
 #### 附加说明
 
 - 字符字面量（Literal）
-  
+
   - 又名直接量，指程序中直接使用的数据值。
 
 - 大驼峰写法表示的数据类型
-  
+
   - 指的是包装原始值的包装类型
 
 - ECMAScript 默认把值转换为整数
-  
+
   - 小数点后没有数字，会被转换为整数。1. == 1
 
 - 八进制数字表示
-  
+
   - 字面量第一位为0，如果整个字面量的值不符合八进制规则，则默认转换为十进制。07 = 7(八进制)、079 = 79(十进制)
-  
   - 严格模式下，前缀 0 会被视为语法错误，如果要表示八进制值，应该使用前缀 0o。
 
 - 十六进制数字表示
-  
+
   - 十六进制数字(0~9 以及 A~F)
 
 - 科学记数法
-  
+
   - 一个数值(整数或浮点数)后跟一个大写或小写的字母 e，再加上一个要乘的 10 的多少次幂。3.1415e7 = 31415000。
 
 - 0.1 + 0.2 != 0.3 (浮点数转换精度缺失问题)
-  
+
   - 原因
-    
+
     IEEE754标准在浮点数和二进制转换会存在截取导致精度丢失的情况，导致操作结果错误。
-    
-    常见案例 
-    
+
+    常见案例
+
     ```javascript
-    0.1 + 0.2 // 0.30000000000000004
-    1 - 0.9 // 0.09999999999999998
-    0.0532 * 100 // 5.319999999999999
+    0.1 + 0.2; // 0.30000000000000004
+    1 - 0.9; // 0.09999999999999998
+    0.0532 * 100; // 5.319999999999999
     ```
-  
+
   - 解决办法
-    
+
     - 分割字符串，整数和小数部分单独相加减，最后再拼接起来。
-    
     - 扩大到最小整数倍，相加后再进行除于扩大的倍数。
 
 - IEEE754 标准(重点)
-  
+
   - [小浩发现这篇浮点数的文章讲的真不错！-腾讯云开发者社区-腾讯云](https://cloud.tencent.com/developer/article/1729818#:~:text=%E8%AE%B2%E7%9A%84%E7%9C%9F%E4%B8%8D%E9%94%99%EF%BC%81-,%E5%B0%8F%E6%B5%A9%E5%8F%91%E7%8E%B0%E8%BF%99%E7%AF%87%E6%B5%AE%E7%82%B9%E6%95%B0%E7%9A%84%E6%96%87%E7%AB%A0%E8%AE%B2%E7%9A%84%E7%9C%9F%E4%B8%8D%E9%94%99%EF%BC%81,-%E5%8F%91%E5%B8%83%E4%BA%8E%202020)
 
 - String基础用法
-  
+
   - ECMAScript 中的字符串是不可变的(immutable)，意思是一旦创建，它们的值就不能变了。要修改某个变量中的字符串值，必须先销毁原始的字符串，然后将包含新值的另一个字符串保存到该变量。
-  
   - 模板字面量
-    
+
     使用模版字面量反引号来定义模版字符串。
-    
+
     ```javascript
     let pageHTML = `
     <div>
@@ -185,266 +182,253 @@
       </a>
     </div>`;
     ```
-  
+
   - 字符串插值
-    
+
     模版字面量支持使用 \${}语法进行字符串插值。
-    
+
     ```javascript
     let str = `str`; // str
     let strAll = `all ${str}`; // all str
     ```
-  
+
   - 原始字符串
-    
+
     使用String.raw标签函数获取原始的模板字面量内容。
-    
+
     ```javascript
     console.log(`\u00A9`); // ©
     console.log(String.raw`\u00A9`); // \u00A9
     ```
 
 - Symbol的特点
-  
+
   - 符号是原始值，且符号实例是唯一、不可变的。符号的用途是确保对象属性使用唯一标识符，不会发生属性冲突的危险。
-    
+
     ```javascript
-    Symbol('1') == Symbol('1') // false
+    Symbol("1") == Symbol("1"); // false
     ```
-  
+
   - 解决了属性冲突的问题，也提供了模拟私有属性实现的方案。验证属性冲突实例如下
-  
+
   ```javascript
   // 分别引入两个包的属性名和值作为对象obj的属性名和值。
-  
+
   // 1. 直接使用字符串作为属性名
   function lib1(obj) {
-      const libraryPropertyKey = "lib1";
-      obj[libraryPropertyKey] = 1;
-      return { obj, libraryPropertyKey };
+    const libraryPropertyKey = "lib1";
+    obj[libraryPropertyKey] = 1;
+    return { obj, libraryPropertyKey };
   }
   function lib2(obj) {
-      const libraryPropertyKey = "lib1";
-      obj[libraryPropertyKey] = 2;
-      return { obj, libraryPropertyKey};
+    const libraryPropertyKey = "lib1";
+    obj[libraryPropertyKey] = 2;
+    return { obj, libraryPropertyKey };
   }
-  
-  let obj = new Object()
+
+  let obj = new Object();
   let libraryPropertyValue = null;
-  
+
   let { obj: lib1Obj, libraryPropertyKey: lib1LibraryPropertyKey } = lib1(obj);
   obj = lib1Obj; // { lib1: 1 }
   libraryPropertyValue = obj[lib1LibraryPropertyKey]; // 1
-  
+
   let { obj: lib2Obj, libraryPropertyKey: lib2LibraryPropertyKey } = lib2(obj);
   obj = lib2Obj; // { lib1: 2 }
   libraryPropertyValue = obj[lib2LibraryPropertyKey]; // 2
   // 结果：属性名重复，导致值被覆盖。
-  
+
   // 1. 使用Symbol包装的字符串作为属性名
   function lib1(obj) {
-      const libraryPropertyKey = Symbol("lib1");
-      obj[libraryPropertyKey] = 1;
-      return { obj, libraryPropertyKey };
+    const libraryPropertyKey = Symbol("lib1");
+    obj[libraryPropertyKey] = 1;
+    return { obj, libraryPropertyKey };
   }
   function lib2(obj) {
-      let obj = new Object();
-      const libraryPropertyKey = Symbol("lib1");
-      obj[libraryPropertyKey] = 2;
-      return { obj, libraryPropertyKey};
+    let obj = new Object();
+    const libraryPropertyKey = Symbol("lib1");
+    obj[libraryPropertyKey] = 2;
+    return { obj, libraryPropertyKey };
   }
-  
-  let obj = new Object()
+
+  let obj = new Object();
   let libraryPropertyValue = null;
-  
+
   let { obj: lib1Obj, libraryPropertyKey: lib1LibraryPropertyKey } = lib1(obj);
   obj = lib1Obj; // { Symbol(lib1): 1}
   libraryPropertyValue = obj[lib1LibraryPropertyKey]; // 1
-  
+
   let { obj: lib2Obj, libraryPropertyKey: lib2LibraryPropertyKey } = lib2(obj);
   obj = lib2Obj; // { Symbol(lib1): 1, Symbol(lib1): 2}
   libraryPropertyValue = obj[lib2LibraryPropertyKey]; // 2
   // 结果：属性名没有重复，值未被覆盖。
-  
+
   // 结论：
   // 即使不同的包中使用了相同的命名，使用Symbol进行包裹之后也是不同的标识。
   // 通过 [Symbol变量] 的方式可以区分不同库的相同属性名。
   ```
 
 - Symbol的用法
-  
+
   1. 基本用法
-     
+
      - 调用 Symbol()函数时，也可以传入一个字符串参数作为对符号的描述(description)，将来可以通过这个字符串来调试代码。但是，这个字符串参数与符号定义或标识完全无关。
-     
      - 符号没有字面量语法。
-     
      - Symbol()函数不能与 new 关键字一起作为构造函数使用。这样做是为了避免创建符号包装对象。
-  
-  2. 使用全局符号注册表 
-     
+
+  2. 使用全局符号注册表
+
      - Symbol.for()
-       
+
        > 根据字符名称，查询全局符号注册表，对每个字符串键都执行幂等操作。已经创建的Symbol，则获取实例。如果不存在则新建实例到全局注册表。
-       
+
        ```javascript
        let obj = new Object();
        let field = null;
-       
-       field = Symbol.for('fieldSymbol');
-       obj[field] = field; // { Symbol(fieldSymbol): Symbol(fieldSymbol) } 
-       
-       field = Symbol.for('fieldSymbol');
+
+       field = Symbol.for("fieldSymbol");
        obj[field] = field; // { Symbol(fieldSymbol): Symbol(fieldSymbol) }
-       
+
+       field = Symbol.for("fieldSymbol");
+       obj[field] = field; // { Symbol(fieldSymbol): Symbol(fieldSymbol) }
+
        // 获取复用已经在全局符号注册表里存在的符号
        ```
-     
+
      - Symbol.keyFor()
-       
+
        > 根据字符变量。查询全局符号注册表。如果存在Symbol则返回字符名，如果没有则返回undefined。
-       
+
        ```javascript
-       // 
+       //
        let field = null;
        let fieldValue = null;
-       
-       field = Symbol.for('fieldSymbol');
+
+       field = Symbol.for("fieldSymbol");
        fieldValue = Symbol.keyFor(field); // 'fieldSymbol'
-       
-       field = Symbol('fieldSymbol');
+
+       field = Symbol("fieldSymbol");
        fieldValue = Symbol.keyFor(field); // undefined
        ```
+
 3. 使用符号作为属性
-   
+
    作为对象的属性，可以避免属性冲突问题。
-   
+
    ```javascript
    let obj = new Object();
-   
-   let field = 'fieldString';
+
+   let field = "fieldString";
    obj[field] = field; // { fieldString: 'fieldString' }
-   
-   field = 'fieldString'
+
+   field = "fieldString";
    obj[field] = field; // { fieldString: 'fieldString' }
    // 属性名都为fieldString，属性被覆盖。
-   
-   field = Symbol('fieldSymbol')
+
+   field = Symbol("fieldSymbol");
    obj[field] = field; // { fieldString: 'fieldString', Symbol('fieldSymbol'): Symbol('fieldSymbol') }
-   
-   field = Symbol('fieldSymbol')
+
+   field = Symbol("fieldSymbol");
    obj[field] = field; // { fieldString: 'fieldString', Symbol('fieldSymbol'): Symbol('fieldSymbol'), Symbol('fieldSymbol'): Symbol('fieldSymbol')}
    // 属性名都为Symbol('fieldSymbol')，但是实际引用的变量不同，所以认为属性也不同。
    // 可以共存，避免了属性冲突问题。
    ```
 
 4. 常用内置符号(重要)
-   
+
    > - ECMAScript 6 也引入了一批常用内置符号(well-known symbol)，用于暴露语言内部行为，开发者可以直接访问、重写或模拟这些行为。这些内置符号都以 Symbol 工厂函数字符串属性的形式存在。
-   > 
    > - 这些内置符号最重要的用途之一是重新定义它们，从而改变原生结构的行为。(实际大量运用于对象原型函数或者API的设计，比如String.prototype.match()、API Generator)
-   > 
    > - 在提到ECMAScript规范时，经常会引用符号在规范中的名称，前缀为@@。比如， @@iterator 指的就是 Symbol.iterator
-   
+
    1. Symbol.asyncIterator
-   
    2. Symbol.hasInstance
-   
    3. Symbol.isConcatSpreadable
-   
    4. Symbol.iterator
-   
    5. Symbol.match
-   
    6. Symbol.replace
-   
    7. Symbol.search
-   
    8. Symbol.species
-   
    9. Symbol.split
-   
    10. Symbol.toPrimitive
-   
    11. Symbol.toStringTag
-   
    12. Symbol.unscopables
+
 - Object实例的属性和方法
-  
+
   > ECMAScript 中的 Object 也是派生其他对象的基类。Object 类型的所有属性和方法在派生的对象上同样存在。
-  > 
+  >
   > JS的Object类似于JAVA的java.lang.Object。
-  
+
   - constructor
-    
+
     用于创建当前对象的函数
-    
+
     ```javascript
     let obj = new Object(); //constructor == Object()
     ```
-  
+
   - hasOwnProperty(propertyName)
-    
+
     用于判断当前对象实例(不是原型)上是否存在给定的属性。
-    
+
     检查的属性名类型: 必须是字符串(如 o.hasOwnProperty("name"))或符号。
-    
+
     ```javascript
     let obj = new Object();
-    
-    obj.fieldString = 'fieldString';
-    
-    let fieldSymbol = Symbol('field');
+
+    obj.fieldString = "fieldString";
+
+    let fieldSymbol = Symbol("field");
     obj[fieldSymbol] = fieldSymbol;
-    
-    console.log(obj.hasOwnProperty('fieldString')) // true
-    console.log(obj.hasOwnProperty(fieldSymbol)) // true
-    
-    console.log(obj.hasOwnProperty('field')) // false
+
+    console.log(obj.hasOwnProperty("fieldString")); // true
+    console.log(obj.hasOwnProperty(fieldSymbol)); // true
+
+    console.log(obj.hasOwnProperty("field")); // false
     ```
-  
+
   - isPrototypeOf(object)
-    
+
     用于判断当前对象是否为另一个对象的原型
-  
+
   - propertyIsEnumerable(propertyName)
-    
+
     用于判断给定的属性是否可以使用。
-    
+
     检查的属性名类型: 必须是字符串(如 o.hasOwnProperty("name"))。
-  
+
   - toLocaleString()
-    
+
     返回对象的字符串表示，该字符串反映对象所在的本地化执行环境。
-  
+
   - toString()
-    
+
     返回对象的字符串表示。
-  
+
   - valueOf()
-    
+
     返回对象对应的字符串、数值或布尔值表示。通常与 toString()的返回值相同。
 
 ### 数据类型转换规则
 
 > JS是个弱语言类型的语言，简单而言它会自己进行一堆莫名其妙的智能转换。
-> 
+>
 > 而且不同的转换方式下会有不同的转换规则。Oh God
-> 
+>
 > 掌握它的转换规则，避免出现不必要的Bug。
 
 #### 不同类型与Number之间的转换规则
 
 ##### Number()
 
-| 数据类型      | 转换规则                                                                                                                                                                |
-| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Boolean   | true 转换为 1，false 转换为 0                                                                                                                                              |
-| String    | 1. 包含整数：去掉前面0，转换为十进制。2. 包含有效的浮点数：忽略前面0，转换浮点数 3. 在1或者2的基础上，数值前带加减号：加减号保持不变 4. 包含有效的十六进制格式：转换为十六进制对应的十进制整数 5. 空字符串（不包含字符）：返回0 6. 其余情况（转换失败的情况）：返回NaN                  |
-| Number    | 直接返回转换前的值                                                                                                                                                           |
-| Object    | 1. 调用 valueOf()方法，并按照上述规则转换返回的值。2. 若步骤1返回为NaN，则调用 toString()方法，再按照转换字符串的规则转换。比如 Number((new Array([1])).toString()) == 1，但是Number((new Object()).toString()) == NaN |
-| Null      | 直接返回0                                                                                                                                                               |
-| Undefined | 转换失败、直接返回NaN                                                                                                                                                        |
+| 数据类型  | 转换规则                                                                                                                                                                                                                                                               |
+| --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Boolean   | true 转换为 1，false 转换为 0                                                                                                                                                                                                                                          |
+| String    | 1. 包含整数：去掉前面0，转换为十进制。2. 包含有效的浮点数：忽略前面0，转换浮点数 3. 在1或者2的基础上，数值前带加减号：加减号保持不变 4. 包含有效的十六进制格式：转换为十六进制对应的十进制整数 5. 空字符串（不包含字符）：返回0 6. 其余情况（转换失败的情况）：返回NaN |
+| Number    | 直接返回转换前的值                                                                                                                                                                                                                                                     |
+| Object    | 1. 调用 valueOf()方法，并按照上述规则转换返回的值。2. 若步骤1返回为NaN，则调用 toString()方法，再按照转换字符串的规则转换。比如 Number((new Array([1])).toString()) == 1，但是Number((new Object()).toString()) == NaN                                                 |
+| Null      | 直接返回0                                                                                                                                                                                                                                                              |
+| Undefined | 转换失败、直接返回NaN                                                                                                                                                                                                                                                  |
 
 ##### parseInt()
 
@@ -455,26 +439,24 @@
 - 从第一个非空格字符开始转换。如果第一个字符不是数值字符、加号或减号，直接返回NaN
 
 - 继续依次检测每个字符，直到字符串末尾，或碰到非数值字符
-  
+
   - 后续字符是有效的十六进制格式：按十六进制解析成十进制。
-  
   - 如果parseInt()提供了十六进制参数，那么字符串前面的"0x"可以省掉。
-  
   - 其余情况都不进行解析，返回之前已经检测过的值。
 
 ```javascript
-let num1 = parseInt("1234blue");  // 1234
+let num1 = parseInt("1234blue"); // 1234
 let num2 = parseInt(""); // NaN
 let num3 = parseInt("0xA"); // 10，解释为十六进制整数
 let num4 = parseInt(22.5); // 22
 let num5 = parseInt("70"); // 70，解释为十进制值
-let num6 = parseInt("0xf"); // 15，解释为十六进制整数 
+let num6 = parseInt("0xf"); // 15，解释为十六进制整数
 ```
 
 ##### parseFloat()
 
 > 在Number()基础上获取浮点数。
-> 
+>
 > 和parseFloat基本流程类似，区别是不解析十六进制，默认返回直只解析数字部分，而且会对科学记数法进行处理。
 
 - 字符串最前面的空格会被忽略。
@@ -482,7 +464,7 @@ let num6 = parseInt("0xf"); // 15，解释为十六进制整数
 - 从第一个非空格字符开始转换。如果第一个字符不是数值字符、加号或减号，直接返回NaN。
 
 - 解析到字符串末尾或者解析到一个无效的浮点数值字符为止。
-  
+
   - 如果遇到科学计数法也会正常解析。
 
 ```javascript
@@ -498,14 +480,14 @@ let num6 = parseFloat("3.125e7"); // 3.1270000
 
 ##### Boolean()
 
-| 数据类型      | 转换为 true 的值 | 转换为 false 的值 |
-| --------- | ----------- | ------------ |
-| Boolean   | true        | false        |
-| String    | 非空字符串       | ""(空字符串)     |
-| Number    | 非0数字        | 0、NaN        |
-| Object    | 任意派生对象      | N/A(不存在)     |
-| Null      | N/A(不存在)    | null         |
-| Undefined | N/A(不存在)    | undefined    |
+| 数据类型  | 转换为 true 的值 | 转换为 false 的值 |
+| --------- | ---------------- | ----------------- |
+| Boolean   | true             | false             |
+| String    | 非空字符串       | ""(空字符串)      |
+| Number    | 非0数字          | 0、NaN            |
+| Object    | 任意派生对象     | N/A(不存在)       |
+| Null      | N/A(不存在)      | null              |
+| Undefined | N/A(不存在)      | undefined         |
 
 #### 不同类型与String之间的转换规则
 
@@ -513,34 +495,34 @@ let num6 = parseFloat("3.125e7"); // 3.1270000
 
 > 都会直接被转换成字符串，优先级最大。
 
-| 数据类型      | 转换为前的值    | 转换为后的值            |
-| --------- | --------- | ----------------- |
-| Boolean   | true      | "true"            |
-| Number    | 10        | "10"              |
-| Object    | {}        | "[object Object]" |
-| Null      | null      | "null"            |
-| Undefined | undefined | "undefined"       |
+| 数据类型  | 转换为前的值 | 转换为后的值      |
+| --------- | ------------ | ----------------- |
+| Boolean   | true         | "true"            |
+| Number    | 10           | "10"              |
+| Object    | {}           | "[object Object]" |
+| Null      | null         | "null"            |
+| Undefined | undefined    | "undefined"       |
 
 ### 操作符
 
-| 操作符类型 | 操作符说明                                                                                |
-| ----- | ------------------------------------------------------------------------------------ |
-| 一元操作符 | ++、--、= +、= -                                                                        |
-| 位操作符  | ~(按位非)、&(按位与)、\|(按位或)、^(按位异或)、\<\<(有符号左移)、>>(有符号右移)、\<\<\<(无符号左移)、>>>(无符号右移)         |
-| 布尔操作符 | !(逻辑非)、&&(逻辑与)、\|                                                                    |
-| 乘性操作符 | *、/、%                                                                                |
-| 指数操作符 | **=(指数运算 == Math.pow())                                                              |
-| 加性操作符 | +、-                                                                                  |
-| 关系操作符 | 小于(\<)、大于(>)、小于等于(\<=)、大于等于(>=)                                                      |
-| 相等操作符 | ==(等于)、!=(不等于)、===(全等于)、!==(不全等)                                                     |
-| 条件操作符 | variable = boolean_expression ? true_value : false_value;                            |
-| 赋值操作符 | 乘后赋值(*=)、除后赋值(/=)、取模后赋值(%=)、加后赋值(+=)、减后赋值(-=)、左移后赋值(\<\<=)、右移后赋值(>>=)、无符号右移后赋值(>>>=) |
-| 逗号操作符 | ,                                                                                    |
+| 操作符类型 | 操作符说明                                                                                                                          |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| 一元操作符 | ++、--、= +、= -                                                                                                                    |
+| 位操作符   | ~(按位非)、&(按位与)、\|(按位或)、^(按位异或)、\<\<(有符号左移)、>>(有符号右移)、\<\<\<(无符号左移)、>>>(无符号右移)                |
+| 布尔操作符 | !(逻辑非)、&&(逻辑与)、\|                                                                                                           |
+| 乘性操作符 | \*、/、%                                                                                                                            |
+| 指数操作符 | \*\*=(指数运算 == Math.pow())                                                                                                       |
+| 加性操作符 | +、-                                                                                                                                |
+| 关系操作符 | 小于(\<)、大于(>)、小于等于(\<=)、大于等于(>=)                                                                                      |
+| 相等操作符 | ==(等于)、!=(不等于)、===(全等于)、!==(不全等)                                                                                      |
+| 条件操作符 | variable = boolean_expression ? true_value : false_value;                                                                           |
+| 赋值操作符 | 乘后赋值(\*=)、除后赋值(/=)、取模后赋值(%=)、加后赋值(+=)、减后赋值(-=)、左移后赋值(\<\<=)、右移后赋值(>>=)、无符号右移后赋值(>>>=) |
+| 逗号操作符 | ,                                                                                                                                   |
 
 ### 操作符转换规则
 
->  JS中，参与操作符的变量会被进行一波不太智能的智能转换。
-> 
+> JS中，参与操作符的变量会被进行一波不太智能的智能转换。
+>
 > 需要熟悉一下规则，然后平常使用时尽量按照强语言类型的习惯去进行类型和值的比较。
 
 ##### 一元操作符转换规则
@@ -559,26 +541,24 @@ let num6 = parseFloat("3.125e7"); // 3.1270000
 
 - 特殊情况的返回规则
 
-| 情况说明 \ 操作符               | *                      | /                      | %   |
-| ------------------------ | ---------------------- | ---------------------- | --- |
-| 任一操作数是 NaN               | NaN                    | NaN                    | NaN |
-| Infinity [操作符] Infinity  | Infinity               | NaN                    | NaN |
-| Infinity [操作符] 0         | NaN                    | +Infinity or -Infinity | NaN |
+| 情况说明 \ 操作符                 | \*                     | /                      | %   |
+| --------------------------------- | ---------------------- | ---------------------- | --- |
+| 任一操作数是 NaN                  | NaN                    | NaN                    | NaN |
+| Infinity [操作符] Infinity        | Infinity               | NaN                    | NaN |
+| Infinity [操作符] 0               | NaN                    | +Infinity or -Infinity | NaN |
 | Infinity [操作符] 非 0 的有限数值 | +Infinity or -Infinity | +Infinity or -Infinity | NaN |
-| 0 [操作符] 0                | 0                      | NaN                    | NaN |
-| 非0的有限数 [操作符] 0           | 0                      | +Infinity or -Infinity | NaN |
-| 0 [操作符] 非0的有限数           | 0                      | 0                      | 0   |
+| 0 [操作符] 0                      | 0                      | NaN                    | NaN |
+| 非0的有限数 [操作符] 0            | 0                      | +Infinity or -Infinity | NaN |
+| 0 [操作符] 非0的有限数            | 0                      | 0                      | 0   |
 
 #### 加性操作符转换规则
 
 ##### 加法操作符
 
 - 存在Infinity的情况
-  
+
   - 主要看正负符号的操作结果变化
-  
   - 正负符号操作后抵消后，返回NaN。
-  
   - 符号正负操作后为多倍的正或者负，那么直接返回对应的+Infinity或者-Infinity
 
 - 如果只有一个操作数是字符串，则将另一个操作数转换为字符串，再将两个字符串拼接在一起。
@@ -588,11 +568,9 @@ let num6 = parseFloat("3.125e7"); // 3.1270000
 ##### 减法操作符
 
 - 存在Infinity的情况
-  
+
   - 主要看正负符号的操作结果变化
-  
   - 正负符号操作后抵消后，返回NaN。
-  
   - 符号正负操作后为多倍的正或者负，那么直接返回对应的+Infinity或者-Infinity
 
 - 如果有任一操作数是字符串、布尔值、null 或 undefined，则先在后台使用 Number()将其转换为数值，然后再根据前面的规则执行数学运算。如果转换结果是 NaN，则减法计算的结果是NaN。
@@ -624,13 +602,10 @@ let num6 = parseFloat("3.125e7"); // 3.1270000
 - 如果一个操作数是对象，另一个操作数不是，则调用对象的 valueOf()方法取得其原始值，再根据前面的规则进行比较。
 
 - 优先级最高的规则
-  
+
   - null 和 undefined 相等
-  
   - null 和 undefined 不能转换为其他类型的值再进行比较
-  
   - 如果有任一操作数是 NaN，则相等操作符返回 false，不相等操作符返回 true。因为按照规则，NaN 不等于 NaN。
-  
   - 如果两个操作数都是对象，则比较它们是不是同一个对象。如果两个操作数都指向同一个对象则相等操作符返回 true。
 
 ##### 全等和不全等
@@ -652,28 +627,27 @@ let num6 = parseFloat("3.125e7"); // 3.1270000
 #### 值存储方式解析
 
 - 原始值
-  
+
   - 值存储于栈内存。通过变量可以直接访问。
 
 - 引用值
-  
+
   - 值存储于堆内存，引用指针存储于栈内存。通过变量保存的是引用指针，通过引用指针获取堆内存中的具体的值。
 
 #### 值传递方式解析
 
 - 按值传递
-  
+
   - 每次变量进行赋值传递、作为参数传递时都是复制了一份该变量的值来赋值。
-  
   - 变量可能原始值、也可能是引用值。所以当变量是作为引用值进行传递的时候只是复制一个引用指针，而不是对以的值。编码时需要注意。
-    
+
     ```javascript
     // 执行addField函数之后修改了对象的属性。
     let obj = new Object();
     function addField(obj) {
-        obj.field = 'field';
+      obj.field = "field";
     }
-    
+
     console.log(JSON.stringify(obj)); // {}
     addField(obj);
     console.log(JSON.stringify(obj)); // {"field":"field"}
@@ -682,216 +656,232 @@ let num6 = parseFloat("3.125e7"); // 3.1270000
 #### 判断数据类型
 
 - typeof
-  
+
   - 精准判断原始类型为具体的类型。
-  
   - 笼统判断引用类型为object。
-  
+
   ```javascript
-  console.log(typeof undefined) // undefined
-  console.log(typeof '1') // string
-  console.log(typeof 1) // number
-  console.log(typeof false) // boolean
-  console.log(typeof Symbol()) // symbol
-  console.log(typeof null) // object 
-  console.log(typeof new Object()) // object 
-  console.log(typeof function(){}) // function 
+  console.log(typeof undefined); // undefined
+  console.log(typeof "1"); // string
+  console.log(typeof 1); // number
+  console.log(typeof false); // boolean
+  console.log(typeof Symbol()); // symbol
+  console.log(typeof null); // object
+  console.log(typeof new Object()); // object
+  console.log(typeof function () {}); // function
   ```
 
 - instanceof
-  
+
   > result = variable instanceof constructor
-  > 
+  >
   > 变量是给定引用类型(由其原型链决定，将在第 8 章详细介绍)的实例，则 instanceof 操作符返回 true。
 
 > 实现原理：
-> 
+>
 > 沿着原型链，在constructor属性上寻找是否存在相符合引用类型的类型。
 
 > 补充
-> 
+>
 > 默认情况下，所有原型对象自动获得一个名为constructor的属性，指回与之关联的构造函数。
-> 
+>
 > 如前所述，构造函数有一个 prototype 属性引用其原型对象，而这个原型对象也有一个constructor 属性，引用这个构造函数，换句话说，两者循环引用:
-> 
+>
 > 《JavaScript高级程序设计(第4版)》P226
 
 - 不能判断原始类型。
 
 - 精准判断对象的原型链上是否存在引用数据类型。
-  
+
   ```javascript
   // console.log(undefined instanceof undefined) // TypeError: Right-hand side of 'instanceof' is not an object
-  console.log('1' instanceof String) // false
-  console.log(1 instanceof Number) // false
-  console.log(false instanceof Boolean) // false
-  console.log(Symbol() instanceof Symbol) // flase
+  console.log("1" instanceof String); // false
+  console.log(1 instanceof Number); // false
+  console.log(false instanceof Boolean); // false
+  console.log(Symbol() instanceof Symbol); // flase
   // console.log(null instanceof null) // TypeError: Right-hand side of 'instanceof' is not an object
-  console.log(new Object() instanceof Object) // true
-  console.log(function(){} instanceof Function) // true
-  
-  const Person = function(id) {
+  console.log(new Object() instanceof Object); // true
+  console.log(function () {} instanceof Function); // true
+
+  const Person = function (id) {
     this.id = id;
   };
   const person = new Person(1);
-  console.log(person instanceof Object) // true
-  console.log(person instanceof Person) // true
-  console.log(person instanceof Function) // false
-  console.log(Person instanceof Function) // true
+  console.log(person instanceof Object); // true
+  console.log(person instanceof Person); // true
+  console.log(person instanceof Function); // false
+  console.log(Person instanceof Function); // true
   ```
 
 - Object.prototype.toString.call()
-  
+
   > 实现原理：
-  > 
+  >
   > 使用 Object 对象的原型方法 toString 来打印对象的默认字符串描述。从而用于对象类型的判断。
-  
+
   - 精准判断原始类型。
-  
   - 精准判断对象的引用类型。但是无法判断其原型链上的引用类型。
-  
+
   ```javascript
-  console.log(Object.prototype.toString.call(undefined)) // [object Undefined]
-  console.log(Object.prototype.toString.call('1')) // [object String]
-  console.log(Object.prototype.toString.call(1)) // [object Number]
-  console.log(Object.prototype.toString.call(false)) // [object Boolean]
-  console.log(Object.prototype.toString.call(Symbol())) // [object Symbol]
-  console.log(Object.prototype.toString.call(null)) // [object Null]
-  console.log(Object.prototype.toString.call(new Object())) // [object Object]
-  console.log(Object.prototype.toString.call(new Array())) // [object Array]
-  console.log(Object.prototype.toString.call(function(){})) // [object Function]
-  
-  const Person = function(id) {
-      this.id = id;
+  console.log(Object.prototype.toString.call(undefined)); // [object Undefined]
+  console.log(Object.prototype.toString.call("1")); // [object String]
+  console.log(Object.prototype.toString.call(1)); // [object Number]
+  console.log(Object.prototype.toString.call(false)); // [object Boolean]
+  console.log(Object.prototype.toString.call(Symbol())); // [object Symbol]
+  console.log(Object.prototype.toString.call(null)); // [object Null]
+  console.log(Object.prototype.toString.call(new Object())); // [object Object]
+  console.log(Object.prototype.toString.call(new Array())); // [object Array]
+  console.log(Object.prototype.toString.call(function () {})); // [object Function]
+
+  const Person = function (id) {
+    this.id = id;
   };
   const person = new Person(1);
-  console.log(Object.prototype.toString.call(person)) // [object Object]
-  console.log(Object.prototype.toString.call(Person)) // [object Function]
+  console.log(Object.prototype.toString.call(person)); // [object Object]
+  console.log(Object.prototype.toString.call(Person)); // [object Function]
   ```
+
 #### 数据判空的技巧
+
 - [JavaScript 判断空对象、空数组的方法](https://cloud.tencent.com/developer/article/1743491)
 
 ##### 步骤总结
+
 1. 首先是需要进行类型的判断
-    - 因为不同类型使用相同判空方式可能会因为属性不存在出现异常
-    - 常见判空中需要处理的类型(类型判断)
-        > 通常可以使用 `typeof`、`instanceof`、`Object.prototype.toString.call()`、 `isPrototypeOf`这四种方式进行原始类型、引用类型的类型判断。不过原始类型的类型判断可以进行简化，在判空处理中一起处理掉。看第2步骤中的类型判空部分即可。
-        - 字符串
-        - undefined、null
-        - 数组
-        - 对象
+
+   - 因为不同类型使用相同判空方式可能会因为属性不存在出现异常
+   - 常见判空中需要处理的类型(类型判断)
+     > 通常可以使用 `typeof`、`instanceof`、`Object.prototype.toString.call()`、 `isPrototypeOf`这四种方式进行原始类型、引用类型的类型判断。不过原始类型的类型判断可以进行简化，在判空处理中一起处理掉。看第2步骤中的类型判空部分即可。
+     - 字符串
+     - undefined、null
+     - 数组
+     - 对象
 
 2. 其次是在不同类型判断下进行针对性的判空
-    - 常见判空中需要处理的类型(类型判空)
-        - 字符串
-            ```javascript
-            function isString(value) {
-                // 1. 判断是否是空字符串
-                if (value === "") return true;
-                return false;
-            }
-            ```
-        - undefined、null
-            ```javascript
-            function isUndefinedOrNull(value) {
-                // 1. 判断是否是 undefined 和 null
-                // 通过 !value 快捷判断 undefined 和 null，然后同时增加其他非空情况(0、"")的排除，因为 !0、!"" 也为true。
-                if (!value && value !== 0 && value !== "") return true; 
-                return false;
-            }
-            ```
-        - 数组
-            ```javascript
-            function isEmptyArray(value) {
-                // 1. 判断是否是 空数组 (isPrototypeOf()方式) 
-                // 判断是否是数组 Array.prototype.isPrototypeOf(value)  
-                // 判断是否是空数组 查看数组长度 value.length === 0 
-                if (Array.prototype.isPrototypeOf(value) && value.length === 0 ) return true;
 
-                // 2. 判断是否是 空数组(JSON.stringify()方式)
-                // if (JSON.stringify(item) === '[]') return true;
-                return false;
-            }
-            ```
-        - 对象
-        ```javascript
-        function isEmptyObject(value) {
-            // 1. 判断是否是 空对象 (isPrototypeOf()方式) 
-            // 判断是否是对象 Object.prototype.isPrototypeOf(value)  
-            // 判断是否是空对象 遍历属性数量 Object.keys(value).length === 0
-            if (Object.prototype.isPrototypeOf(value) && Object.keys(value).length === 0 ) return true;
+   - 常见判空中需要处理的类型(类型判空)
 
-            // 2. 判断是否是 空数组(JSON.stringify()方式)
-            // if (JSON.stringify(item) === '{}') return true;
-            return false;
-        }
-        ```
+     - 字符串
+       ```javascript
+       function isString(value) {
+         // 1. 判断是否是空字符串
+         if (value === "") return true;
+         return false;
+       }
+       ```
+     - undefined、null
+       ```javascript
+       function isUndefinedOrNull(value) {
+         // 1. 判断是否是 undefined 和 null
+         // 通过 !value 快捷判断 undefined 和 null，然后同时增加其他非空情况(0、"")的排除，因为 !0、!"" 也为true。
+         if (!value && value !== 0 && value !== "") return true;
+         return false;
+       }
+       ```
+     - 数组
+
+       ```javascript
+       function isEmptyArray(value) {
+         // 1. 判断是否是 空数组 (isPrototypeOf()方式)
+         // 判断是否是数组 Array.prototype.isPrototypeOf(value)
+         // 判断是否是空数组 查看数组长度 value.length === 0
+         if (Array.prototype.isPrototypeOf(value) && value.length === 0)
+           return true;
+
+         // 2. 判断是否是 空数组(JSON.stringify()方式)
+         // if (JSON.stringify(item) === '[]') return true;
+         return false;
+       }
+       ```
+
+     - 对象
+
+     ```javascript
+     function isEmptyObject(value) {
+       // 1. 判断是否是 空对象 (isPrototypeOf()方式)
+       // 判断是否是对象 Object.prototype.isPrototypeOf(value)
+       // 判断是否是空对象 遍历属性数量 Object.keys(value).length === 0
+       if (
+         Object.prototype.isPrototypeOf(value) &&
+         Object.keys(value).length === 0
+       )
+         return true;
+
+       // 2. 判断是否是 空数组(JSON.stringify()方式)
+       // if (JSON.stringify(item) === '{}') return true;
+       return false;
+     }
+     ```
 
 ##### 判空综合案例
+
 ```javascript
 function isEmpty(value) {
-    // 判断 空字符串
-    if (value === "") return true;
+  // 判断 空字符串
+  if (value === "") return true;
 
-    // 判断 undefined 和 null   
-    // 通过 !value 快捷判断 undefined 和 null，然后同时增加其他非空情况(0、"")的排除，因为 !0、!"" 也为true。
-    if (!value && value !== 0 && value !== "") return true;
+  // 判断 undefined 和 null
+  // 通过 !value 快捷判断 undefined 和 null，然后同时增加其他非空情况(0、"")的排除，因为 !0、!"" 也为true。
+  if (!value && value !== 0 && value !== "") return true;
 
-    // 判断 空数组
-    // 空数组要先于空对象校验，因为Object也是基于Array原型链上，也会进入类型判断通过进行校验。
-    if (Array.prototype.isPrototypeOf(value) && value.length === 0 ) return true;
-    
-    // 判断空对象
-    if (Object.prototype.isPrototypeOf(value) && Object.keys(value).length === 0 ) return true;
-    return false;
+  // 判断 空数组
+  // 空数组要先于空对象校验，因为Object也是基于Array原型链上，也会进入类型判断通过进行校验。
+  if (Array.prototype.isPrototypeOf(value) && value.length === 0) return true;
+
+  // 判断空对象
+  if (Object.prototype.isPrototypeOf(value) && Object.keys(value).length === 0)
+    return true;
+  return false;
 }
 ```
 
 #### instanceof 和 Object.prototype.isPrototypeOf() 区别(处理继承效果的判断)
+
 - [instanceof](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/instanceof)
 - [Object.prototype.isPrototypeOf()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/isPrototypeOf)
 - [Object.create()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/create)
 - [JavaScript isPrototypeOf vs instanceof usage](https://stackoverflow.com/questions/18343545/javascript-isprototypeof-vs-instanceof-usage)
 
 ##### 分析定义
+
 - `instanceof` 运算符用于检测`构造函数`的 `prototype` 属性是否出现在某个实例对象的原型链上
-    > 强调的是检查`构造函数`的`prototype`。
-    > 
-    > 在函数原型基础上有这样一个引用关系，`构造函数.prototype` -> `原型对象`。所以其实可以理解是在原型链基础上进行查找和比对目标类型是否存在。但是前提是通过`构造函数`去查找`原型对象`。
-    >
-    > 但是JS在实际实现继承效果上存在历史问题，有多种实现方式，虽然基本都是基于原型链来实现的。但是存在基于对象的原型实现继承效果，而对象就不存在`构造函数`，比如`Object.create()`实现的继承效果。
-    >
-    > 在这种情况下instanceof是无法作为判断根据的，甚至会报错。
+  > 强调的是检查`构造函数`的`prototype`。
+  >
+  > 在函数原型基础上有这样一个引用关系，`构造函数.prototype` -> `原型对象`。所以其实可以理解是在原型链基础上进行查找和比对目标类型是否存在。但是前提是通过`构造函数`去查找`原型对象`。
+  >
+  > 但是JS在实际实现继承效果上存在历史问题，有多种实现方式，虽然基本都是基于原型链来实现的。但是存在基于对象的原型实现继承效果，而对象就不存在`构造函数`，比如`Object.create()`实现的继承效果。
+  >
+  > 在这种情况下instanceof是无法作为判断根据的，甚至会报错。
 - `isPrototypeOf()` 方法用于检查一个对象是否存在于另一个对象的原型链中。
-    > 强调的是直接基于`原型链`去进行检查。
-    >
-    > 相对于`instanceof` 在JS中更加通用。可以判断处理`Object.create()`实现的对象继承效果。
+  > 强调的是直接基于`原型链`去进行检查。
+  >
+  > 相对于`instanceof` 在JS中更加通用。可以判断处理`Object.create()`实现的对象继承效果。
 
 ##### 总结区别
+
 - 首先是确认`instanceof`和`isPrototypeOf()`的作用目的。两者的目的都是为了判断某个实例是否有资格使用其父辈层次的对象、函数、类型的一些属性和函数。
 - 其次由于JS实现继承效果的方式多样，可以使用对象、函数、类(Class)，而最终都是基于原型链实现一个继承效果。在实际判断的时候要选择通用的方式，所以推荐使用`isPrototypeOf()`
 - 补充一下，这里指的继承效果只是指父类层次属性和方法可以通过一些方式让子类实例进行使用，并不是严谨的继承实现(比如Java Class)。在JS中通过`class`实现的继承效果相对是最严谨的。
 
 ##### 对象实现继承效果实例
+
 ```javascript
 const superProto = {
-    // some super properties
-    isHuman: false,
-    printIntroduction: function () {
-      console.log(`My name is ${this.name}. Am I human? ${this.isHuman}`);
-    },
-}
+  // some super properties
+  isHuman: false,
+  printIntroduction: function () {
+    console.log(`My name is ${this.name}. Am I human? ${this.isHuman}`);
+  },
+};
 
 var subProto = Object.create(superProto);
 subProto.someProp = 5;
 
 var sub = Object.create(subProto);
 
-console.log(superProto.isPrototypeOf(sub));  // true
-console.log(sub instanceof superProto);      // throw Error
+console.log(superProto.isPrototypeOf(sub)); // true
+console.log(sub instanceof superProto); // throw Error
 ```
-
-
 
 ### 执行上下文和作用域
 
@@ -900,9 +890,8 @@ console.log(sub instanceof superProto);      // throw Error
 > 熟悉JS执行基本流程，了解作用域、作用域链、上下文等概念在其中的作用并帮助深入理解知识点。
 
 > Docs
-> 
+>
 > - [JS中什么是解析和编译？](https://blog.stackademic.com/what-is-parsing-and-compiling-in-js-1ca97ae346cb)
-> 
 > - [执行上下文、作用域链和 JavaScript 内部结构](https://medium.com/@happymishra66/execution-context-in-javascript-319dd72e8e2c)
 
 ##### 解析
@@ -912,15 +901,15 @@ console.log(sub instanceof superProto);      // throw Error
 ##### 编译
 
 - 编译
-  
+
   在执行之前将整个代码转换为可移植的机器代码。执行可以在编译后发生。
 
 - 解释
-  
+
   它在执行之前将我们的代码逐行翻译成机器代码。它们同时发生。一开始翻译速度很快。
 
 - 即时(JIT)编译
-  
+
   为了充分利用编译和解释，JIT 将代码立即翻译成机器代码，然后立即执行。因此，这种方式不存在可移植文件，并且在编译后执行。
 
 ##### 执行
@@ -952,11 +941,10 @@ JS引擎执行执行上下文位于执行上下文堆栈顶部的函数。一旦
 ##### 类型
 
 - 全局执行上下文( GEC)
-  
+
   > 不同宿主环境，全局上下文不同
-  > 
+  >
   > - 浏览器环境：全局上下文关联的变量对象是window
-  > 
   > - Node环境：全局上下文关联的变量对象时global
 
 - 函数执行上下文（FEC）
@@ -966,26 +954,26 @@ JS引擎执行执行上下文位于执行上下文堆栈顶部的函数。一旦
 ##### 调用执行上下文
 
 > 每次调用过程分为创建和执行两个阶段。
-> 
+>
 > JS 引擎发现函数调用，它会为该函数创建一个函数执行上下文，并将其推入执行上下文堆栈的顶部。
 
 ###### 创建阶段
 
 - 创建对象变量VO (Activation对象或Variable对象)
-  
+
   > 这个对象变量的作用是实现控制函数和变量可以访问什么数据以及定义它们行为。
-  > 
+  >
   > 上下文中定义的所有变量和函数都存在于这个对象，虽然无法通过代码访问变量对象，但后台处理数据会用到它。
 
 > 对象变量有两种情况
-> 
+>
 > 变量：变量对象(variable object)
 > 函数：活动对象(activation object) 作为变量对象，只包含arguments属性。
 
 - 创建作用域链
 
 - 确定 this 的值
-  
+
   > 初步处理时，this总是指向当前函数所在的执行上下文。
 
 ###### 执行阶段
@@ -995,7 +983,7 @@ JS引擎执行执行上下文位于执行上下文堆栈顶部的函数。一旦
 #### 作用域
 
 > Docs
-> 
+>
 > - [从 JavaScript 作用域说开去]([从 JavaScript 作用域说开去](https://halfrost.com/javascript_scope/))
 
 ##### 定义
@@ -1013,38 +1001,38 @@ JS引擎执行执行上下文位于执行上下文堆栈顶部的函数。一旦
 - 全局作用域
 
 - 函数作用域
-  
+
   指属于这个函数的全部变量都可以在整个函数的范围内使用及复用。
 
 - 块级作用域
-  
+
   一对包含花括号{}界定。
-  
+
   除了 `let` 和 `const` 关键字以外，还有一个具有块级作用域的概念是使用 `class` 关键字来声明类。
 
 ##### 函数作用域和块级作用域的区别
 
 ```javascript
-var field1 = 'fieldValue1-1';
+var field1 = "fieldValue1-1";
 function testVar() {
-    console.log(field1) // undefined
-    if (true) {
-        var field1 = 'fieldValue1-2';
-        console.log(field1) // fieldValue1-2
-    }
-    console.log(field1) // fieldValue1-2
+  console.log(field1); // undefined
+  if (true) {
+    var field1 = "fieldValue1-2";
+    console.log(field1); // fieldValue1-2
+  }
+  console.log(field1); // fieldValue1-2
 }
 testVar();
 // var声明的变量为函数作用域。函数作用域下，存在变量提升问题，导致第一次打印field1时打印的if判断层里的field1覆盖的值，第二次获取的是被修改的值。
 
-var field2 = 'fieldValue2-1';
+var field2 = "fieldValue2-1";
 function testLet() {
-    console.log(field2) // fieldValue2-1
-    if (true) {
-        let field2 = 'fieldValue2-2'; // fieldValue2-2
-        console.log(field2)
-    }
-    console.log(field2) // fieldValue2-1
+  console.log(field2); // fieldValue2-1
+  if (true) {
+    let field2 = "fieldValue2-2"; // fieldValue2-2
+    console.log(field2);
+  }
+  console.log(field2); // fieldValue2-1
 }
 testLet();
 // let声明的变量为块级作用域。块级作用域下，第一次打印field2时没有被覆盖，第二次也正常。
@@ -1131,11 +1119,11 @@ testLet();
 ###### 处理逻辑
 
 1. 标记处理
-   
+
    垃圾回收程序运行的时候，会标记内存中存储的所有变量，将所有在上下文中的变量，以及被在上下文中的变量引用的变量的标记去掉。在此之后再被加上标记 的变量就是待删除的了。
 
 2. 内存清理
-   
+
    在这一次垃圾回收阶段，销毁带标记的所有值并收回它们的内存。
 
 ##### 引用计数
@@ -1152,7 +1140,7 @@ let obj = new Object(); // obj是变量、new Object()是值。所以值被增�
 
 1. 被引用一次，被引用次数 +1
 
-2. 被其他值覆盖引用一次，被引用次数  -1
+2. 被其他值覆盖引用一次，被引用次数 -1
 
 3. 垃圾回收阶段，被引用次数为 0，则进行内存回收。
 
@@ -1165,16 +1153,16 @@ let obj = new Object(); // obj是变量、new Object()是值。所以值被增�
 
 ```javascript
 function test() {
-    let objA = new Object(); // new Object()被引用次数+1 = 1
-    let objB = new Array(); // new Array()被引用次数+1 = 1 
+  let objA = new Object(); // new Object()被引用次数+1 = 1
+  let objB = new Array(); // new Array()被引用次数+1 = 1
 
-    objA.toB = objB; // new Object()被引用次数+1 = 2
-    objB.toA = objA; // new Array()被引用次数+1 = 2
+  objA.toB = objB; // new Object()被引用次数+1 = 2
+  objB.toA = objA; // new Array()被引用次数+1 = 2
 
-    objA = null; // new Object()被引用次数-1 = 1
-    objB = null; // new Array()被引用次数-1 = 1
+  objA = null; // new Object()被引用次数-1 = 1
+  objB = null; // new Array()被引用次数-1 = 1
 
-    // 被引用次数 != 0，无法被释放
+  // 被引用次数 != 0，无法被释放
 }
 ```
 
@@ -1191,29 +1179,27 @@ function test() {
 - 通过const和let声明提升性能
 
 - 隐藏类和删除操作
-  
+
   > 运行期间，V8 会将创建的对象与隐藏类关联起来，以跟踪它们的属性特征。能够共享相同隐藏类的对象性能会更好。
-  > 
+  >
   > 所以避免对隐藏类进行动态属性赋值，也是避免影响到实例进行不必要的操作来影响性能。
-  
+
   - 避免 JavaScript 的“先创建再补充”(ready-fire-aim)式的动态属性赋值，并在构造函数中一次性声明所有属性。
-  
   - 删除操作delete，可以修改实例的属性，从而避免影响到隐藏类。
 
 - 内存泄漏
-  
+
   > 内存泄漏大部分是由不合理的引用，而闭包和定时器可以引用外部变量的，但是又有不释放作用域的风险特性，是导致极容易出现内存泄漏的情况的。
-  
+
   - 定时器
-  
   - 闭包
 
 - 静态分配与对象池
-  
+
   > 一个策略是使用对象池。在初始化的某一时刻，可以创建一个对象池，用来管理一组可回收的对象。
-  > 
+  >
   > 应用程序可以向这个对象池请求一个对象、设置其属性、使用它，然后在操作完成后再把它还给对象池。
-  > 
+  >
   > 由于没发生对象初始化，垃圾回收探测就不会发现有对象更替，因此垃圾回收程序就不会那么频繁地运行。
 
 ##### 常见内存问题
@@ -1245,14 +1231,14 @@ function test() {
 ##### 传统迭代方式
 
 - 计数迭代
-  
+
   > 数据结构类型固定。
   > 数据结构访问数据方式固定。
-  
+
   ```javascript
-  let array = [1, 2, 3]
+  let array = [1, 2, 3];
   for (let i = 0; i < array.length; i++) {
-      console.log(array[i]); // a b c
+    console.log(array[i]); // a b c
   }
   ```
 
@@ -1265,134 +1251,118 @@ function test() {
 #### 迭代器模式
 
 > (ECMSAcript语境)下的实现方案
-> 
+>
 > 即可以把有些结构称为"可迭代对象"(iterable)，因为它们实现了正式的Iterable接口。而且可以通过迭代器Iterator消费。
-> 
+>
 > 迭代器无须了解与其关联的可迭代对象的数据结构，只需要知道如何取得连续的值。
 
 ##### 迭代器模式
 
 1. 可迭代对象
-   
+
    > 实现Iterable接口(可迭代协议)的数据结构。
-   
+
    - 支持迭代的自我识别能力。
-     
+
      > 具备了自我判断是否可以进行迭代的能力。
-   
+
    - 创建实现Iterator接口的对象的能力。
-     
+
      > 工厂方法生成迭代器。
 
 2. 迭代器
-   
+
    > 实现Iterator接口的结构。该结构允许消费(consume)数据结构。
-   
+
    - 迭代器(iterator)是按需创建的一次性对象，每个迭代器都会关联一个可迭代对象。能暴露关联可迭代对象的API。
 
 ##### JS实现迭代器模式
 
 - 实现Iterable接口(可迭代协议)的数据结构方案
-  
+
   - 暴露作为默认迭代器的属性。使用特殊的 Symbol.iterator 作为键。
-  
   - 该默认迭代器引用一个迭代器工厂函数，返回一个新的迭代器。
-    
+
     - 迭代器属性: next()、(可选)return()
-    
     - 迭代器next()返回规则
-      
+
       ```javascript
       // 未迭代完成 { done: false, value: value }
-      
+
       // 迭代结束 { done: true,value: undefined }
       ```
 
 - 实现Iterable接口的内置类型
-  
+
   - 字符串
-  
   - 数组
-  
   - 映射
-  
   - 集合
-  
   - arguments对象
-  
   - NodeList等DOM集合类型
 
 - 接收可迭代对象的原生语言特性
-  
+
   > 不需要显式调用这个工厂函数来生成迭代器，实现可迭代协议的所有类型都会自动兼容接收可迭代对象的任何语言特性。
-  > 
+  >
   > 所以接收的对象是可迭代对象而不是迭代器。
-  > 
+  >
   > 发现中断迭代后可以关闭迭代器。下次迭代重新开始。
-  > 
+  >
   > 实际也可以接收迭代器进行迭代，但是发现无法进行关闭迭代器。
-  
+
   - for-of循环
-  
   - 数组解构
-  
   - 扩展操作符
-  
   - Array.from()
-  
   - 创建集合
-  
   - 创建映射
-  
   - Promise.all()接收由期约组成的可迭代对象
-  
   - Promise.race()接收由期约组成的可迭代对象
-  
-  - yield*操作符，在生成器中使用
+  - yield\*操作符，在生成器中使用
 
 ##### 自定义迭代器
 
 > 按照JS实现内置迭代器的方式
-> 
+>
 > 1. 设置Symbol.iterator属性作为工厂函数返回一个迭代器
-> 
 > 2. 使用接收可迭代对象的原生语言特性进行迭代可迭代对象。
 
 ```javascript
 class Person {
-    constructor(name, age) {
-        this.name = name;
-        this.age = age;
-        this.keyMap = new Map([
-            ['name', ''],
-            ['age', 0]
-        ]);
-        this.keyMap.set('name', name);
-        this.keyMap.set('age', age);
-    }
-    // 工厂函数 - 返回迭代器
-    [Symbol.iterator]() {
-        // 迭代器设计具体逻辑，采用Map的迭代器进行Person实例的key-value遍历。
-        let iterator = this.keyMap.entries();
-        return {
-            next() {
-                let mapItem = iterator.next();
-                if (mapItem.done) {
-                    return { done: true, value: undefined } 
-                } else {
-                    return { done: false, value: mapItem }
-                }
-            },
-            return() {
-                return { done: true, value: undefined }
-            }
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+    this.keyMap = new Map([
+      ["name", ""],
+      ["age", 0],
+    ]);
+    this.keyMap.set("name", name);
+    this.keyMap.set("age", age);
+  }
+  // 工厂函数 - 返回迭代器
+  [Symbol.iterator]() {
+    // 迭代器设计具体逻辑，采用Map的迭代器进行Person实例的key-value遍历。
+    let iterator = this.keyMap.entries();
+    return {
+      next() {
+        let mapItem = iterator.next();
+        if (mapItem.done) {
+          return { done: true, value: undefined };
+        } else {
+          return { done: false, value: mapItem };
         }
-    }
+      },
+      return() {
+        return { done: true, value: undefined };
+      },
+    };
+  }
 }
 
-let person = new Person('zhangsan', 21);
+let person = new Person("zhangsan", 21);
 for (const iterator of person) {
-    console.log(iterator);
+  console.log(iterator);
 }
 
 // console
@@ -1423,23 +1393,23 @@ for (const iterator of person) {
 
 ```javascript
 let map = new Map([
-    [1, 1],
-    [2, 2],
-    [3, 3]
-])
-let iteratorMap = map[Symbol.iterator]()
+  [1, 1],
+  [2, 2],
+  [3, 3],
+]);
+let iteratorMap = map[Symbol.iterator]();
 
 let i = 1;
 for (const iterator of iteratorMap) {
-    console.log('iteratorMap 1', iterator);
-    if (i == 2) {
-        break;
-    }
-    i++;
+  console.log("iteratorMap 1", iterator);
+  if (i == 2) {
+    break;
+  }
+  i++;
 }
 
 for (const iterator of iteratorMap) {
-    console.log('iteratorMap 2', iterator);
+  console.log("iteratorMap 2", iterator);
 }
 
 // console 迭代迭代器，出现迭代器未关闭导致继续迭代的情况。
@@ -1449,15 +1419,15 @@ for (const iterator of iteratorMap) {
 
 i = 1;
 for (const iterator of map) {
-    console.log('map 1', iterator);
-    if (i == 2) {
-        break;
-    }
-    i++;
+  console.log("map 1", iterator);
+  if (i == 2) {
+    break;
+  }
+  i++;
 }
 
 for (const iterator of map) {
-    console.log('map 2', iterator);
+  console.log("map 2", iterator);
 }
 
 // console 迭代可迭代对象，每次都是从头开始。
@@ -1471,68 +1441,67 @@ for (const iterator of map) {
 ##### 问题集合
 
 1. 迭代对象接收器forof迭代可迭代对象、迭代器、生成器。每个都是两轮迭代，然后迭代中途调用throw，中途出现不同的情况。[待确认]
-   
-      1. 生成器，第一轮迭代中断，然后第二轮迭代直接未启动。
-   
-           迭代器应该关闭了，但是无法进行第二次迭代。
-   
+
+   1. 生成器，第一轮迭代中断，然后第二轮迭代直接未启动。
+
+   迭代器应该关闭了，但是无法进行第二次迭代。
+
    2. 可迭代对象，第一轮迭代中断，第二轮迭代重新开始。迭代器关闭成功。
-   
    3. 迭代器，第一轮迭代中断，第二轮迭代依旧继续上一轮。迭代器关闭失败。
-   
+
    ```javascript
    function* generatorFn() {
-      yield 1;
-      yield 2;
-      yield 3; 
+     yield 1;
+     yield 2;
+     yield 3;
    }
-   
+
    let gIterator = generatorFn();
    // console
    // for of 1 1
-   
+
    // let gIterator = new Array(1, 2, 3);
    // console
    // for of 1 1
    // for of 2 1
    // for of 2 2
    // for of 2 3
-   
+
    // let gIterator = new Array(1, 2, 3)[Symbol.iterator]()
    // console
    // for of 1 1
    // for of 2 2
    // for of 2 3
-   
+
    for (const iterator of gIterator) {
-       console.log('for of 1', iterator);
-       if (iterator == 1) {
-           try {
-               throw new Error('error')
-           } catch (error) {
-               // console.log('error', error);
-               break;
-           }
+     console.log("for of 1", iterator);
+     if (iterator == 1) {
+       try {
+         throw new Error("error");
+       } catch (error) {
+         // console.log('error', error);
+         break;
        }
+     }
    }
-   
+
    for (const iterator of gIterator) {
-       console.log('for of 2', iterator);
+     console.log("for of 2", iterator);
    }
    ```
 
 2. 接收可迭代对象的原生语言特性和next迭代的区别
-   
+
    1. 迭代（Iteration）
-      
+
       使用对象是可迭代对象。
-      
+
       迭代是通过使用`for...of`循环来遍历可迭代对象的元素。这种迭代方式隐藏了迭代器的实现细节，直接提供了每个元素的值，而无需手动调用`next()`方法。
-   
+
    2. next迭代
-      
+
       使用对象是迭代器。
-      
+
       `next()`是迭代器对象的方法，用于逐个获取可迭代对象的元素。每次调用`next()`方法都会返回一个具有`value`和`done`属性的对象。`value`属性表示迭代器当前指向的元素的值，`done`属性表示迭代是否已经结束。
 
 ### 生成器
@@ -1547,7 +1516,7 @@ for (const iterator of map) {
 
 形式是一种函数。
 
-函数名称前面加一个星号（*)表示是一个生成器。只要是运行定义函数的地方，就可以定义生成器。
+函数名称前面加一个星号（\*)表示是一个生成器。只要是运行定义函数的地方，就可以定义生成器。
 标识生成器函数的星号不受两侧空格，左右多一个少一个空格没影响，不过推荐与函数声明前隔开一个空格方便识别。
 
 ##### 常见声明形式
@@ -1556,35 +1525,35 @@ for (const iterator of map) {
 // 函数声明
 function* generatorFn() {}
 // 函数表达式
-let g = function* () {}
+let g = function* () {};
 // 对象字面量方法
 let obj = {
-    * generatorFn(){}
-}
+  *generatorFn() {},
+};
 // 类实例方法
 class Person {
-    * genratorFn() {}
+  *genratorFn() {}
 }
 // 类静态方法
 class Preson {
-    static * genratorFn() {}
+  static *genratorFn() {}
 }
 ```
 
 #### 生成器执行特点
 
 > 调用生成器函数会产生一个生成器对象。生产器对象实现了Iterable接口，是一个可迭代对象。
-> 
+>
 > 其中最大的特点就是yield
 
 1. 生成器对象一开始是处于暂停状态。
 
 2. 生成器作为可迭代对象，可以通过next进行恢复执行。
-   
+
    > 生成器作为可迭代对象只能迭代一次，如果完成或者迭代器，那么第二次无法重新进行迭代。比如两轮for of迭代，只会有第一轮打印成功，第二轮会打印失败。待确认
 
 3. 如果生成器函数内是空的，那么直接一次迭代完成，next直接返回
-   
+
    ```
    { done: true, value: undefined }。
    ```
@@ -1596,17 +1565,17 @@ class Preson {
 > yield 关键字可以让生成器停止和开始执行，也是生成器最有用的地方。
 
 - 中断执行
-  
+
   ```javascript
   function* generatorFn() {
-      yield 1;
-      yield 2;
+    yield 1;
+    yield 2;
   }
-  
+
   for (const iterator of generatorFn()) {
-      console.log(iterator);
+    console.log(iterator);
   }
-  
+
   // console
   // 1
   // 2
@@ -1615,58 +1584,58 @@ class Preson {
 - 在生成器内允许多次使用
 
 - 输入输出
-  
+
   ```javascript
   function* generatorFn(n) {
-     while (n) {
-          yield n--;
-     } 
+    while (n) {
+      yield n--;
+    }
   }
-  
+
   for (const iterator of generatorFn(2)) {
-      console.log(iterator);
+    console.log(iterator);
   }
-  
+
   // console
   // 2
   // 1
   ```
 
-- 支持*语法进行迭代可迭代对象
-  
+- 支持\*语法进行迭代可迭代对象
+
   > 将一个可迭代对象序列化为一连串可以单独产出的值
-  > 
+  >
   > 比如实现递归算法
-  
+
   ```javascript
   // yield迭代可迭代对象
   function* generatorFn() {
-      yield* new Array(1, 2, 3)
+    yield* new Array(1, 2, 3);
   }
-  
+
   for (const iterator of generatorFn()) {
-      console.log(iterator);
+    console.log(iterator);
   }
-  
+
   // console
   // 1
   // 2
   // 3
   ```
-  
+
   ```javascript
   // 递归
   function* generatorFn(n) {
-      if (n > 0) {
-          yield n - 1;
-          yield* generatorFn(n - 1);
-      }
+    if (n > 0) {
+      yield n - 1;
+      yield* generatorFn(n - 1);
+    }
   }
-  
+
   for (const iterator of generatorFn(3)) {
-      console.log(iterator);
+    console.log(iterator);
   }
-  
+
   // console
   // 2
   // 1
@@ -1676,33 +1645,33 @@ class Preson {
 #### 提前终止生成器
 
 - return
-  
+
   > return的传参也会被生成器迭代返回，不过done = true。
-  
+
   ```javascript
   function* generatorFn() {
-     yield 1;
-     yield 2;
-     yield 3; 
+    yield 1;
+    yield 2;
+    yield 3;
   }
-  
+
   let gIterator1 = generatorFn();
-  console.log(gIterator1.next())
-  console.log(gIterator1.next())
-  console.log(gIterator1.next())
-  console.log(gIterator1.next())
+  console.log(gIterator1.next());
+  console.log(gIterator1.next());
+  console.log(gIterator1.next());
+  console.log(gIterator1.next());
   // console
   // { value: 1, done: false }
   // { value: 2, done: false }
   // { value: 3, done: false }
   // { value: undefined, done: true }
-  
+
   let gIterator2 = generatorFn();
-  console.log(gIterator2.next())
-  console.log(gIterator2.next())
-  console.log(gIterator2.return('return'))
-  console.log(gIterator2.next())
-  console.log(gIterator2.next())
+  console.log(gIterator2.next());
+  console.log(gIterator2.next());
+  console.log(gIterator2.return("return"));
+  console.log(gIterator2.next());
+  console.log(gIterator2.next());
   // console
   // { value: 1, done: false }
   // { value: 2, done: false }
@@ -1712,35 +1681,35 @@ class Preson {
   ```
 
 - throw
-  
+
   ```javascript
   function* generatorFn() {
-     yield 1;
-     yield 2;
-     yield 3; 
+    yield 1;
+    yield 2;
+    yield 3;
   }
-  
+
   let gIterator1 = generatorFn();
-  console.log(gIterator1.next())
-  console.log(gIterator1.next())
-  console.log(gIterator1.next())
-  console.log(gIterator1.next())
+  console.log(gIterator1.next());
+  console.log(gIterator1.next());
+  console.log(gIterator1.next());
+  console.log(gIterator1.next());
   // console
   // { value: 1, done: false }
   // { value: 2, done: false }
   // { value: 3, done: false }
   // { value: undefined, done: true }
-  
+
   let gIterator3 = generatorFn();
-  console.log(gIterator3.next())
-  console.log(gIterator3.next())
+  console.log(gIterator3.next());
+  console.log(gIterator3.next());
   try {
-      console.log(gIterator3.throw('throw'));
+    console.log(gIterator3.throw("throw"));
   } catch (error) {
-      console.log('error', error);
-  
-      console.log(gIterator3.next())
-      console.log(gIterator3.next())   
+    console.log("error", error);
+
+    console.log(gIterator3.next());
+    console.log(gIterator3.next());
   }
   // console
   // { value: 1, done: false }
@@ -1767,46 +1736,44 @@ ECMAScript的对象是一组没有特定顺序的值。
 #### 内部特性
 
 > ECMA-262 使用一些内部特性来描述属性的特征。
-> 
+>
 > 这些特性是由为 JavaScript 实现引擎的规范定义的。因此，开发者不能在 JavaScript 中直接访问这些特性。
-> 
+>
 > 为了将某个特性标识为内部特性，规范会用两个中括号把特性的名称括起来，比如[[Enumerable]]。
-> 
+>
 > - 内部特性用于描述属性。
-> 
 > - 两个中括号把特性的名称括起来进行表示内部特性。
-> 
 > - 开发者不能直接访问特性。
 
 - 常见的内部特性和属性类型、定义等相关信息之间的关系。
-  
+
   > 备注
-  > 
+  >
   > 1. 属性类型只有两种，数据属性和访问器属性。所以表中提到的"另一种属性"指得就是除了当前属性以外剩下的一种属性。
-  
-  | 内部特性\相关信息        | 定义                                                     | 默认值                                                                                             | 使用到该特性的属性类型 |
-  | ---------------- | ------------------------------------------------------ | ----------------------------------------------------------------------------------------------- | ----------- |
-  | [[Configurable]] | 表示属性是否可以通过 delete 删除并重新定义，是否可以修改它的特 性，以及是否可以把它改为另一种属性。 | 1. 默认情况下，所有直接定义在对象上的属性的这个特性都是true。2. 使用Object.defineProperty()定义时未主动初始化该特性时，对象上的属性的这个特性都是false。 | 数据属性、访问器属性  |
-  | [[Enumerable]]   | 表示属性是否可以通过 for-in 循环返回。                                | 1. 默认情况下，所有直接定义在对象上的属性的这个特性都是true。2. 使用Object.defineProperty()定义时未主动初始化该特性时，对象上的属性的这个特性都是false。 | 数据属性、访问器属性  |
-  | [[Writable]]     | 表示属性的值是否可以被修改。                                         | 1. 默认情况下，所有直接定义在对象上的属性的这个特性都是true。2. 使用Object.defineProperty()定义时未主动初始化该特性时，对象上的属性的这个特性都是false。 | 数据属性        |
-  | [[Value]]        | 包含属性实际的值。读取和写入属性值的位置。                                  | 默认值为 undefined                                                                                  | 数据属性        |
-  | [[Get]]          | 获取函数，在读取属性时调用。                                         | 默认值为 undefined                                                                                  | 访问器属性       |
-  | [[Set]]          | 设置函数，在写入属性时调用。                                         | 默认值为 undefined                                                                                  | 访问器属性       |
+
+  | 内部特性\相关信息 | 定义                                                                                                | 默认值                                                                                                                                                   | 使用到该特性的属性类型 |
+  | ----------------- | --------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
+  | [[Configurable]]  | 表示属性是否可以通过 delete 删除并重新定义，是否可以修改它的特 性，以及是否可以把它改为另一种属性。 | 1. 默认情况下，所有直接定义在对象上的属性的这个特性都是true。2. 使用Object.defineProperty()定义时未主动初始化该特性时，对象上的属性的这个特性都是false。 | 数据属性、访问器属性   |
+  | [[Enumerable]]    | 表示属性是否可以通过 for-in 循环返回。                                                              | 1. 默认情况下，所有直接定义在对象上的属性的这个特性都是true。2. 使用Object.defineProperty()定义时未主动初始化该特性时，对象上的属性的这个特性都是false。 | 数据属性、访问器属性   |
+  | [[Writable]]      | 表示属性的值是否可以被修改。                                                                        | 1. 默认情况下，所有直接定义在对象上的属性的这个特性都是true。2. 使用Object.defineProperty()定义时未主动初始化该特性时，对象上的属性的这个特性都是false。 | 数据属性               |
+  | [[Value]]         | 包含属性实际的值。读取和写入属性值的位置。                                                          | 默认值为 undefined                                                                                                                                       | 数据属性               |
+  | [[Get]]           | 获取函数，在读取属性时调用。                                                                        | 默认值为 undefined                                                                                                                                       | 访问器属性             |
+  | [[Set]]           | 设置函数，在写入属性时调用。                                                                        | 默认值为 undefined                                                                                                                                       | 访问器属性             |
 
 - 内部特性解释
-  
+
   - 当[[Enumerable]]，为false时，打印对象和迭代对象是不能发现对象字段的。不过单独打印字段时是可以读取的。
-    
+
     ```javascript
     let obj = new Object();
-    Object.defineProperty(obj, 'name', {
-        enumerable: true,
-        value: "nameValue"
-    })
-    
-    Object.defineProperty(obj, 'age', {
-        value: 20
-    })
+    Object.defineProperty(obj, "name", {
+      enumerable: true,
+      value: "nameValue",
+    });
+
+    Object.defineProperty(obj, "age", {
+      value: 20,
+    });
     console.log(obj); // { name: 'nameValue' }
     console.log(obj.name); // nameValue
     console.log(obj.age); // 20
@@ -1841,119 +1808,118 @@ ECMAScript的对象是一组没有特定顺序的值。
 ### 对象操作总结
 
 > 多采用到了内置对象Object提供的静态方法。
-> 
+>
 > - [Object - JavaScript | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object)
 
 #### 定义属性
 
 - Object.defineProperty()
-  
+
   > 通过多个描述符一次性定义单个属性。
 
 - Object.defineProperties()
-  
+
   > 通过多个描述符一次性定义多个属性。
 
 #### 读取属性特性
 
 - Object.getOwnPropertyDescriptor()
-  
+
   > 取得指定属性的属性描述符。
 
 - Object.getOwnPropertyDescriptors()
-  
+
   > 取得指定实例的所有属性描述符作为对象返回。
 
 #### 合并对象
 
 - Object.assign()
-  
+
   > 这个方法接收一个目标对象和一个 1 或多个源对象作为参数，
-  > 
+  >
   > 然后将每个源对象中可枚举(Object.propertyIsEnumerable()返回 true)
   > 和自有(Object.hasOwnProperty()返回 true)属性复制到目标对象。以字符串和符号为键的属性会被复制。
-  > 
+  >
   > 对每个符合条件的属性，这个方法会使用源对象上的[[Get]]取得属性的值，然后使用目标对象上的[[Set]]设置属性的值。
-  
+
   > 备注
-  > 
+  >
   > - 执行的是浅复制。
-  > 
   > - 而且赋值期间出错，则操作会中止并退出，但是已经完成复制动作的属性是无法进行回滚的。
 
 #### 对象标识及相等判定
 
 - ==、===
-  
+
   > 判断变量是否相同。
-  > 
+  >
   > ===相对于==更加严苛，==存在自动转换类型的问题。
 
 - Object.is()
-  
+
   > 判断变量是否相同。使用更加严格的相等比较算法。
-  > 
+  >
   > Object.is()和===的效果基本一致，但是改进===的一些边界(+0、-0、0、NaN)问题。
-  > 
+  >
   > ```javascript
   > // ===
   > // -0、0、+0
-  > console.log(-0 === +0) // true
-  > console.log(-0 === 0) // true
-  > console.log(+0 === 0) // true
-  > 
+  > console.log(-0 === +0); // true
+  > console.log(-0 === 0); // true
+  > console.log(+0 === 0); // true
+  >
   > // NaN
-  > console.log(NaN === NaN) // false
-  > 
+  > console.log(NaN === NaN); // false
+  >
   > // Object.is()
   > // -0、0、+0
-  > console.log(Object.is(-0, +0)) // false
-  > console.log(Object.is(-0, 0)) // false
-  > console.log(Object.is(+0, 0)) // true
-  > 
+  > console.log(Object.is(-0, +0)); // false
+  > console.log(Object.is(-0, 0)); // false
+  > console.log(Object.is(+0, 0)); // true
+  >
   > // NaN
-  > console.log(Object.is(NaN, NaN)) // true
+  > console.log(Object.is(NaN, NaN)); // true
   > ```
 
 #### 增强的对象语法
 
 1. 属性名简写
-   
+
    ```javascript
-   let nameValue = 'nameValue';
+   let nameValue = "nameValue";
    let person = {
-       name // 替换 name: name
-   }
+     name, // 替换 name: name
+   };
    console.log(person); // { name: 'nameValue' }
    ```
 
 2. 可计算属性
-   
+
    ```javascript
    function createNameKey(key) {
-       return `prefix_${key}`
+     return `prefix_${key}`;
    }
-   let name = 'nameValue';
-   
+   let name = "nameValue";
+
    let person = {
-       [createNameKey('name')]: name // 替换 name: name
-   }
+     [createNameKey("name")]: name, // 替换 name: name
+   };
    console.log(person); // { prefix_name: 'nameValue' }
    ```
 
 3. 简写方法名
-   
+
    > 简写方法名与可计算属性键相互兼容。
-   
+
    ```javascript
-   let methodKey = 'getName';
+   let methodKey = "getName";
    let person = {
-       [methodKey](name) {
-           console.log(`function getName() ${name}`)
-       } // 替换 getName(name): function(){} or getName(name) {} 
-   }
-   person.getName('nameValue'); // function getName() nameValue
-   person[methodKey]('nameValue'); // function getName() nameValue
+     [methodKey](name) {
+       console.log(`function getName() ${name}`);
+     }, // 替换 getName(name): function(){} or getName(name) {}
+   };
+   person.getName("nameValue"); // function getName() nameValue
+   person[methodKey]("nameValue"); // function getName() nameValue
    ```
 
 #### 对象解构
@@ -1963,39 +1929,40 @@ ECMAScript的对象是一组没有特定顺序的值。
 解构并不要求变量必须在解构表达式中声明。不过，如果是给事先声明的变量赋值，则赋值表达式必须包含在一对括号中。
 
 - 嵌套解构
-  
+
   > 引用嵌套的属性或赋值目标没有限制，可以通过解构来复制对象属性。
 
 - 部分解构
-  
+
   > 结构时只获取一部分属性。
 
 - 参数上下文匹配
-  
+
   > 函数的入参也支持解构处理。
 
 ```javascript
 // 综合实例
 let person = {
-    id: 1,
-    name: 'nameValue',
+  id: 1,
+  name: "nameValue",
+  other: {
+    age: 18,
+  },
+};
+
+function printInfo({ name: nameKey, other: other }) {
+  // 参数上下文匹配 + 部分解构
+  let tempPerson = {
+    id: null,
+    name: "",
     other: {
-        age: 18
-    }
-}
+      age: 0, // 至少要有声明other层，否则嵌套解构会报错。
+    },
+  };
+  tempPerson.name = nameKey;
+  ({ age: tempPerson.other.age } = other); // 嵌套结构
 
-function printInfo({ name: nameKey, other: other }) { // 参数上下文匹配 + 部分解构
-    let tempPerson = {
-        id: null,
-        name: '',
-        other: {
-            age: 0 // 至少要有声明other层，否则嵌套解构会报错。
-        } 
-    };
-    tempPerson.name = nameKey;
-    ({ age: tempPerson.other.age } = other); // 嵌套结构
-
-    return tempPerson;
+  return tempPerson;
 }
 
 console.log(printInfo(person)); // { id: null, name: 'nameValue', other: { age: 18 } }
@@ -2008,13 +1975,12 @@ console.log(printInfo(person)); // { id: null, name: 'nameValue', other: { age: 
 ### 创建对象
 
 - 基础创建方式
-  
+
   - Object构造函数创建对象
-  
   - 对象字面量方式创建对象
 
 - 进阶需求
-  
+
   创建具有同样接口的多个对象需要重复编写很多代码，需要避免便携过多代码，解决这个问题提供新的创建对象的方法。
 
 #### 创建对象的需求总结
@@ -2033,9 +1999,8 @@ console.log(printInfo(person)); // { id: null, name: 'nameValue', other: { age: 
 #### 创建对象方式总结
 
 > 常见创建方式
-> 
+>
 > - Object构造函数创建对象
-> 
 > - 对象字面量方式创建对象
 
 ##### 工厂模式
@@ -2046,17 +2011,17 @@ console.log(printInfo(person)); // { id: null, name: 'nameValue', other: { age: 
 
 ```javascript
 function createPersonFactory(personName, age) {
-    let o = new Object();
-    o.personName = personName;
-    o.age = age;
-    o.toString = function() {
-        // overwrite toString
-        return(`name: ${o.personName}, age: ${o.age}`);
-    }
-    return o;
+  let o = new Object();
+  o.personName = personName;
+  o.age = age;
+  o.toString = function () {
+    // overwrite toString
+    return `name: ${o.personName}, age: ${o.age}`;
+  };
+  return o;
 }
 
-let person = createPersonFactory('zhangsan', 20);
+let person = createPersonFactory("zhangsan", 20);
 console.log(person.toString());
 ```
 
@@ -2095,35 +2060,35 @@ console.log(person.toString());
 ```javascript
 // 构造函数
 function Person(personName, age) {
-    this.personName = personName;
-    this.age = age;
-    this.toString = function() {
-        // override toString
-        return(`name: ${this.personName}, age: ${this.age}`);
-    }
+  this.personName = personName;
+  this.age = age;
+  this.toString = function () {
+    // override toString
+    return `name: ${this.personName}, age: ${this.age}`;
+  };
 }
 
 // 重写new操作符
 function overrideNew(constructor, ...args) {
-    // 1. 创建一个新对象
-    let o = {};
-    // 2. 新对象内部的[[Prototype]]特性被赋值为构造函数的prototype属性
-    o.__proto__ = constructor.prototype;
+  // 1. 创建一个新对象
+  let o = {};
+  // 2. 新对象内部的[[Prototype]]特性被赋值为构造函数的prototype属性
+  o.__proto__ = constructor.prototype;
 
-    // 可替换步骤1、2
-    // let o = Object.create(constructor.prototype);
+  // 可替换步骤1、2
+  // let o = Object.create(constructor.prototype);
 
-    // 3. 构造函数内部的this被赋值为这个新对象(即this指向新对象)。
-    const result = constructor.apply(o, args);
+  // 3. 构造函数内部的this被赋值为这个新对象(即this指向新对象)。
+  const result = constructor.apply(o, args);
 
-    // 4. 如果构造函数返回非空对象，则返回该对象。否则返回刚创建的新对象。
-    return (typeof result == 'object' && result != null) ? result : o;
+  // 4. 如果构造函数返回非空对象，则返回该对象。否则返回刚创建的新对象。
+  return typeof result == "object" && result != null ? result : o;
 }
 
-let person = new Person('zhangsan', 20);
-let person2 = overrideNew(Person, 'zhangshi', 21);
-console.log(person instanceof Person) // true
-console.log(person2 instanceof Person) // true
+let person = new Person("zhangsan", 20);
+let person2 = overrideNew(Person, "zhangshi", 21);
+console.log(person instanceof Person); // true
+console.log(person2 instanceof Person); // true
 ```
 
 ##### 原型模式
@@ -2139,28 +2104,28 @@ console.log(person2 instanceof Person) // true
 ```javascript
 // 构造函数
 function Person(personName, age) {
-    this.personName = personName;
-    this.age = age;
+  this.personName = personName;
+  this.age = age;
 }
 
 // 设置原型的constructor属性，手动设置指向构造函数
 Object.defineProperty(Person.prototype, "constructor", {
-    // configurable: true, [待确认是否需要增加]
-    enumerable: false,
-    value: Person
-})
+  // configurable: true, [待确认是否需要增加]
+  enumerable: false,
+  value: Person,
+});
 
 // 设置原型的其他属性
 Person.prototype = {
-    infos: new Array(),
-    toString: function() {
-        // override toString
-        return this;
-    } 
-}
+  infos: new Array(),
+  toString: function () {
+    // override toString
+    return this;
+  },
+};
 
-let person = new Person('zhangsan', 20);
-let person2 = new Person('zhangshi', 21);
+let person = new Person("zhangsan", 20);
+let person2 = new Person("zhangshi", 21);
 console.log(person.toString()); // { personName: 'zhangsan', age: 20 }
 console.log(person2.toString()); // { personName: 'zhangsan', age: 20 }
 
@@ -2181,7 +2146,7 @@ console.log(Object.entries(person.__proto__)); // [ [ 'infos', [ 1 ] ], [ 'toStr
 ##### 原型依赖的基本规则
 
 > 函数创建过程中产生原型，函数创建过程也是原型的产生过程。
-> 
+>
 > 这里的 -> 统一表达的是指向关系，而非赋值关系。
 
 1. 函数创建过程中会按照特定的规则为这个函数创建一个 prototype 属性。该属性指向原型对象。
@@ -2190,33 +2155,33 @@ console.log(Object.entries(person.__proto__)); // [ [ 'infos', [ 1 ] ], [ 'toStr
 ##### 原型依赖的基本规则总结
 
 - 创建一个构造函数的过程，形成一个循环引用的关系。
-  
+
   ```
-  1. 构造函数.prototype -> 原型对象 
+  1. 构造函数.prototype -> 原型对象
   2. 原型对象.constructor -> 构造函数
-  
+
   总结
   构造函数.prototype.constructor -> 构造函数
   ```
 
 - 实例对象与原型对象有直接关系，与构造函数无直接关系。
-  
-  > - [[Prototype]]是内部特性是一个指针，脚本中没有访问这个[[Prototype]]特性的标准方式。所以在每个对象上暴露了__proto__属性，来访问属性。
-  
+
+  > - [[Prototype]]是内部特性是一个指针，脚本中没有访问这个[[Prototype]]特性的标准方式。所以在每个对象上暴露了**proto**属性，来访问属性。
+
   ```
   1. 实例对象.[[Prototype]] -> 原型对象
   2. 实例对象.__proto__ -> 实例对象.[[Prototype]]
   3. 实例对象.__proto__ -> 原型对象
-  4. 实例对象.__proto__ -> 构造函数.prototype 
-  
+  4. 实例对象.__proto__ -> 构造函数.prototype
+
   总结
   实例对象.__proto__ -> 构造函数.prototype
   ```
 
 - 实例对象、构造函数、原型对象之前的实际关系总结
-  
+
   > 以实例对象作为参考点来总结。
-  
+
   ```
   实例对象 = new 构造函数
   实例对象.__proto__ -> 构造函数.prototype
@@ -2224,7 +2189,7 @@ console.log(Object.entries(person.__proto__)); // [ [ 'infos', [ 1 ] ], [ 'toStr
   ```
 
 - 在自定义构造函数时，原型对象默认只会获得constructor属性，其他的所有方法都继承自Object。
-  
+
   所以正常的原型链都会终止于 Object 的原型对象，而Object 原型的原型是 null。
 
 ##### 原型层级
@@ -2232,70 +2197,69 @@ console.log(Object.entries(person.__proto__)); // [ [ 'infos', [ 1 ] ], [ 'toStr
 原型因为继承关系存在一个原型层级的概念，是实例查找属性的基础。
 
 - 按照原型链查找属性和方法
-  
+
   1. 会按照这个属性的名称开始搜索。搜索开始于对象实例本身。如果在这个 实例上发现了给定的名称，则返回该名称对应的值。
   2. 如果没有找到这个属性，则搜索会沿着指针进入原 型对象，然后在原型对象上找到属性后，再返回对应的值。
 
 ##### 原型特点补充
 
 - 原型更新属性操作
-   采用字面量对象一次性更新。
-   直接Person.prototype 被设置为等于一个通过对象字面量创建的新对象
-   更新constructor属性来指定构造函数时，采用Object.defineProperty()方式设置[[Enumerable]]为false。因为字面量的方式会导致[[Enumerable]]默认为true；
+  采用字面量对象一次性更新。
+  直接Person.prototype 被设置为等于一个通过对象字面量创建的新对象
+  更新constructor属性来指定构造函数时，采用Object.defineProperty()方式设置[[Enumerable]]为false。因为字面量的方式会导致[[Enumerable]]默认为true；
 
 - 原型的动态性
-   原型属性修改被所有实例共享。避免修改原型
+  原型属性修改被所有实例共享。避免修改原型
 
 - 原生原型支持更新属性。
-   Array等是原生原型。
-   不建议增加属性，避免为之后的属性遮蔽留下隐患。
+  Array等是原生原型。
+  不建议增加属性，避免为之后的属性遮蔽留下隐患。
 
 - 继承原型的属性共享问题
-   从原型继承属性共享性。
-   实例对从原型继承原始属性可以采用通过在实例上添加同名属性来简单地遮蔽原型上的属性来处理。
-   实例对从原型继承的引用属性修改，会导致被共享访问的问题。
+  从原型继承属性共享性。
+  实例对从原型继承原始属性可以采用通过在实例上添加同名属性来简单地遮蔽原型上的属性来处理。
+  实例对从原型继承的引用属性修改，会导致被共享访问的问题。
 
 ##### 常用原型相关API总结
 
 - 检查原型继承关系
-  
+
   - Object.getPrototypeOf()
-    
+
     返回的对象就是传入对象的原型对象
 
 - 基于现有原型修改原型继承方式
-  
+
   > (推荐2，避免1)
-  
+
   1. Object.setPrototypeOf()
      修改现有的继承关系，会严重影响性能。
   2. Object.create()
      在现有原型上创建新的原型。所以传入的是原型对象。
 
 - 由于原型链查找逻辑，会存在属性遮蔽(shadow)的情况
-  
+
   - delete操作符
-    
+
     可以通过delete操作符删除实例属性来处理。
-  
+
   - 实例对象.hasOwnProperty()
-    
+
     能够清楚地看到访问的是实例属性还是原型属性。true=实例、false=原型。
 
 - 实例对象查询属性
-  
+
   - Object.getOwnPropertyNames():
-    
+
     列出所有实例属性，无论是否可以枚举。原型的属性不等于实例的属性，只是实例可以访问而已。
-  
+
   - in 操作符会在可 以通过对象访问指定属性时返回 true
-    
+
     在 for-in 循环中使用 in 操作符时，可以通过对象访问且可以被枚举的属性都会返回，包括实例 属性和原型属性。
-    
+
     遮蔽原型中不可枚举([[Enumerable]]特性被设置为 false)属性的实例属性也会 在 for-in 循环中返回，因为默认情况下开发者定义的属性都是可枚举。
-  
+
   - Object.values()
-  
   - Object.entries()
 
 ### 继承
@@ -2305,12 +2269,12 @@ console.log(Object.entries(person.__proto__)); // [ [ 'infos', [ 1 ] ], [ 'toStr
 #### 继承类型
 
 - 接口继承
-  
+
   只继承方法签名。
   比如Java使用接口继承过程就是接口继承得到实现对象，实现对象进行方法实例的覆写，最后根据实现对象进行实例对象的创建。
 
 - 方法继承
-  
+
   继承具体的方法。
   因为JS函数没有签名，所以只能实现方法继承。主要依赖基础是原型链。
 
@@ -2330,7 +2294,7 @@ console.log(Object.entries(person.__proto__)); // [ [ 'infos', [ 1 ] ], [ 'toStr
 
 目的是为了继承父类的属性和方法，还可以重写方法。注意要在指向父类原型实例完成后才能进行重写。
 
-而父类实例通过[[portotype]]继续链接到它的父类原型。(之前有讲过实例和其原型有直接联系，[[prototype]]特性有指向关系，浏览器暴露了__proto__属性指向[[prototype]]特性)
+而父类实例通过[[portotype]]继续链接到它的父类原型。(之前有讲过实例和其原型有直接联系，[[prototype]]特性有指向关系，浏览器暴露了**proto**属性指向[[prototype]]特性)
 
 ###### 缺点
 
@@ -2343,33 +2307,33 @@ console.log(Object.entries(person.__proto__)); // [ [ 'infos', [ 1 ] ], [ 'toStr
 ```javascript
 // 构造函数SuperType
 function SuperType() {
-    this.infos = new Array('super'),
-    this.otherInfos = new Array('other infos'),
-    this.getInfos = function() {
-        return this.infos;
-    },
-    this.getOtherInfos = function() {
-        return this.otherInfos;
-    }
+  (this.infos = new Array("super")),
+    (this.otherInfos = new Array("other infos")),
+    (this.getInfos = function () {
+      return this.infos;
+    }),
+    (this.getOtherInfos = function () {
+      return this.otherInfos;
+    });
 }
 
 // 构造函数SupType
 function SupType() {
-    this.infos = new Array('sup') 
+  this.infos = new Array("sup");
 }
 
-// [重点] 构造函数SupType的原型 指向 对象实例SuperType 
+// [重点] 构造函数SupType的原型 指向 对象实例SuperType
 SupType.prototype = new SuperType();
 
 // 在指向完成后，重写构造函数SupType的原型方法getInfos
-SupType.prototype.getInfos = function() {
-    return this.infos;
-}
+SupType.prototype.getInfos = function () {
+  return this.infos;
+};
 
 // 测试
 let supType = new SupType();
 console.log(supType.getInfos()); // [ 'sup' ]
-console.log(supType.getOtherInfos()) // [ 'other infos' ]
+console.log(supType.getOtherInfos()); // [ 'other infos' ]
 console.log(supType instanceof SupType); // true
 console.log(supType instanceof SuperType); // true
 ```
@@ -2401,29 +2365,28 @@ console.log(supType instanceof SuperType); // true
 ```javascript
 // 构造函数SuperType
 function SuperType() {
-    this.infos = new Array('super'),
-    this.otherInfos = new Array('other infos'),
-    this.getInfos = function() {
-        return this.infos;
-    },
-    this.getOtherInfos = function() {
-        return this.otherInfos;
-    }
+  (this.infos = new Array("super")),
+    (this.otherInfos = new Array("other infos")),
+    (this.getInfos = function () {
+      return this.infos;
+    }),
+    (this.getOtherInfos = function () {
+      return this.otherInfos;
+    });
 }
 
 // 构造函数SupType
 function SupType() {
-
-    // 盗类构造函数继承
-    SuperType.call(this);
-    // 子类属性必须在call之后定义
-    this.infos = new Array('sup');
+  // 盗类构造函数继承
+  SuperType.call(this);
+  // 子类属性必须在call之后定义
+  this.infos = new Array("sup");
 }
 
 // 测试
 let supType = new SupType();
 console.log(supType.getInfos()); // [ 'sup' ]
-console.log(supType.getOtherInfos()) // [ 'other infos' ]
+console.log(supType.getOtherInfos()); // [ 'other infos' ]
 console.log(supType instanceof SupType); // true
 console.log(supType instanceof SuperType); // false // 类型匹配失败了
 ```
@@ -2442,36 +2405,36 @@ console.log(supType instanceof SuperType); // false // 类型匹配失败了
 ```javascript
 // 构造函数SuperType
 function SuperType() {
-    this.infos = new Array('super'),
-    this.otherInfos = new Array('other infos'),
-    this.getInfos = function() {
-        return this.infos;
-    },
-    this.getOtherInfos = function() {
-        return this.otherInfos;
-    }
+  (this.infos = new Array("super")),
+    (this.otherInfos = new Array("other infos")),
+    (this.getInfos = function () {
+      return this.infos;
+    }),
+    (this.getOtherInfos = function () {
+      return this.otherInfos;
+    });
 }
 
 // 构造函数SupType
-function SupType() { 
-    // 盗类构造函数继承
-    SuperType.call(this); // 第二次调用SuperType()
-    // 子类属性必须在call之后定义
-    this.infos = new Array('sup');
+function SupType() {
+  // 盗类构造函数继承
+  SuperType.call(this); // 第二次调用SuperType()
+  // 子类属性必须在call之后定义
+  this.infos = new Array("sup");
 }
 
-// 构造函数SupType的原型 指向 对象实例SuperType 
+// 构造函数SupType的原型 指向 对象实例SuperType
 SupType.prototype = new SuperType(); // 第一次调用SuperType()
 
 // 在指向完成后，重写构造函数SupType的原型方法getInfos
-SupType.prototype.getInfos = function() {
-    return this.infos;
-}
+SupType.prototype.getInfos = function () {
+  return this.infos;
+};
 
 // 测试
 let supType = new SupType();
 console.log(supType.getInfos()); // [ 'sup' ]
-console.log(supType.getOtherInfos()) // [ 'other infos' ]
+console.log(supType.getOtherInfos()); // [ 'other infos' ]
 console.log(supType instanceof SupType); // true
 console.log(supType instanceof SuperType); // true
 ```
@@ -2490,37 +2453,37 @@ console.log(supType instanceof SuperType); // true
 ```javascript
 // 构造函数SuperType
 function SuperType() {
-    this.infos = new Array('super'),
-    this.otherInfos = new Array('other infos'),
-    this.getInfos = function() {
-        return this.infos;
-    },
-    this.getOtherInfos = function() {
-        return this.otherInfos;
-    }
+  (this.infos = new Array("super")),
+    (this.otherInfos = new Array("other infos")),
+    (this.getInfos = function () {
+      return this.infos;
+    }),
+    (this.getOtherInfos = function () {
+      return this.otherInfos;
+    });
 }
 
 function overrideObjectCreate(o) {
-    // 构造函数SupType
-    function SupType() { 
-        // 子类属性必须在call之后定义
-        this.infos = new Array('sup');
-    }
-    // 构造函数SupType的原型 指向 对象实例SuperType 
-    SupType.prototype = o;
+  // 构造函数SupType
+  function SupType() {
+    // 子类属性必须在call之后定义
+    this.infos = new Array("sup");
+  }
+  // 构造函数SupType的原型 指向 对象实例SuperType
+  SupType.prototype = o;
 
-    // 在指向完成后，重写构造函数SupType的原型方法getInfos
-    SupType.prototype.getInfos = function() {
-        return this.infos;
-    }
+  // 在指向完成后，重写构造函数SupType的原型方法getInfos
+  SupType.prototype.getInfos = function () {
+    return this.infos;
+  };
 
-    return new SupType();
+  return new SupType();
 }
 
 // 测试
 let supType = new overrideObjectCreate(new SuperType());
 console.log(supType.getInfos()); // [ 'sup' ]
-console.log(supType.getOtherInfos()) // [ 'other infos' ]
+console.log(supType.getOtherInfos()); // [ 'other infos' ]
 // console.log(supType instanceof SupType); // true
 console.log(supType instanceof SuperType); // true
 ```
@@ -2541,35 +2504,35 @@ console.log(supType instanceof SuperType); // true
 ```javascript
 // 构造函数SuperType
 function SuperType() {
-    this.infos = new Array('super'),
-    this.otherInfos = new Array('other infos'),
-    this.getInfos = function() {
-        return this.infos;
-    },
-    this.getOtherInfos = function() {
-        return this.otherInfos;
-    }
+  (this.infos = new Array("super")),
+    (this.otherInfos = new Array("other infos")),
+    (this.getInfos = function () {
+      return this.infos;
+    }),
+    (this.getOtherInfos = function () {
+      return this.otherInfos;
+    });
 }
 
 function overrideObjectCreate(o) {
-    function object(o) {
-        function F() {}
-        F.prototype = o;
-        return new F();
-    }
+  function object(o) {
+    function F() {}
+    F.prototype = o;
+    return new F();
+  }
 
-    let clone = object(o);
-    clone.getInfos = function() {
-        return this.infos;
-    }
+  let clone = object(o);
+  clone.getInfos = function () {
+    return this.infos;
+  };
 
-    return clone;
+  return clone;
 }
 
 // 测试
 let supType = new overrideObjectCreate(new SuperType());
 console.log(supType.getInfos()); // [ 'sup' ]
-console.log(supType.getOtherInfos()) // [ 'other infos' ]
+console.log(supType.getOtherInfos()); // [ 'other infos' ]
 // console.log(supType instanceof SupType); // true
 console.log(supType instanceof SuperType); // true
 ```
@@ -2593,51 +2556,51 @@ console.log(supType instanceof SuperType); // true
 ```javascript
 // 构造函数SuperType
 function SuperType() {
-    this.infos = new Array('super'),
-    this.otherInfos = new Array('other infos'),
-    this.getInfos = function() {
-        return this.infos;
-    },
-    this.getOtherInfos = function() {
-        return this.otherInfos;
-    }
+  (this.infos = new Array("super")),
+    (this.otherInfos = new Array("other infos")),
+    (this.getInfos = function () {
+      return this.infos;
+    }),
+    (this.getOtherInfos = function () {
+      return this.otherInfos;
+    });
 }
 
 // 构造函数SupType
-function SupType() { 
-    // 盗类构造函数继承
-    SuperType.call(this);
-    // 子类属性必须在call之后定义
-    this.infos = new Array('sup');
+function SupType() {
+  // 盗类构造函数继承
+  SuperType.call(this);
+  // 子类属性必须在call之后定义
+  this.infos = new Array("sup");
 }
 
 // 通过寄生的方式拷贝父类原型，然后直接把新对象给子类，避免了调用父类构造函数
 function inheritPrototype(supType, superType) {
-    function object(o) {
-        function F() {}
-        F.prototype = o;
-        return new F();
-    }
+  function object(o) {
+    function F() {}
+    F.prototype = o;
+    return new F();
+  }
 
-    // 第一步是创建父类原型的一个副本
-    let prototype = object(superType.prototype);
-    // 给返回的 prototype 对象设置 constructor 属性，解决由于重写原型导致默认 constructor 丢失的问题。
-    prototype.constructor = supType;
-    // 最后将新创建的对象赋值给子类型的原型
-    supType.prototype = prototype;
+  // 第一步是创建父类原型的一个副本
+  let prototype = object(superType.prototype);
+  // 给返回的 prototype 对象设置 constructor 属性，解决由于重写原型导致默认 constructor 丢失的问题。
+  prototype.constructor = supType;
+  // 最后将新创建的对象赋值给子类型的原型
+  supType.prototype = prototype;
 }
 
-inheritPrototype(SupType, SuperType)
+inheritPrototype(SupType, SuperType);
 
 // 在指向完成后，重写构造函数SupType的原型方法getInfos
-SupType.prototype.getInfos = function() {
-    return this.infos;
-}
+SupType.prototype.getInfos = function () {
+  return this.infos;
+};
 
 // 测试
 let supType = new SupType();
 console.log(supType.getInfos()); // [ 'sup' ]
-console.log(supType.getOtherInfos()) // [ 'other infos' ]
+console.log(supType.getOtherInfos()); // [ 'other infos' ]
 console.log(supType instanceof SupType); // true
 console.log(supType instanceof SuperType); // true
 ```
@@ -2655,22 +2618,22 @@ class关键字
 // 类声明
 class Person {}
 // 类表达式
-const Person = class {}
+const Person = class {};
 ```
 
 ##### 类特点
 
 - 类的声明属于块作用域，不支持变量提升现象。
 
-- ECMAScript 类就是一种特殊函数。类型属于函数。可以用typeof判断。 
-  
+- ECMAScript 类就是一种特殊函数。类型属于函数。可以用typeof判断。
+
   > 所以类也是 JavaScript 的一等公民，因此可以像其他对象或函数引用一样把类作为参数传递。
 
 ##### 类构成
 
->  支持空定义。默认情况下，类定义中的代码都在严格模式下执行。
+> 支持空定义。默认情况下，类定义中的代码都在严格模式下执行。
 
-- 构造方法(类构造函数) 
+- 构造方法(类构造函数)
 - 实例方法
 - 获取函数
 - 设置函数
@@ -2679,12 +2642,12 @@ const Person = class {}
 #### 类构造函数
 
 - 使用constructor 关键字用于在类定义块内部创建类的构造函数。
-  
+
   > new操作符根据关键字constructor调用该函数。
   > 构造函数的定义不是必需的，不定义构造函 数相当于将构造函数定义为空函数。
 
 - 构造函数与构造函数的主要区别
-  
+
   - 调用类构造函数必须使用 new 操作符。调用类构造函数时如果 忘了使用 new 则会抛出错误。
   - 而普通构造函数如果 不使用 new 调用，那么就会以全局的 this(通常是 window)作为内部对象。
 
@@ -2734,13 +2697,12 @@ ECMAScript 6 新增特性中最出色的一个就是原生支持了类继承机�
 ##### extends关键字
 
 - 实现单继承
-  
+
   - 可以继承任何拥有[[Construct]]和原型的对象，也可以继承普通的构造函数(保持向后兼容)。
-      派生类都会通过原型链访问到类和原型上定义的方法。this 的值会反映调用相应方法的实例或者类
-  
+    派生类都会通过原型链访问到类和原型上定义的方法。this 的值会反映调用相应方法的实例或者类
   - extends关键字也可以在类表达式中使用
     super关键字
-    
+
     > ES6给类构造函数和静态方法添加了内部特性[[HomeObject]]，这个特性是一个 指针，指向定义该方法的对象。这个指针是自动赋值的，而且只能在 JavaScript 引擎内部 访问。super 始终会定义为[[HomeObject]]的原型。
 
 - 这个关键字只能在派生类中使用，而且仅 限于类构造函数、实例方法和静态方法内部。
@@ -2748,8 +2710,8 @@ ECMAScript 6 新增特性中最出色的一个就是原生支持了类继承机�
 - 派生类的方法可以通过 super 关键字引用它们的原型。
 
 - 在类构造函数中使用 super 可以调用父类构造函数。
-    调用 super()会调用父类构造函数，并将返回的实例赋值给 this。
-    super()的行为如同调用构造函数，如果需要给父类构造函数传参，则需要手动传入。
+  调用 super()会调用父类构造函数，并将返回的实例赋值给 this。
+  super()的行为如同调用构造函数，如果需要给父类构造函数传参，则需要手动传入。
 
 - 在静态方法中可以通过 super 调用继承的类上定义的静态方法
 
@@ -2778,7 +2740,7 @@ ES6 类为继承内置引用类型提供了顺畅的机制，开发者可以方�
 
 ##### 类混入
 
->  不建议使用，推荐组合而不是继承。
+> 不建议使用，推荐组合而不是继承。
 
 > 把不同类的行为集中到一个类是一种常见的 JavaScript 模式
 > 虽然 ES6 没有显式支持多类继承，但 通过现有特性可以轻松地模拟这种行为。
@@ -2793,73 +2755,80 @@ ES6 类为继承内置引用类型提供了顺畅的机制，开发者可以方�
 ```javascript
 // 父类 + 抽象基类
 class SuperType {
-    constructor(info) {
-        // 抽象基类检查
-        if (new.target === SuperType) {
-            throw new Error('Vehicle cannet be directly instantiated!')
-        }
+  constructor(info) {
+    // 抽象基类检查
+    if (new.target === SuperType) {
+      throw new Error("Vehicle cannet be directly instantiated!");
+    }
 
-        this.infos = new Array();
-        this.infos.push(info);
-    }   
-    getInfos() {
-        return this.infos;
-    }
-    static getDate() {
-        return new Date();
-    }
+    this.infos = new Array();
+    this.infos.push(info);
+  }
+  getInfos() {
+    return this.infos;
+  }
+  static getDate() {
+    return new Date();
+  }
 }
 
 class SupType extends SuperType {
-    constructor(info) {
-        super(info);
-        this.flag = true;
-    }
-    getInfosMore() {
-        return super.getInfos();
-    }
-    static getDateMore() {
-        return super.getDate();
-    }
+  constructor(info) {
+    super(info);
+    this.flag = true;
+  }
+  getInfosMore() {
+    return super.getInfos();
+  }
+  static getDateMore() {
+    return super.getDate();
+  }
 }
 
-const oSuper = new SuperType('object'); // Vehicle cannet be directly instantiated!
+const oSuper = new SuperType("object"); // Vehicle cannet be directly instantiated!
 
-console.log(SupType.getDate())
-console.log(SupType.getDateMore())
-const o = new SupType('object');
-console.log(o.getInfos())
-console.log(o.getInfosMore())
+console.log(SupType.getDate());
+console.log(SupType.getDateMore());
+const o = new SupType("object");
+console.log(o.getInfos());
+console.log(o.getInfosMore());
 ```
 
 ## 第 10 章 - 函数
+
 TODO
 
 ## 高频知识点
+
 ### IIFE(Immediately Invoked Function Expression)
-- [理解JavaScript的立即调用函数表达式(IIFE)](https://nullcc.github.io/2017/05/08/%E7%90%86%E8%A7%A3JavaScript%E7%9A%84%E7%AB%8B%E5%8D%B3%E8%B0%83%E7%94%A8%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F(IIFE)/)
+
+- [理解JavaScript的立即调用函数表达式(IIFE)](<https://nullcc.github.io/2017/05/08/%E7%90%86%E8%A7%A3JavaScript%E7%9A%84%E7%AB%8B%E5%8D%B3%E8%B0%83%E7%94%A8%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F(IIFE)/>)
 
 IIFE 本质上是使用了闭包的机制，可以创建具有私有变量和函数的模块化代码结构。
 
 ### addEventListener、removeEventListener 参数解析
+
 - [removeEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener)
 - [addEventListener第三个参数作用](https://zhuanlan.zhihu.com/p/86337563)
 
 该接口 removeEventListener() 的方法从目标 EventTarget 中删除先前注册的事件侦听器。
 
 #### 参数解析
+
 - 第三个参数
-    - 通常是 options 或者 useCapture 都用于表示事件侦听器的特征。
-    - 默认值 options: `{capture: false}`，useCapture: false。
-    - false = 冒泡阶段、true = 捕获阶段，默认 false
+  - 通常是 options 或者 useCapture 都用于表示事件侦听器的特征。
+  - 默认值 options: `{capture: false}`，useCapture: false。
+  - false = 冒泡阶段、true = 捕获阶段，默认 false
 
 ### 事件委托
+
 - [事件委托](https://tsejx.github.io/javascript-guidebook/document-object-model/events/event-delegation)
 - [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)
 - [removeEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener)
 
 - 事件流分为捕获阶段和冒泡阶段。
 - 事件委托就是在捕获阶段处理当前结点以下层级的事件。
+
 ```html
 <body>
   <ul class="list">
@@ -2869,11 +2838,11 @@ IIFE 本质上是使用了闭包的机制，可以创建具有私有变量和函
     <!-- 还有很多 -->
   </ul>
   <script type="text/javascript">
-    const list = document.querySelector('.list');
+    const list = document.querySelector(".list");
 
     list.addEventListener(
-      'click',
-      function(e) {
+      "click",
+      function (e) {
         let e = e || window.event;
         let target = e.target || e.srcElement;
         // 关键判断条件
@@ -2881,7 +2850,7 @@ IIFE 本质上是使用了闭包的机制，可以创建具有私有变量和函
 
         console.log(index);
       },
-      false
+      false,
     );
   </script>
 </body>
