@@ -1,5 +1,25 @@
 # Java 技术方案和常见问题总结
 
+## Java 技术方案积累思路
+
+- [spring](https://spring.io/guides)
+
+参考 Spring 全家桶的各种技术实现方案，理解并扩展。
+
+## JDK 版本选择
+
+- [oracle JDK 17](https://www.oracle.com/cn/java/technologies/downloads/#java17)
+- [以是否应该升级到JDK 17为例看to B行业的技术选型和升级](https://www.cnblogs.com/lightdb/p/17625453.html)
+
+### 2024-2-1
+
+目前 SpringBoot 3 最低支持 JDK 17。加上 JDK 17 性能提升显著，升级 JDK 17 将是趋势。不过需要注意 2024年9月 之后许可证情况。
+
+```shell
+# brew 安装
+brew install oracle-jdk17
+```
+
 ## 如何学习Java工程搭建
 
 1. 学习推荐的工程结构思想
@@ -67,3 +87,10 @@ public void init() {
 
 1. HashMap参数不可控，违反单一职责原则，增加了不必要的职责处理。
 2. 因为HashMap参数不可控，HashMap传参也不利于业务代码的维护和梳理。
+
+## IDEA 工程模块化设置
+
+- [idea/modules](https://www.jetbrains.com/help/idea/creating-and-managing-modules.html)
+- [谁再把IDEA的Project比作Eclipse的Workspace，我就跟谁急](https://mp.weixin.qq.com/s/1eZ0cI5dA4QVNniAHN424w)
+
+TODO

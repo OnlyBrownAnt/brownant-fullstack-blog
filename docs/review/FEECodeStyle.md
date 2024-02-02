@@ -1,4 +1,4 @@
-# 前端工程化-编码风格
+# 前端工程化 - 编码风格
 
 ## 编码规范需求解析
 
@@ -198,6 +198,7 @@ ESLint 是一种用于识别和报告在 ECMAScript/JavaScript 代码中发现�
 ### Docs
 
 - [ESLint/getting-started](https://eslint.org/docs/latest/use/getting-started)
+- [ESLint/language-options](https://eslint.org/docs/latest/use/configure/language-options)
 - [ESLint/rules](https://eslint.org/docs/latest/rules/)
 - [vscode-eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 
@@ -229,7 +230,8 @@ npx eslint --fix projectDir/file1.js
 module.exports = {
   env: {
     browser: true,
-    es2021: true,
+    node: true,
+    es6: true,
   },
   extends: [
     "eslint:recommended",
@@ -256,4 +258,18 @@ module.exports = {
   plugins: ["@typescript-eslint", "react"],
   rules: {},
 };
+```
+
+## 常见问题集
+
+### Require statement not part of import statement.(@typescript-eslint/no-var-requires)
+
+- [no-var-requires](https://typescript-eslint.io/rules/no-var-requires/)
+  webpack 配置文件中有部分通过 require 的方式引入依赖，出现报错。
+
+分析
+在 typescript-eslint 插件配置后，默认会对 require 引入依赖包方式进行检查报错。通过设置局部性的忽略即可解决，不需要全局屏蔽。
+
+```js
+/* eslint-disable @typescript-eslint/no-var-requires */
 ```

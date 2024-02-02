@@ -14,8 +14,9 @@
 !["idea-1"](/img/docs/idea/idea-1.image "idea-1")
 
 2. 修改注释模版文件内容
-   > 在步骤1中找到的文件File Header.java中修改模版内容即可。模版内容参考附录`File Header.java`
-   > !["idea-2"](/img/docs/idea/idea-2.image "idea-2")
+  > 在步骤1中找到的文件File Header.java中修改模版内容即可。模版内容参考附录`File Header.java`
+  > 
+  > !["idea-2"](/img/docs/idea/idea-2.image "idea-2")
 
 ### 文件头注释模版效果
 
