@@ -12,6 +12,8 @@
 - [企业微信-flutter经验分享](https://www.cnblogs.com/88223100/p/Cross-terminal-integration-practice-of-WeChat-Flutter-and-large-native-projects.html)
 - [gallery](https://gallery.flutter.cn/#/)
 - [up主-B站](https://space.bilibili.com/589533168)
+- [9 Dart concepts to know before you jump into Flutter // for super beginners in Flutter](https://www.youtube.com/watch?v=yOelmLdhJwk&ab_channel=PoojaBhaumik)
+- [📱 FULL Flutter Beginner Course • Programming Basics / Widgets / Navigation / User Input / UI](https://www.youtube.com/watch?v=HQ_ytw58tC4&ab_channel=MitchKoko)
 
 ## 总结
 

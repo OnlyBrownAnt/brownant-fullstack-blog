@@ -8,6 +8,8 @@
   > Spring Boot 参考文档 (默认是最新版本)
 - [Spring Boot Reference Documentation (2.7.8)](https://docs.spring.io/spring-boot/docs/2.7.8/reference/html/)
   > Spring Boot 参考文档 (2.7.8 版本)
+- [B站强推！这可能是全网唯一一个把SpringBoot核心知识点讲的如此通俗易懂的教程！1天全部讲完！] https://www.bilibili.com/video/BV16U421Z7MA/?share_source=copy_web&vd_source=56507021ccbdd0ee1c35116c3a05f1e4
+  > 中文教程
 
 ## Spring-Boot 配置文档
 

@@ -89,6 +89,10 @@
 - [中国居民身份证合法校验-优质博客](http://www.ip33.com/shenfenzheng.html)
 - [youtube4kdownloader](https://youtube4kdownloader.com/zh89/)
 - [网易云音乐下载(第三方)](https://3g.gljlw.com/music/wy/)
+- [锤子在线工具网](https://www.toolhelper.cn/)
+- [FQFA](https://fofa.info/)
+- [在线工具](https://tool.lu/)
+- [BEJson](https://www.bejson.com/)
 
 ## 软件集-Mac
 

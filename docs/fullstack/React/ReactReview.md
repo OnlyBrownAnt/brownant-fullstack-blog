@@ -13,7 +13,12 @@ React 相关的知识点，以及常见的解决方案总结。
 - [whats-a-jsx-transform](https://legacy.reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#whats-a-jsx-transform)
   > react blog
 - [react-lifecycle](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
-
+- [react/v16](https://legacy.reactjs.org/blog/2017/09/26/react-v16.0.html)
+  > React v16 的官方说明文档
+- [react/hooks-intro](https://legacy.reactjs.org/docs/hooks-intro.html)
+  > React 的 Hooks 指导文档(旧版本)
+- [react/CHANGELOG.md](https://github.com/facebook/react/blob/main/CHANGELOG.md#1680-february-6-2019)
+  > react 版本变更文档，了解各个版本更新了什么内容，以及修复问题。在老项目下开发时，也需要注意别用到不支持的过新的特性。
 ## React 生态
 
 ### Web 生态文档
