@@ -16,7 +16,7 @@
 ```shell
 tmux ls 查询tmux会话列表
 tmux new -s [name] 新建会话
-tmux a -t [name] 打开会话
+tmux a -t [name] 打开会话”
 tmux kill-session -t [name] 删除会话
 tmux kill-server 删除所有会话
 ```
